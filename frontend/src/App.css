@@ -1,0 +1,148 @@
+/* Estilos principales de la aplicación */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gray-50);
+}
+
+/* Loading de la aplicación */
+.app-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: var(--spacing-4);
+  background-color: var(--white);
+}
+
+.app-loading p {
+  color: var(--gray-600);
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+
+/* Error de la aplicación */
+.app-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: var(--spacing-4);
+  padding: var(--spacing-8);
+  text-align: center;
+  background-color: var(--white);
+}
+
+.app-error h2 {
+  color: var(--accent-red);
+  font-size: var(--font-size-2xl);
+  margin: 0;
+}
+
+.app-error p {
+  color: var(--gray-600);
+  font-size: var(--font-size-base);
+  margin: 0;
+  max-width: 500px;
+}
+
+.app-error button {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: background-color var(--transition-fast);
+}
+
+.app-error button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Contenido principal */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 80px); /* Altura del header */
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-content {
+    min-height: calc(100vh - 70px); /* Altura del header en móvil */
+  }
+  
+  .app-loading p {
+    font-size: var(--font-size-base);
+  }
+  
+  .app-error {
+    padding: var(--spacing-6);
+  }
+  
+  .app-error h2 {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* Animaciones */
+.app-content {
+  animation: fadeIn var(--transition-normal);
+}
+
+/* Estados de transición entre vistas */
+.view-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.view-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.view-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.view-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+/* Overlay para panel de usuario en móvil */
+@media (max-width: 768px) {
+  .app::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: var(--z-modal-backdrop);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-fast), visibility var(--transition-fast);
+  }
+  
+  .app.user-panel-open::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}

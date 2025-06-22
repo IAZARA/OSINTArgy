@@ -1,0 +1,34 @@
+site:%QUERY%
+site:www.%QUERY%
+inurl:%QUERY%
+intitle:"%QUERY%"
+intext:"%QUERY%"
+"%QUERY%" site:archive.org
+"%QUERY%" site:web.archive.org
+"%QUERY%" site:whois.net
+"%QUERY%" site:whois.com
+"%QUERY%" site:domaintools.com
+"%QUERY%" site:builtwith.com
+"%QUERY%" site:wappalyzer.com
+"%QUERY%" site:shodan.io
+"%QUERY%" site:censys.io
+"%QUERY%" site:securitytrails.com
+"%QUERY%" filetype:pdf
+"%QUERY%" filetype:doc
+"%QUERY%" filetype:docx
+"%QUERY%" filetype:xls
+"%QUERY%" filetype:xlsx
+"%QUERY%" filetype:ppt
+"%QUERY%" filetype:pptx
+"%QUERY%" filetype:txt
+"%QUERY%" filetype:xml
+"%QUERY%" filetype:json
+"%QUERY%" filetype:sql
+"%QUERY%" filetype:log
+"%QUERY%" filetype:bak
+"%QUERY%" filetype:old
+"%QUERY%" filetype:backup
+inurl:admin "%QUERY%"
+inurl:login "%QUERY%"
+inurl:panel "%QUERY%"
+inurl:dashboard "%QUERY%"

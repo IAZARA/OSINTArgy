@@ -1,0 +1,614 @@
+:root {
+  /* === COLORES BASE === */
+  --maltego-bg: radial-gradient(circle at center, #0a1929 0%, #000000 100%);
+  --maltego-bg-solid: #0a1929;
+  --maltego-card: rgba(19, 47, 76, 0.95);
+  --maltego-card-hover: rgba(19, 47, 76, 1);
+  --maltego-border: #1e4976;
+  --maltego-border-active: #00d4ff;
+  
+  /* === COLORES PRIMARIOS === */
+  --maltego-primary: #00d4ff;
+  --maltego-primary-dark: #0288d1;
+  --maltego-primary-light: #33ddff;
+  --maltego-primary-alpha: rgba(0, 212, 255, 0.1);
+  
+  /* === COLORES SECUNDARIOS === */
+  --maltego-secondary: #42A5F5;
+  --maltego-secondary-dark: #1976D2;
+  --maltego-secondary-light: #64B5F6;
+  --maltego-secondary-alpha: rgba(66, 165, 245, 0.1);
+  
+  /* === COLORES DE ACENTO === */
+  --maltego-accent-green: #4CAF50;
+  --maltego-accent-green-dark: #388E3C;
+  --maltego-accent-green-light: #81C784;
+  --maltego-accent-red: #f44336;
+  --maltego-accent-red-dark: #d32f2f;
+  --maltego-accent-orange: #ff6b35;
+  --maltego-accent-orange-dark: #e65100;
+  --maltego-accent-purple: #8a2be2;
+  --maltego-accent-purple-dark: #6a1b9a;
+  
+  /* === COLORES DE NODOS === */
+  --maltego-node-central: #00d4ff;
+  --maltego-node-central-glow: rgba(0, 212, 255, 0.8);
+  --maltego-node-category: #42A5F5;
+  --maltego-node-category-expanded: #64B5F6;
+  --maltego-node-category-glow: rgba(66, 165, 245, 0.6);
+  --maltego-node-tool: #90CAF9;
+  --maltego-node-tool-verified: #4CAF50;
+  --maltego-node-tool-glow: rgba(144, 202, 249, 0.5);
+  
+  /* === COLORES DE ENLACES === */
+  --maltego-link-category: #00d4ff;
+  --maltego-link-tool: #42A5F5;
+  --maltego-link-hover: #ffffff;
+  
+  /* === TEXTO === */
+  --maltego-text-primary: #ffffff;
+  --maltego-text-secondary: #b3e5fc;
+  --maltego-text-muted: #78909c;
+  --maltego-text-accent: #00d4ff;
+  
+  /* === GRADIENTES === */
+  --maltego-gradient-central: linear-gradient(135deg, #00d4ff 0%, #0288d1 100%);
+  --maltego-gradient-category: linear-gradient(135deg, #42A5F5 0%, #1976D2 100%);
+  --maltego-gradient-category-expanded: linear-gradient(135deg, #64B5F6 0%, #0D47A1 100%);
+  --maltego-gradient-tool: linear-gradient(135deg, #90CAF9 0%, #42A5F5 100%);
+  --maltego-gradient-tool-verified: linear-gradient(135deg, #81C784 0%, #388E3C 100%);
+  --maltego-gradient-button: linear-gradient(135deg, #00d4ff 0%, #0288d1 100%);
+  --maltego-gradient-button-hover: linear-gradient(135deg, #33ddff 0%, #00b3e6 100%);
+  
+  /* === SOMBRAS Y EFECTOS === */
+  --maltego-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --maltego-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --maltego-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+  --maltego-shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.4);
+  
+  /* === EFECTOS DE BRILLO === */
+  --maltego-glow-primary: 0 0 15px rgba(0, 212, 255, 0.6);
+  --maltego-glow-primary-strong: 0 0 25px rgba(0, 212, 255, 0.9);
+  --maltego-glow-secondary: 0 0 10px rgba(66, 165, 245, 0.4);
+  --maltego-glow-category: 0 0 15px rgba(66, 165, 245, 0.6);
+  --maltego-glow-tool: 0 0 10px rgba(144, 202, 249, 0.5);
+  --maltego-glow-verified: 0 0 12px rgba(76, 175, 80, 0.6);
+  
+  /* === BORDES === */
+  --maltego-border-radius-xs: 2px;
+  --maltego-border-radius-sm: 4px;
+  --maltego-border-radius-md: 8px;
+  --maltego-border-radius-lg: 12px;
+  --maltego-border-radius-xl: 16px;
+  --maltego-border-radius-full: 50%;
+  
+  /* === TRANSICIONES === */
+  --maltego-transition-fast: 150ms ease-out;
+  --maltego-transition-medium: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --maltego-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --maltego-transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* === ESPACIADO === */
+  --maltego-spacing-xs: 0.25rem;
+  --maltego-spacing-sm: 0.5rem;
+  --maltego-spacing-md: 1rem;
+  --maltego-spacing-lg: 1.5rem;
+  --maltego-spacing-xl: 2rem;
+  --maltego-spacing-2xl: 3rem;
+  
+  /* === TIPOGRAFÍA === */
+  --maltego-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --maltego-font-mono: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  --maltego-font-size-xs: 0.75rem;
+  --maltego-font-size-sm: 0.875rem;
+  --maltego-font-size-base: 1rem;
+  --maltego-font-size-lg: 1.125rem;
+  --maltego-font-size-xl: 1.25rem;
+  --maltego-font-size-2xl: 1.5rem;
+  --maltego-font-size-3xl: 1.875rem;
+  --maltego-font-weight-normal: 400;
+  --maltego-font-weight-medium: 500;
+  --maltego-font-weight-semibold: 600;
+  --maltego-font-weight-bold: 700;
+  --maltego-font-weight-extrabold: 800;
+  
+  /* === Z-INDEX === */
+  --maltego-z-dropdown: 1000;
+  --maltego-z-sticky: 1020;
+  --maltego-z-fixed: 1030;
+  --maltego-z-modal-backdrop: 1040;
+  --maltego-z-modal: 1050;
+  --maltego-z-popover: 1060;
+  --maltego-z-tooltip: 1070;
+  
+  /* === ANIMACIONES === */
+  --maltego-animation-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --maltego-animation-bounce: bounce 1s infinite;
+  --maltego-animation-spin: spin 1s linear infinite;
+  --maltego-animation-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* === TIPOGRAFÍA === */
+.maltego-text {
+  font-family: var(--maltego-font-family);
+  color: var(--maltego-text-primary);
+}
+
+.maltego-text-secondary {
+  color: var(--maltego-text-secondary);
+}
+
+.maltego-text-muted {
+  color: var(--maltego-text-muted);
+}
+
+.maltego-text-accent {
+  color: var(--maltego-text-accent);
+}
+
+/* === CLASES DE UTILIDAD === */
+.maltego-glow-primary {
+  filter: drop-shadow(var(--maltego-glow-primary));
+}
+
+.maltego-glow-primary-strong {
+  filter: drop-shadow(var(--maltego-glow-primary-strong));
+}
+
+.maltego-glow-secondary {
+  filter: drop-shadow(var(--maltego-glow-secondary));
+}
+
+.maltego-glow-category {
+  filter: drop-shadow(var(--maltego-glow-category));
+}
+
+.maltego-glow-tool {
+  filter: drop-shadow(var(--maltego-glow-tool));
+}
+
+.maltego-glow-verified {
+  filter: drop-shadow(var(--maltego-glow-verified));
+}
+
+/* === GRADIENTES === */
+.maltego-gradient-central {
+  background: var(--maltego-gradient-central);
+}
+
+.maltego-gradient-category {
+  background: var(--maltego-gradient-category);
+}
+
+.maltego-gradient-category-expanded {
+  background: var(--maltego-gradient-category-expanded);
+}
+
+.maltego-gradient-tool {
+  background: var(--maltego-gradient-tool);
+}
+
+.maltego-gradient-tool-verified {
+  background: var(--maltego-gradient-tool-verified);
+}
+
+.maltego-gradient-button {
+  background: var(--maltego-gradient-button);
+}
+
+.maltego-gradient-button:hover {
+  background: var(--maltego-gradient-button-hover);
+}
+
+/* === SOMBRAS === */
+.maltego-shadow-sm {
+  box-shadow: var(--maltego-shadow-sm);
+}
+
+.maltego-shadow-md {
+  box-shadow: var(--maltego-shadow-md);
+}
+
+.maltego-shadow-lg {
+  box-shadow: var(--maltego-shadow-lg);
+}
+
+.maltego-shadow-xl {
+  box-shadow: var(--maltego-shadow-xl);
+}
+
+/* === BORDES === */
+.maltego-rounded-xs {
+  border-radius: var(--maltego-border-radius-xs);
+}
+
+.maltego-rounded-sm {
+  border-radius: var(--maltego-border-radius-sm);
+}
+
+.maltego-rounded-md {
+  border-radius: var(--maltego-border-radius-md);
+}
+
+.maltego-rounded-lg {
+  border-radius: var(--maltego-border-radius-lg);
+}
+
+.maltego-rounded-xl {
+  border-radius: var(--maltego-border-radius-xl);
+}
+
+.maltego-rounded-full {
+  border-radius: var(--maltego-border-radius-full);
+}
+
+/* === TRANSICIONES === */
+.maltego-transition-fast {
+  transition: all var(--maltego-transition-fast);
+}
+
+.maltego-transition-medium {
+  transition: all var(--maltego-transition-medium);
+}
+
+.maltego-transition-slow {
+  transition: all var(--maltego-transition-slow);
+}
+
+.maltego-transition-bounce {
+  transition: all var(--maltego-transition-bounce);
+}
+
+/* === ANIMACIONES KEYFRAMES === */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8));
+  }
+}
+
+@keyframes nodeExpand {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes linkPulse {
+  0%, 100% {
+    stroke-opacity: 0.6;
+    stroke-width: 2;
+  }
+  50% {
+    stroke-opacity: 1;
+    stroke-width: 4;
+  }
+}
+
+/* === CLASES DE ANIMACIÓN === */
+.maltego-animate-pulse {
+  animation: var(--maltego-animation-pulse);
+}
+
+.maltego-animate-bounce {
+  animation: var(--maltego-animation-bounce);
+}
+
+.maltego-animate-spin {
+  animation: var(--maltego-animation-spin);
+}
+
+.maltego-animate-ping {
+  animation: var(--maltego-animation-ping);
+}
+
+.maltego-animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.maltego-animate-slide-in-right {
+  animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.maltego-animate-slide-in-left {
+  animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.maltego-animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.maltego-animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+.maltego-animate-node-expand {
+  animation: nodeExpand 0.3s ease-out;
+}
+
+.maltego-animate-link-pulse {
+  animation: linkPulse 2s ease-in-out infinite;
+}
+
+/* === COMPONENTES BASE === */
+.maltego-button {
+  padding: var(--maltego-spacing-sm) var(--maltego-spacing-lg);
+  background: var(--maltego-gradient-button);
+  color: var(--maltego-text-primary);
+  border: none;
+  border-radius: var(--maltego-border-radius-lg);
+  font-family: var(--maltego-font-family);
+  font-weight: var(--maltego-font-weight-semibold);
+  font-size: var(--maltego-font-size-sm);
+  cursor: pointer;
+  transition: var(--maltego-transition-medium);
+  box-shadow: var(--maltego-shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.maltego-button:hover {
+  background: var(--maltego-gradient-button-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--maltego-shadow-lg);
+}
+
+.maltego-button:active {
+  transform: translateY(0);
+  box-shadow: var(--maltego-shadow-sm);
+}
+
+.maltego-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.maltego-button:hover::before {
+  left: 100%;
+}
+
+.maltego-card {
+  background: var(--maltego-card);
+  border: 1px solid var(--maltego-border);
+  border-radius: var(--maltego-border-radius-xl);
+  padding: var(--maltego-spacing-xl);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--maltego-shadow-lg);
+  transition: var(--maltego-transition-medium);
+}
+
+.maltego-card:hover {
+  background: var(--maltego-card-hover);
+  border-color: var(--maltego-border-active);
+  box-shadow: var(--maltego-shadow-xl);
+  transform: translateY(-2px);
+}
+
+.maltego-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.95);
+  color: var(--maltego-text-primary);
+  padding: var(--maltego-spacing-sm) var(--maltego-spacing-md);
+  border-radius: var(--maltego-border-radius-md);
+  font-size: var(--maltego-font-size-xs);
+  font-family: var(--maltego-font-family);
+  pointer-events: none;
+  z-index: var(--maltego-z-tooltip);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--maltego-border);
+  box-shadow: var(--maltego-shadow-lg);
+  opacity: 0;
+  transition: opacity var(--maltego-transition-fast);
+}
+
+.maltego-tooltip.show {
+  opacity: 1;
+}
+
+/* === ESTADOS INTERACTIVOS === */
+.maltego-interactive {
+  cursor: pointer;
+  transition: var(--maltego-transition-medium);
+}
+
+.maltego-interactive:hover {
+  transform: scale(1.05);
+}
+
+.maltego-interactive:active {
+  transform: scale(0.98);
+}
+
+.maltego-selectable {
+  transition: var(--maltego-transition-medium);
+}
+
+.maltego-selectable.selected {
+  outline: 2px solid var(--maltego-primary);
+  outline-offset: 2px;
+}
+
+.maltego-draggable {
+  cursor: grab;
+}
+
+.maltego-draggable:active {
+  cursor: grabbing;
+}
+
+/* === UTILIDADES DE LAYOUT === */
+.maltego-flex {
+  display: flex;
+}
+
+.maltego-flex-col {
+  flex-direction: column;
+}
+
+.maltego-items-center {
+  align-items: center;
+}
+
+.maltego-justify-center {
+  justify-content: center;
+}
+
+.maltego-gap-sm {
+  gap: var(--maltego-spacing-sm);
+}
+
+.maltego-gap-md {
+  gap: var(--maltego-spacing-md);
+}
+
+.maltego-gap-lg {
+  gap: var(--maltego-spacing-lg);
+}
+
+/* === UTILIDADES DE ESPACIADO === */
+.maltego-p-sm {
+  padding: var(--maltego-spacing-sm);
+}
+
+.maltego-p-md {
+  padding: var(--maltego-spacing-md);
+}
+
+.maltego-p-lg {
+  padding: var(--maltego-spacing-lg);
+}
+
+.maltego-m-sm {
+  margin: var(--maltego-spacing-sm);
+}
+
+.maltego-m-md {
+  margin: var(--maltego-spacing-md);
+}
+
+.maltego-m-lg {
+  margin: var(--maltego-spacing-lg);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  :root {
+    --maltego-font-size-xs: 0.7rem;
+    --maltego-font-size-sm: 0.8rem;
+    --maltego-font-size-base: 0.9rem;
+    --maltego-spacing-sm: 0.375rem;
+    --maltego-spacing-md: 0.75rem;
+    --maltego-spacing-lg: 1.125rem;
+  }
+  
+  .maltego-button {
+    padding: var(--maltego-spacing-xs) var(--maltego-spacing-md);
+    font-size: var(--maltego-font-size-xs);
+  }
+  
+  .maltego-card {
+    padding: var(--maltego-spacing-md);
+  }
+}

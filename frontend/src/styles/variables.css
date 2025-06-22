@@ -1,0 +1,205 @@
+:root {
+  /* Colores Primarios */
+  --primary-blue: #1976D2;
+  --primary-light: #42A5F5;
+  --primary-dark: #0D47A1;
+  
+  /* Colores Secundarios */
+  --secondary-teal: #00ACC1;
+  --secondary-light: #4DD0E1;
+  --secondary-dark: #006064;
+  
+  /* Colores de Acento */
+  --accent-orange: #FF9800;
+  --accent-green: #4CAF50;
+  --accent-red: #F44336;
+  --accent-purple: #9C27B0;
+  --accent-cyan: #00BCD4;
+  
+  /* Colores Neutros */
+  --white: #FFFFFF;
+  --gray-50: #FAFAFA;
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-400: #BDBDBD;
+  --gray-500: #9E9E9E;
+  --gray-600: #757575;
+  --gray-700: #616161;
+  --gray-800: #424242;
+  --gray-900: #212121;
+  --black: #000000;
+  
+  /* Colores por Categoría */
+  --cat-buscadores: #4CAF50;
+  --cat-redes-sociales: #2196F3;
+  --cat-email: #FF5722;
+  --cat-dominios: #9C27B0;
+  --cat-geolocalizacion: #FF9800;
+  --cat-imagenes: #E91E63;
+  --cat-documentos: #795548;
+  --cat-registros: #607D8B;
+  --cat-darkweb: #424242;
+  --cat-analisis: #00BCD4;
+  --cat-utilidades: #8BC34A;
+  --cat-argentina: #FF9800;
+  --cat-telefonos: #3F51B5;
+  --cat-archivos: #8E24AA;
+  --cat-criptomonedas: #FF6F00;
+
+  /* Tipografía */
+  --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+  
+  /* Tamaños de Fuente */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  
+  /* Pesos de Fuente */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Espaciado */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
+  --border-radius-2xl: 16px;
+  --border-radius-full: 9999px;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Transiciones */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  --transition-slower: 0.5s ease;
+  
+  /* Z-Index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+  
+  /* Breakpoints (para uso en JavaScript) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  
+  /* Contenedores */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+  
+  /* Efectos */
+  --blur-sm: blur(4px);
+  --blur-md: blur(8px);
+  --blur-lg: blur(16px);
+  --blur-xl: blur(24px);
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-light) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--secondary-teal) 0%, var(--secondary-light) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-red) 100%);
+  --gradient-background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  
+  /* Estados */
+  --color-success: var(--accent-green);
+  --color-warning: var(--accent-orange);
+  --color-error: var(--accent-red);
+  --color-info: var(--primary-blue);
+  
+  /* Opacidades */
+  --opacity-disabled: 0.6;
+  --opacity-hover: 0.8;
+  --opacity-active: 0.9;
+  
+  /* Bordes */
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 3px;
+  
+  --border-color-light: var(--gray-200);
+  --border-color-medium: var(--gray-300);
+  --border-color-dark: var(--gray-400);
+  
+  /* Focus */
+  --focus-ring-color: rgba(25, 118, 210, 0.3);
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+}
+
+/* Tema oscuro (para futuras implementaciones) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white: #121212;
+    --gray-50: #1e1e1e;
+    --gray-100: #2d2d2d;
+    --gray-200: #3d3d3d;
+    --gray-300: #4d4d4d;
+    --gray-400: #6d6d6d;
+    --gray-500: #8d8d8d;
+    --gray-600: #adadad;
+    --gray-700: #cdcdcd;
+    --gray-800: #e0e0e0;
+    --gray-900: #ffffff;
+    --black: #ffffff;
+    
+    --gradient-background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    --gradient-card: linear-gradient(145deg, rgba(30, 30, 30, 0.9) 0%, rgba(45, 45, 45, 0.7) 100%);
+  }
+}
+
+/* Variables para animaciones */
+:root {
+  --animation-duration-fast: 0.15s;
+  --animation-duration-normal: 0.3s;
+  --animation-duration-slow: 0.5s;
+  
+  --animation-easing-ease: ease;
+  --animation-easing-ease-in: ease-in;
+  --animation-easing-ease-out: ease-out;
+  --animation-easing-ease-in-out: ease-in-out;
+  --animation-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Utilidades para desarrolladores */
+.debug {
+  outline: 2px solid red !important;
+}
+
+.debug * {
+  outline: 1px solid blue !important;
+}

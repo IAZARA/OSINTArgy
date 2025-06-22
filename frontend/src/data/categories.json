@@ -1,0 +1,508 @@
+{
+  "categories": [
+    {
+      "id": "buscadores-generales",
+      "name": "Buscadores Generales y Avanzados",
+      "description": "Motores de búsqueda especializados y técnicas avanzadas",
+      "icon": "🔍",
+      "color": "#4CAF50",
+      "order": 1,
+      "subcategories": [
+        {
+          "id": "motores-busqueda",
+          "name": "Motores de Búsqueda",
+          "description": "Google Advanced, Bing, Yandex, Baidu, Searx",
+          "order": 1
+        },
+        {
+          "id": "metabuscadores",
+          "name": "Metabuscadores",
+          "description": "StartPage, DuckDuckGo, Searx instances",
+          "order": 2
+        },
+        {
+          "id": "busquedas-especializadas",
+          "name": "Búsquedas Especializadas",
+          "description": "Shodan, Censys, ZoomEye",
+          "order": 3
+        },
+        {
+          "id": "operadores-avanzados",
+          "name": "Operadores Avanzados",
+          "description": "Google Dorks, Bing Dorks",
+          "order": 4
+        }
+      ]
+    },
+    {
+      "id": "redes-sociales",
+      "name": "Redes Sociales y Perfiles",
+      "description": "Investigación de perfiles y actividad en plataformas sociales",
+      "icon": "👥",
+      "color": "#2196F3",
+      "order": 2,
+      "subcategories": [
+        {
+          "id": "plataformas-principales",
+          "name": "Plataformas Principales",
+          "description": "Facebook, Twitter/X, Instagram, LinkedIn",
+          "order": 1
+        },
+        {
+          "id": "plataformas-emergentes",
+          "name": "Plataformas Emergentes",
+          "description": "TikTok, Discord, Telegram",
+          "order": 2
+        },
+        {
+          "id": "herramientas-analisis",
+          "name": "Herramientas de Análisis",
+          "description": "Social Searcher, Mention, Brand24",
+          "order": 3
+        },
+        {
+          "id": "verificacion-perfiles",
+          "name": "Verificación de Perfiles",
+          "description": "Sherlock, WhatsMyName",
+          "order": 4
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "name": "Correo Electrónico",
+      "description": "Verificación y análisis de direcciones de correo",
+      "icon": "📧",
+      "color": "#FF5722",
+      "order": 3,
+      "subcategories": [
+        {
+          "id": "verificacion",
+          "name": "Verificación",
+          "description": "Hunter, VoilaNorbert, FindThatLead",
+          "order": 1
+        },
+        {
+          "id": "analisis-headers",
+          "name": "Análisis de Headers",
+          "description": "MXToolbox, Mail Header Analyzer",
+          "order": 2
+        },
+        {
+          "id": "busqueda-breaches",
+          "name": "Búsqueda de Breaches",
+          "description": "HaveIBeenPwned, DeHashed",
+          "order": 3
+        }
+      ]
+    },
+    {
+      "id": "dominios-ips",
+      "name": "Dominios e IPs",
+      "description": "Información de infraestructura web y redes",
+      "icon": "🌐",
+      "color": "#9C27B0",
+      "order": 4,
+      "subcategories": [
+        {
+          "id": "informacion-dominios",
+          "name": "Información de Dominios",
+          "description": "Whois, DomainTools, SecurityTrails",
+          "order": 1
+        },
+        {
+          "id": "analisis-ips",
+          "name": "Análisis de IPs",
+          "description": "IPinfo, MaxMind, AbuseIPDB",
+          "order": 2
+        },
+        {
+          "id": "dns",
+          "name": "DNS",
+          "description": "DNSdumpster, ViewDNS, MXToolbox",
+          "order": 3
+        },
+        {
+          "id": "certificados-ssl",
+          "name": "Certificados SSL",
+          "description": "crt.sh, Certificate Transparency",
+          "order": 4
+        }
+      ]
+    },
+    {
+      "id": "geolocalizacion",
+      "name": "Geolocalización y Mapas",
+      "description": "Herramientas de ubicación y análisis geoespacial",
+      "icon": "🗺️",
+      "color": "#FF9800",
+      "order": 5,
+      "subcategories": [
+        {
+          "id": "mapas-satelitales",
+          "name": "Mapas Satelitales",
+          "description": "Google Earth, Bing Maps, Yandex Maps",
+          "order": 1
+        },
+        {
+          "id": "coordenadas",
+          "name": "Coordenadas",
+          "description": "What3Words, Plus Codes",
+          "order": 2
+        },
+        {
+          "id": "analisis-geoespacial",
+          "name": "Análisis Geoespacial",
+          "description": "QGIS, OpenStreetMap",
+          "order": 3
+        },
+        {
+          "id": "camaras-vivo",
+          "name": "Cámaras en Vivo",
+          "description": "EarthCam, Insecam",
+          "order": 4
+        }
+      ]
+    },
+    {
+      "id": "imagenes-videos",
+      "name": "Imágenes y Videos",
+      "description": "Análisis y búsqueda inversa de contenido multimedia",
+      "icon": "📸",
+      "color": "#E91E63",
+      "order": 6,
+      "subcategories": [
+        {
+          "id": "busqueda-inversa",
+          "name": "Búsqueda Inversa",
+          "description": "Google Images, TinEye, Yandex Images",
+          "order": 1
+        },
+        {
+          "id": "analisis-metadatos",
+          "name": "Análisis de Metadatos",
+          "description": "ExifTool, Jeffrey's Exif Viewer",
+          "order": 2
+        },
+        {
+          "id": "verificacion",
+          "name": "Verificación",
+          "description": "InVID, RevEye",
+          "order": 3
+        },
+        {
+          "id": "reconocimiento-facial",
+          "name": "Reconocimiento Facial",
+          "description": "PimEyes, FindClone",
+          "order": 4
+        }
+      ]
+    },
+    {
+      "id": "documentos-metadatos",
+      "name": "Documentos y Metadatos",
+      "description": "Análisis de documentos y extracción de información",
+      "icon": "📄",
+      "color": "#795548",
+      "order": 7,
+      "subcategories": [
+        {
+          "id": "analisis-pdfs",
+          "name": "Análisis de PDFs",
+          "description": "Herramientas para examinar PDFs",
+          "order": 1
+        },
+        {
+          "id": "extraccion-metadatos",
+          "name": "Extracción de Metadatos",
+          "description": "ExifTool, FOCA",
+          "order": 2
+        },
+        {
+          "id": "busqueda-documentos",
+          "name": "Búsqueda de Documentos",
+          "description": "Google Filetype, DocumentCloud",
+          "order": 3
+        }
+      ]
+    },
+    {
+      "id": "registros-publicos",
+      "name": "Registros Públicos y Financieros",
+      "description": "Bases de datos gubernamentales y registros oficiales",
+      "icon": "🏛️",
+      "color": "#607D8B",
+      "order": 8,
+      "subcategories": [
+        {
+          "id": "registros-comerciales",
+          "name": "Registros Comerciales",
+          "description": "OpenCorporates, registros de empresas",
+          "order": 1
+        },
+        {
+          "id": "registros-propiedad",
+          "name": "Registros de Propiedad",
+          "description": "Propiedades inmobiliarias",
+          "order": 2
+        },
+        {
+          "id": "cortes-legal",
+          "name": "Cortes y Legal",
+          "description": "Expedientes judiciales",
+          "order": 3
+        }
+      ]
+    },
+    {
+      "id": "darkweb-amenazas",
+      "name": "Dark Web y Amenazas",
+      "description": "Monitoreo de amenazas y inteligencia de ciberseguridad",
+      "icon": "🕵️",
+      "color": "#424242",
+      "order": 9,
+      "subcategories": [
+        {
+          "id": "motores-darkweb",
+          "name": "Motores Dark Web",
+          "description": "Ahmia, DuckDuckGo Onion",
+          "order": 1
+        },
+        {
+          "id": "threat-intelligence",
+          "name": "Threat Intelligence",
+          "description": "VirusTotal, análisis de amenazas",
+          "order": 2
+        },
+        {
+          "id": "breach-monitoring",
+          "name": "Monitoreo de Brechas",
+          "description": "Vigilancia de filtraciones",
+          "order": 3
+        }
+      ]
+    },
+    {
+      "id": "analisis-visualizacion",
+      "name": "Herramientas de Análisis y Visualización",
+      "description": "Análisis de datos y visualización de información",
+      "icon": "📊",
+      "color": "#00BCD4",
+      "order": 10,
+      "subcategories": [
+        {
+          "id": "mapeo-relaciones",
+          "name": "Mapeo de Relaciones",
+          "description": "Maltego, análisis de enlaces y conexiones",
+          "order": 1
+        },
+        {
+          "id": "analisis-documentos",
+          "name": "Análisis de Documentos",
+          "description": "Overview, organización y visualización de documentos",
+          "order": 2
+        },
+        {
+          "id": "visualizacion",
+          "name": "Visualización",
+          "description": "Gephi, grafos y representaciones visuales",
+          "order": 3
+        },
+        {
+          "id": "analisis-redes",
+          "name": "Análisis de Redes",
+          "description": "NetworkX, análisis de conexiones",
+          "order": 4
+        }
+      ]
+    },
+    {
+      "id": "utilidades-varios",
+      "name": "Utilidades y Varios",
+      "description": "Herramientas auxiliares y utilidades diversas",
+      "icon": "🛠️",
+      "color": "#8BC34A",
+      "order": 11,
+      "subcategories": [
+        {
+          "id": "codificacion",
+          "name": "Codificación/Decodificación",
+          "description": "CyberChef, Base64, cifrado",
+          "order": 1
+        },
+        {
+          "id": "generadores",
+          "name": "Generadores",
+          "description": "Datos falsos, identidades",
+          "order": 2
+        },
+        {
+          "id": "utilidades-red",
+          "name": "Utilidades de Red",
+          "description": "Nmap, Masscan, escaneo",
+          "order": 3
+        }
+      ]
+    },
+    {
+      "id": "argentina-latam",
+      "name": "🇦🇷 Argentina / LATAM",
+      "description": "Herramientas específicas para Argentina y Latinoamérica",
+      "icon": "🇦🇷",
+      "color": "#FF9800",
+      "order": 12,
+      "subcategories": [
+        {
+          "id": "registros-publicos-ar",
+          "name": "Registros Públicos Argentina",
+          "description": "AFIP, ANSES, Registro de Personas",
+          "order": 1
+        },
+        {
+          "id": "medios-comunicacion-ar",
+          "name": "Medios de Comunicación",
+          "description": "Clarín, La Nación, Página/12",
+          "order": 2
+        },
+        {
+          "id": "bases-datos-gov",
+          "name": "Bases de Datos Gubernamentales",
+          "description": "Boletín Oficial, INFOLEG",
+          "order": 3
+        },
+        {
+          "id": "herramientas-latam",
+          "name": "Herramientas LATAM",
+          "description": "Recursos regionales",
+          "order": 4
+        }
+      ]
+    },
+    {
+      "id": "telefonos",
+      "name": "Teléfonos y Comunicaciones",
+      "description": "Herramientas para investigar números de teléfono, buscar información de contacto y analizar comunicaciones.",
+      "icon": "📞",
+      "color": "#3F51B5",
+      "order": 13,
+      "subcategories": [
+        {
+          "id": "busqueda-inversa-directa",
+          "name": "Búsqueda Inversa y Directa",
+          "description": "Herramientas para búsqueda directa e inversa de números telefónicos",
+          "order": 1
+        },
+        {
+          "id": "analisis-portadora-cnam",
+          "name": "Análisis de Portadora y CNAM",
+          "description": "Análisis de operadora y información de identificación de llamadas",
+          "order": 2
+        },
+        {
+          "id": "directorios-publicos",
+          "name": "Directorios Públicos",
+          "description": "Directorios telefónicos y páginas amarillas",
+          "order": 3
+        },
+        {
+          "id": "apis-desarrollo",
+          "name": "APIs y Herramientas de Desarrollo",
+          "description": "APIs y herramientas para desarrolladores",
+          "order": 4
+        }
+      ]
+    },
+    {
+      "id": "archivos",
+      "name": "Archivos y Documentos",
+      "description": "Archivos web históricos, bases de datos y documentos filtrados",
+      "icon": "📁",
+      "color": "#8E24AA",
+      "order": 14,
+      "subcategories": [
+        {
+          "id": "archivos-web",
+          "name": "Archivos Web",
+          "description": "Wayback Machine, Archive.is, versiones históricas",
+          "order": 1
+        },
+        {
+          "id": "archivos-historicos",
+          "name": "Archivos Históricos",
+          "description": "Documentos y archivos históricos",
+          "order": 2
+        },
+        {
+          "id": "archivos-regionales",
+          "name": "Archivos Regionales",
+          "description": "Archivos específicos por región",
+          "order": 3
+        },
+        {
+          "id": "bibliotecas-digitales",
+          "name": "Bibliotecas Digitales",
+          "description": "Anna's Archive, libros y documentos académicos",
+          "order": 4
+        },
+        {
+          "id": "documentos-filtrados",
+          "name": "Documentos Filtrados",
+          "description": "WikiLeaks, Cryptome, documentos clasificados",
+          "order": 5
+        },
+        {
+          "id": "datasets-investigacion",
+          "name": "Datasets de Investigación",
+          "description": "Datasets académicos y de investigación",
+          "order": 6
+        }
+      ]
+    },
+    {
+      "id": "criptomonedas",
+      "name": "Criptomonedas y Blockchain",
+      "description": "Análisis de transacciones, exploradores de blockchain y herramientas forenses",
+      "icon": "₿",
+      "color": "#FF6F00",
+      "order": 15,
+      "subcategories": [
+        {
+          "id": "exploradores-bitcoin",
+          "name": "Exploradores Bitcoin",
+          "description": "Blockchain.info, OXT, análisis de transacciones Bitcoin",
+          "order": 1
+        },
+        {
+          "id": "exploradores-ethereum",
+          "name": "Exploradores Ethereum",
+          "description": "Etherscan, análisis de contratos inteligentes",
+          "order": 2
+        },
+        {
+          "id": "exploradores-monero",
+          "name": "Exploradores Monero",
+          "description": "XMRChain, análisis de transacciones privadas",
+          "order": 3
+        },
+        {
+          "id": "analisis-forense",
+          "name": "Análisis Forense",
+          "description": "GraphSense, análisis avanzado de blockchain",
+          "order": 4
+        },
+        {
+          "id": "identificacion-wallets",
+          "name": "Identificación de Wallets",
+          "description": "Wallet Explorer, identificación de direcciones",
+          "order": 5
+        },
+        {
+          "id": "seguridad-fraudes",
+          "name": "Seguridad y Fraudes",
+          "description": "Bitcoin Who's Who, detección de estafas",
+          "order": 6
+        }
+      ]
+    }
+  ]
+}

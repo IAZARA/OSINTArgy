@@ -1,0 +1,34 @@
+site:%QUERY%
+site:www.%QUERY%
+url:%QUERY%
+title:"%QUERY%"
+text:"%QUERY%"
+"%QUERY%" site:archive.org
+"%QUERY%" site:web.archive.org
+"%QUERY%" site:whois.net
+"%QUERY%" site:whois.com
+"%QUERY%" site:domaintools.com
+"%QUERY%" site:builtwith.com
+"%QUERY%" site:wappalyzer.com
+"%QUERY%" site:shodan.io
+"%QUERY%" site:censys.io
+"%QUERY%" site:securitytrails.com
+"%QUERY%" mime:pdf
+"%QUERY%" mime:doc
+"%QUERY%" mime:docx
+"%QUERY%" mime:xls
+"%QUERY%" mime:xlsx
+"%QUERY%" mime:ppt
+"%QUERY%" mime:pptx
+"%QUERY%" mime:txt
+"%QUERY%" mime:xml
+"%QUERY%" mime:json
+"%QUERY%" mime:sql
+"%QUERY%" mime:log
+"%QUERY%" mime:bak
+"%QUERY%" mime:old
+"%QUERY%" mime:backup
+url:admin "%QUERY%"
+url:login "%QUERY%"
+url:panel "%QUERY%"
+url:dashboard "%QUERY%"

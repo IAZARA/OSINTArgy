@@ -1,0 +1,47 @@
+{
+  "category": "analisis-visualizacion",
+  "tools": [
+    {
+      "id": "maltego",
+      "name": "Maltego",
+      "description": "Plataforma de análisis de enlaces y visualización de datos para OSINT.",
+      "utility": "Mapea relaciones entre entidades, personas, dominios, IPs y otros datos para investigaciones complejas.",
+      "url": "https://www.maltego.com/",
+      "category": "analisis-visualizacion",
+      "subcategory": "mapeo-relaciones",
+      "tags": ["análisis de enlaces", "visualización", "mapeo", "relaciones"],
+      "type": "desktop",
+      "indicators": ["A", "D", "R"],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.8,
+      "usage_count": 12450,
+      "last_updated": "2025-06-19",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": false,
+      "difficulty_level": "advanced"
+    },
+    {
+      "id": "overview",
+      "name": "Overview",
+      "description": "Herramienta de análisis y visualización de documentos para periodistas e investigadores.",
+      "utility": "Organiza, busca y visualiza grandes colecciones de documentos para encontrar patrones y conexiones.",
+      "url": "https://www.overviewdocs.com/",
+      "category": "analisis-visualizacion",
+      "subcategory": "analisis-documentos",
+      "tags": ["documentos", "periodismo", "patrones", "organización"],
+      "type": "web",
+      "indicators": ["D", "A"],
+      "region": "internacional",
+      "language": "en",
+      "rating": 4.5,
+      "usage_count": 3890,
+      "last_updated": "2025-06-19",
+      "status": "active",
+      "requires_registration": true,
+      "is_free": true,
+      "difficulty_level": "intermediate"
+    }
+  ]
+}
