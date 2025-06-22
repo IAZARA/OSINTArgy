@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast'
 
 // Componentes
 import Header from '@components/Header/Header'
-import TreeViewNew from '@components/TreeView/TreeViewNew'
+import CircularView from '@components/CircularView/CircularView' // Importar nuevo componente
 import CardsView from '@components/CardsView/CardsView'
 import UserPanel from '@components/UserPanel/UserPanel'
 import Auth from '@components/Auth/Auth'
@@ -110,12 +110,11 @@ function App() {
             element={
               <div className="app-content">
                 {currentView === 'tree' ? (
-                  <TreeViewNew
+                  <CircularView
                     tools={filteredTools}
                     categories={categories}
                     onCategorySelect={handleCategorySelect}
                     selectedCategory={selectedCategory}
-                    searchQuery={searchQuery}
                   />
                 ) : (
                   <CardsView
