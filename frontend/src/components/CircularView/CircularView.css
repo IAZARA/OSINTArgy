@@ -1,0 +1,54 @@
+.circular-view-container {
+  width: 100%;
+  height: 100%;
+  min-height: 500px; /* Asegurar altura mínima */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #001f3f; /* Azul marino oscuro, similar a Maltego */
+  overflow: hidden; /* Evitar barras de scroll innecesarias */
+}
+
+.central-button circle {
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.central-button:hover circle {
+  transform: scale(1.1);
+  fill: #00509E; /* Un azul un poco más claro al hacer hover */
+}
+
+.category-node circle {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.category-node:hover circle {
+  transform: scale(1.1);
+  filter: drop-shadow(0px 0px 15px #FFD700) !important; /* Resaltado dorado más intenso */
+}
+
+.category-node text {
+  pointer-events: none; /* Para que el tooltip del círculo funcione */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.tool-node circle {
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+
+.tool-node:hover circle {
+  transform: scale(1.15);
+  fill: #FFA726; /* Naranja más claro al hacer hover */
+}
+
+.tool-node text {
+  pointer-events: none; /* Para que el tooltip del círculo funcione */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos para los tooltips (títulos SVG) */
+.central-button title, .category-node title, .tool-node title {
+  /* D3 se encarga de los tooltips nativos del navegador para elementos SVG con <title> */
+  /* Puedes estilizarlos de forma limitada o usar librerías de tooltips JS si necesitas más control */
+}
