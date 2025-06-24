@@ -36,7 +36,8 @@
       "Bash(timeout 10 npm start)",
       "Bash(gtimeout 15 npm start)",
       "Bash(node:*)",
-      "mcp__playwright__playwright_navigate"
+      "mcp__playwright__playwright_navigate",
+      "Bash(chmod:*)"
     ]
   },
   "enableAllProjectMcpServers": false

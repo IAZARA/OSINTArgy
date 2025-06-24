@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: osintargy-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: osintargy
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - osintargy-network
+    ports:
+      - "127.0.0.1:27017:27017"
+
+  backend:
+    build: ./backend
+    container_name: osintargy-backend
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      MONGODB_URI: mongodb://admin:${MONGO_PASSWORD}@mongodb:27017/osintargy?authSource=admin
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRE: 7d
+      CORS_ORIGIN: https://osintargy.online
+    depends_on:
+      - mongodb
+    networks:
+      - osintargy-network
+    ports:
+      - "127.0.0.1:3000:3000"
+
+  frontend:
+    build: ./frontend
+    container_name: osintargy-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - osintargy-network
+    ports:
+      - "127.0.0.1:8080:80"
+
+volumes:
+  mongodb_data:
+
+networks:
+  osintargy-network:
+    driver: bridge
