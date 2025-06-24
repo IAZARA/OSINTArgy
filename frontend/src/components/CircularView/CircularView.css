@@ -1,54 +1,98 @@
 .circular-view-container {
   width: 100%;
   height: 100%;
-  min-height: 500px; /* Asegurar altura mínima */
+  min-height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #001f3f; /* Azul marino oscuro, similar a Maltego */
-  overflow: hidden; /* Evitar barras de scroll innecesarias */
+  background-color: var(--dark-bg);
+  overflow: hidden;
+}
+
+/* SOLUCIÓN SIMPLE - SIN ANIMACIONES HOVER PROBLEMÁTICAS */
+
+/* Botón Central - Solo efectos sutiles */
+.central-button {
+  cursor: pointer;
 }
 
 .central-button circle {
-  transition: transform 0.3s ease, fill 0.3s ease;
+  /* Sin transiciones automáticas que causen rebote */
 }
 
-.central-button:hover circle {
-  transform: scale(1.1);
-  fill: #00509E; /* Un azul un poco más claro al hacer hover */
+.central-button:active circle {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+/* Nodos de Categoría - Efectos mínimos */
+.category-node {
+  cursor: pointer;
 }
 
 .category-node circle {
-  transition: transform 0.2s ease, filter 0.2s ease;
+  /* Sin transiciones automáticas */
 }
 
-.category-node:hover circle {
-  transform: scale(1.1);
-  filter: drop-shadow(0px 0px 15px #FFD700) !important; /* Resaltado dorado más intenso */
+.category-node:active circle {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
 }
 
 .category-node text {
-  pointer-events: none; /* Para que el tooltip del círculo funcione */
+  pointer-events: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
 }
 
-.tool-node circle {
-  transition: transform 0.2s ease, fill 0.2s ease;
+/* Nodos de Herramientas - Efectos mínimos */
+.tool-node {
+  cursor: pointer;
 }
 
-.tool-node:hover circle {
-  transform: scale(1.15);
-  fill: #FFA726; /* Naranja más claro al hacer hover */
+.tool-node circle {
+  /* Sin transiciones automáticas */
+}
+
+.tool-node:active circle {
+  transform: scale(0.9);
+  transition: transform 0.1s ease;
 }
 
 .tool-node text {
-  pointer-events: none; /* Para que el tooltip del círculo funcione */
+  pointer-events: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Estilos para los tooltips (títulos SVG) */
+/* Prevenir selección de texto */
+.central-button, .category-node, .tool-node {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Efectos hover OPCIONALES y controlados - solo cambio de opacidad */
+.central-button:hover {
+  opacity: 0.8;
+}
+
+.category-node:hover {
+  opacity: 0.8;
+}
+
+.tool-node:hover {
+  opacity: 0.8;
+}
+
+/* Restaurar opacidad en active para feedback visual */
+.central-button:active,
+.category-node:active,
+.tool-node:active {
+  opacity: 1;
+}
+
+/* Estilos para tooltips */
 .central-button title, .category-node title, .tool-node title {
-  /* D3 se encarga de los tooltips nativos del navegador para elementos SVG con <title> */
-  /* Puedes estilizarlos de forma limitada o usar librerías de tooltips JS si necesitas más control */
+  /* Tooltips nativos del navegador */
 }

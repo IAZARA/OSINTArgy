@@ -5,6 +5,24 @@ import { STORAGE_KEYS, ERROR_MESSAGES, SUCCESS_MESSAGES } from '@utils/constants
 import categoriesData from '@data/categories.json'
 import toast from 'react-hot-toast'
 
+// Importar todos los archivos de herramientas directamente
+import buscadoresGenerales from '@data/tools/buscadores-generales.json'
+import redesSociales from '@data/tools/redes-sociales.json'
+import email from '@data/tools/email.json'
+import dominiosIps from '@data/tools/dominios-ips.json'
+import geolocalizacion from '@data/tools/geolocalizacion.json'
+import imagenesVideos from '@data/tools/imagenes-videos.json'
+import documentosMetadatos from '@data/tools/documentos-metadatos.json'
+import darkwebAmenazas from '@data/tools/darkweb-amenazas.json'
+import argentinaLatam from '@data/tools/argentina-latam.json'
+import telefonos from '@data/tools/telefonos.json'
+import archivos from '@data/tools/archivos.json'
+import criptomonedas from '@data/tools/criptomonedas.json'
+import utilidadesVarios from '@data/tools/utilidades-varios.json'
+import analisisVisualizacion from '@data/tools/analisis-visualizacion.json'
+import nuevasHerramientas from '@data/tools/nuevas-herramientas.json'
+import sistemaInfraestructura from '@data/tools/sistema-infraestructura.json'
+
 // Hook principal para manejar herramientas
 export const useTools = () => {
   const [tools, setTools] = useState([])
@@ -19,43 +37,55 @@ export const useTools = () => {
       setIsLoading(true)
       setError(null)
 
-      // Cargar herramientas del backend
-      const toolsResponse = await toolsService.getAllTools()
-      
-      // Intentar cargar categorías del backend, si falla usar datos locales
-      let categoriesResponse
-      try {
-        categoriesResponse = await toolsService.getCategories()
-      } catch (categoriesError) {
-        console.warn('Backend categories not available, using local data:', categoriesError)
-        categoriesResponse = {
-          success: true,
-          data: categoriesData.categories
-        }
-      }
+      // Usar datos locales directamente
+      console.log('Cargando herramientas desde archivos locales...')
 
-      if (toolsResponse.success && categoriesResponse.success) {
-        // Extraer solo los arrays de datos
-        const toolsData = Array.isArray(toolsResponse.data) ? toolsResponse.data : (toolsResponse.data.tools || toolsResponse.data.data || [])
-        const categoriesData = Array.isArray(categoriesResponse.data) ? categoriesResponse.data : (categoriesResponse.data.categories || categoriesResponse.data.data || [])
-        
-        setTools(toolsData)
-        setCategories(categoriesData)
-        setLastUpdated(new Date())
-        
-        // Guardar en cache local
-        storage.set('tools_cache', {
-          tools: toolsData,
-          categories: categoriesData,
-          timestamp: Date.now()
-        })
-      } else {
-        throw new Error('Error al cargar datos')
-      }
+      // Combinar todas las herramientas de los archivos JSON
+      const allTools = [
+        ...buscadoresGenerales.tools,
+        ...redesSociales.tools,
+        ...email.tools,
+        ...dominiosIps.tools,
+        ...geolocalizacion.tools,
+        ...imagenesVideos.tools,
+        ...documentosMetadatos.tools,
+        ...darkwebAmenazas.tools,
+        ...argentinaLatam.tools,
+        ...telefonos.tools,
+        ...archivos.tools,
+        ...criptomonedas.tools,
+        ...utilidadesVarios.tools,
+        ...analisisVisualizacion.tools,
+        ...nuevasHerramientas.tools,
+        ...sistemaInfraestructura.tools
+      ]
+
+      console.log('Herramientas cargadas:', allTools.length)
+
+      // Usar categorías locales
+      const localCategories = categoriesData.categories
+      console.log('Categorías cargadas:', localCategories.length)
+
+      setTools(allTools)
+      setCategories(localCategories)
+      setLastUpdated(new Date())
+
+      // Guardar en cache local
+      storage.set('tools_cache', {
+        tools: allTools,
+        categories: localCategories,
+        timestamp: Date.now()
+      })
+
+      console.log('Datos cargados exitosamente:', {
+        tools: allTools.length,
+        categories: localCategories.length
+      })
+
     } catch (err) {
-      console.error('Error al cargar herramientas:', err)
+      console.error('Error al cargar herramientas desde archivos locales:', err)
       setError(err.message || ERROR_MESSAGES.GENERIC_ERROR)
-      
+
       // Intentar cargar desde cache si hay error
       const cache = storage.get('tools_cache')
       if (cache && cache.tools && cache.categories) {
@@ -65,6 +95,7 @@ export const useTools = () => {
       } else {
         // Si no hay cache, usar categorías locales al menos
         setCategories(categoriesData.categories)
+        toast.error('Error al cargar herramientas. Usando datos mínimos.')
       }
     } finally {
       setIsLoading(false)

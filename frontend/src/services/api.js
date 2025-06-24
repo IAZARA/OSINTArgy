@@ -12,13 +12,10 @@ const api = axios.create({
   },
 })
 
-// Interceptor para agregar token de autenticación
+// Interceptor de request simplificado (sin autenticación)
 api.interceptors.request.use(
   (config) => {
-    const token = storage.get('auth_token')
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`
-    }
+    // Sin token de autenticación - acceso libre
     return config
   },
   (error) => {
@@ -39,12 +36,9 @@ api.interceptors.response.use(
 
       switch (status) {
         case 401:
-          // Token expirado o inválido
+          // Token expirado o inválido - sin redirección automática
           storage.remove('auth_token')
-          if (window.location.pathname !== '/auth') {
-            toast.error('Sesión expirada. Por favor, inicia sesión nuevamente.')
-            window.location.href = '/auth'
-          }
+          console.log('Token inválido o expirado, pero continuando sin autenticación')
           break
 
         case 403:

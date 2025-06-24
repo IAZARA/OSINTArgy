@@ -4,15 +4,17 @@
   "description": "OSINTArgy - Framework OSINT mejorado en español argentino",
   "main": "index.js",
   "scripts": {
+    "start": "./start.sh",
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "cd frontend && npm run dev",
     "dev:backend": "cd backend && npm run dev",
     "build": "cd frontend && npm run build",
-    "start": "cd backend && npm start",
+    "start:backend": "cd backend && npm start",
     "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
     "test": "npm run test:frontend && npm run test:backend",
     "test:frontend": "cd frontend && npm test",
-    "test:backend": "cd backend && npm test"
+    "test:backend": "cd backend && npm test",
+    "clean": "pkill -f 'vite|nodemon|node.*src/app.js' 2>/dev/null || true"
   },
   "keywords": [
     "osint",
@@ -25,5 +27,8 @@
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "playwright": "^1.53.1"
   }
 }

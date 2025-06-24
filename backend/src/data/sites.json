@@ -1,0 +1,126 @@
+{
+  "sites": [
+    {
+      "name": "Instagram",
+      "check_url": "https://www.instagram.com/api/v1/users/web_profile_info/?username={email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "X-Requested-With": "XMLHttpRequest"
+      },
+      "success_indicators": ["user", "profile"],
+      "failure_indicators": ["not found", "error"],
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/32px-Instagram_icon.png",
+      "category": "social_media"
+    },
+    {
+      "name": "Twitter/X",
+      "check_url": "https://twitter.com/{email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "success_indicators": ["profile", "tweets"],
+      "failure_indicators": ["not found", "suspended", "doesn't exist"],
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/32px-Logo_of_Twitter.svg.png",
+      "category": "social_media"
+    },
+    {
+      "name": "GitHub",
+      "check_url": "https://api.github.com/users/{email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "OSINTArgy-EmailChecker/1.0",
+        "Accept": "application/vnd.github.v3+json"
+      },
+      "success_indicators": ["login", "id", "avatar_url"],
+      "failure_indicators": ["Not Found", "message"],
+      "logo": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+      "category": "development"
+    },
+    {
+      "name": "LinkedIn",
+      "check_url": "https://www.linkedin.com/in/{email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "success_indicators": ["profile", "experience"],
+      "failure_indicators": ["not found", "member doesn't exist"],
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/32px-LinkedIn_logo_initials.png",
+      "category": "professional"
+    },
+    {
+      "name": "Facebook",
+      "check_url": "https://www.facebook.com/{email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "success_indicators": ["profile", "timeline"],
+      "failure_indicators": ["not found", "content isn't available"],
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/32px-Facebook_f_logo_%282019%29.svg.png",
+      "category": "social_media"
+    },
+    {
+      "name": "YouTube",
+      "check_url": "https://www.youtube.com/c/{email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "success_indicators": ["channel", "videos"],
+      "failure_indicators": ["not found", "doesn't exist"],
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/32px-YouTube_full-color_icon_%282017%29.svg.png",
+      "category": "social_media"
+    },
+    {
+      "name": "Reddit",
+      "check_url": "https://www.reddit.com/user/{email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "success_indicators": ["karma", "posts"],
+      "failure_indicators": ["not found", "doesn't exist"],
+      "logo": "https://www.redditstatic.com/desktop2x/img/favicon/favicon-32x32.png",
+      "category": "social_media"
+    },
+    {
+      "name": "TikTok",
+      "check_url": "https://www.tiktok.com/@{email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "success_indicators": ["profile", "followers"],
+      "failure_indicators": ["not found", "user not found"],
+      "logo": "https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/tiktok/webapp/main/webapp-desktop/8152caf0c8e8bc67ae0d.ico",
+      "category": "social_media"
+    },
+    {
+      "name": "Pinterest",
+      "check_url": "https://www.pinterest.com/{email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "success_indicators": ["profile", "pins"],
+      "failure_indicators": ["not found", "user not found"],
+      "logo": "https://s.pinimg.com/webapp/favicon-32x32-b3c9a4d5.png",
+      "category": "social_media"
+    },
+    {
+      "name": "Telegram",
+      "check_url": "https://t.me/{email_prefix}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "success_indicators": ["tgme_page", "channel"],
+      "failure_indicators": ["not found", "no such user"],
+      "logo": "https://telegram.org/img/t_logo.png",
+      "category": "messaging"
+    }
+  ]
+}

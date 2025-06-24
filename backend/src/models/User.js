@@ -259,8 +259,7 @@ const userSchema = new mongoose.Schema({
 })
 
 // Índices
-userSchema.index({ email: 1 })
-userSchema.index({ username: 1 })
+// email y username ya tienen índices únicos definidos en el schema
 userSchema.index({ 'favorites.toolId': 1 })
 userSchema.index({ 'history.toolId': 1 })
 userSchema.index({ isActive: 1, role: 1 })

@@ -127,11 +127,12 @@ html {
 body {
   margin: 0;
   line-height: inherit;
-  background-color: var(--gray-50);
-  color: var(--gray-900);
+  background: var(--dark-bg);
+  color: var(--dark-text-primary);
   font-size: var(--font-size-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 /* Elementos base */

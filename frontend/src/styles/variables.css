@@ -161,7 +161,37 @@
   --focus-ring-offset: 2px;
 }
 
-/* Tema oscuro (para futuras implementaciones) */
+/* Tema oscuro - Variables principales */
+:root {
+  /* Colores de fondo oscuro */
+  --dark-bg: #0a0a0a;
+  --dark-bg-secondary: #1a1a2e;
+  --dark-bg-tertiary: #16213e;
+  --dark-surface: #1e1e1e;
+  --dark-surface-elevated: #2d2d2d;
+  
+  /* Colores de texto oscuro */
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #b3b3b3;
+  --dark-text-muted: #888888;
+  
+  /* Colores de acento para tema oscuro */
+  --dark-accent-blue: #00D4FF;
+  --dark-accent-gold: #FFD700;
+  --dark-accent-orange: #FF9800;
+  --dark-accent-green: #4CAF50;
+  --dark-accent-red: #F44336;
+  
+  /* Bordes y sombras */
+  --dark-border: #333333;
+  --dark-border-light: #444444;
+  --dark-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --dark-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  
+  /* Gradientes */
+  --dark-gradient-bg: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0a 100%);
+  --dark-gradient-surface: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --white: #121212;

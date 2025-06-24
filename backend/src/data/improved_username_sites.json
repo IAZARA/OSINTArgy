@@ -1,0 +1,286 @@
+{
+  "sites": [
+    {
+      "name": "Instagram",
+      "category": "social_media",
+      "main_domain": "instagram.com",
+      "check_url": "https://instagram.com/{}",
+      "alternative_url": "https://www.picuki.com/profile/{}",
+      "detection_method": "content_analysis",
+      "success_indicators": [
+        "\"profilePage_",
+        "\"username\":\"{}\"",
+        "\"full_name\":",
+        "\"is_private\":"
+      ],
+      "failure_indicators": [
+        "\"Sorry, this page isn't available.\"",
+        "\"The link you followed may be broken\"",
+        "\"user not found\"",
+        "\"Page Not Found\"",
+        "\"This account doesn't exist\""
+      ],
+      "minimum_profile_data": [
+        "username",
+        "user_id"
+      ],
+      "confidence_threshold": 0.8,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
+      },
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/32px-Instagram_icon.png",
+      "tags": ["social", "photo", "video", "chatting"]
+    },
+    {
+      "name": "GitHub",
+      "category": "development",
+      "main_domain": "github.com",
+      "check_url": "https://api.github.com/users/{}",
+      "alternative_url": "https://github.com/{}",
+      "detection_method": "api_response",
+      "api_validation": {
+        "required_fields": ["login", "id", "type"],
+        "valid_types": ["User", "Organization"]
+      },
+      "fallback_detection": "status_code",
+      "success_codes": [200],
+      "failure_codes": [404],
+      "headers": {
+        "User-Agent": "OSINTArgy-UsernameChecker/1.0",
+        "Accept": "application/vnd.github.v3+json"
+      },
+      "logo": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+      "tags": ["programming", "opensource", "development"]
+    },
+    {
+      "name": "YouTube",
+      "category": "video",
+      "main_domain": "youtube.com",
+      "check_url": "https://youtube.com/@{}",
+      "alternative_url": "https://www.youtube.com/feeds/videos.xml?user={}",
+      "detection_method": "content_analysis",
+      "success_indicators": [
+        "\"canonicalBaseUrl\":\"/channel/",
+        "\"subscriberCountText\":",
+        "\"videoCountText\":",
+        "ytInitialData"
+      ],
+      "failure_indicators": [
+        "\"This channel doesn't exist.\"",
+        "\"This channel does not exist.\"",
+        "\"Channel not found\"",
+        "\"404 Not Found\""
+      ],
+      "confidence_threshold": 0.7,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/32px-YouTube_full-color_icon_%282017%29.svg.png",
+      "tags": ["video", "sharing", "streaming"]
+    },
+    {
+      "name": "Twitter/X",
+      "category": "social_media",
+      "main_domain": "twitter.com",
+      "check_url": "https://mobile.twitter.com/{}",
+      "alternative_url": "https://nitter.net/{}",
+      "detection_method": "content_analysis",
+      "success_indicators": [
+        "\"screen_name\":\"{}\"",
+        "ProfileHeaderCard",
+        "UserActions--follow",
+        "ProfileNav-item--followers"
+      ],
+      "failure_indicators": [
+        "\"Account suspended\"",
+        "\"User not found\"",
+        "\"This account doesn't exist\"",
+        "\"Sorry, that page doesn't exist!\"",
+        "\"Account has been suspended\""
+      ],
+      "confidence_threshold": 0.6,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
+      },
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/32px-Logo_of_Twitter.svg.png",
+      "tags": ["social", "microblogging", "news"]
+    },
+    {
+      "name": "Facebook",
+      "category": "social_media",
+      "main_domain": "facebook.com",
+      "check_url": "https://facebook.com/{}",
+      "alternative_url": "https://facebook.com/{}",
+      "detection_method": "content_analysis",
+      "success_indicators": [
+        "\"pageID\":",
+        "\"username\":\"{}\"",
+        "\"profile_pic_url\":",
+        "ProfileCometHeaderEntity"
+      ],
+      "failure_indicators": [
+        "\"You must log in to continue\"",
+        "\"This content isn't available right now\"",
+        "\"Page Not Found\"",
+        "\"Content Not Found\"",
+        "\"This page isn't available\""
+      ],
+      "confidence_threshold": 0.5,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/32px-Facebook_f_logo_%282019%29.svg.png",
+      "tags": ["social", "networking", "chatting"]
+    },
+    {
+      "name": "LinkedIn",
+      "category": "professional",
+      "main_domain": "linkedin.com",
+      "check_url": "https://www.linkedin.com/in/{}",
+      "alternative_url": "https://www.linkedin.com/in/{}",
+      "detection_method": "content_analysis",
+      "success_indicators": [
+        "\"publicProfileId\":\"{}\"",
+        "\"firstName\":",
+        "\"lastName\":",
+        "profile-section"
+      ],
+      "failure_indicators": [
+        "\"Member not found\"",
+        "\"Profile not found\"",
+        "\"This profile doesn't exist\"",
+        "\"Page not found\""
+      ],
+      "confidence_threshold": 0.7,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/32px-LinkedIn_logo_initials.png",
+      "tags": ["professional", "networking", "career"]
+    },
+    {
+      "name": "Reddit",
+      "category": "social_media",
+      "main_domain": "reddit.com",
+      "check_url": "https://www.reddit.com/user/{}",
+      "alternative_url": "https://www.reddit.com/user/{}/about.json",
+      "detection_method": "api_response",
+      "api_validation": {
+        "required_fields": ["name", "id", "created_utc"],
+        "valid_indicators": ["subreddit", "comment_karma"]
+      },
+      "fallback_detection": "content_analysis",
+      "success_indicators": [
+        "\"name\":\"{}\"",
+        "\"comment_karma\":",
+        "\"link_karma\":",
+        "UserProfile"
+      ],
+      "failure_indicators": [
+        "\"User doesn't exist\"",
+        "\"User not found\"",
+        "\"account has been suspended\""
+      ],
+      "confidence_threshold": 0.8,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "logo": "https://www.redditstatic.com/desktop2x/img/favicon/favicon-32x32.png",
+      "tags": ["forum", "discussion", "community"]
+    },
+    {
+      "name": "TikTok",
+      "category": "video",
+      "main_domain": "tiktok.com",
+      "check_url": "https://www.tiktok.com/@{}",
+      "alternative_url": "https://www.tiktok.com/@{}",
+      "detection_method": "content_analysis",
+      "success_indicators": [
+        "\"uniqueId\":\"{}\"",
+        "\"followerCount\":",
+        "\"followingCount\":",
+        "UserModule"
+      ],
+      "failure_indicators": [
+        "\"Couldn't find this account\"",
+        "\"User not found\"",
+        "\"Account not found\"",
+        "\"This account cannot be found\""
+      ],
+      "confidence_threshold": 0.7,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
+      },
+      "logo": "https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/tiktok/webapp/main/webapp-desktop/8152caf0c8e8bc67ae0d.ico",
+      "tags": ["video", "social", "entertainment"]
+    },
+    {
+      "name": "Pinterest",
+      "category": "social_media",
+      "main_domain": "pinterest.com",
+      "check_url": "https://pinterest.com/{}",
+      "alternative_url": "https://pinterest.com/{}",
+      "detection_method": "response_url_and_content",
+      "success_indicators": [
+        "\"username\":\"{}\"",
+        "\"followerCount\":",
+        "\"boardCount\":",
+        "ProfilePage"
+      ],
+      "failure_indicators": [
+        "\"User not found\"",
+        "\"Profile not found\"",
+        "\"Sorry, we couldn't find that page\""
+      ],
+      "url_validation": {
+        "should_not_redirect_to": [
+          "https://www.pinterest.com/",
+          "https://pinterest.com/search/"
+        ]
+      },
+      "confidence_threshold": 0.8,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "logo": "https://s.pinimg.com/webapp/favicon-32x32-b3c9a4d5.png",
+      "tags": ["image", "social", "inspiration"]
+    },
+    {
+      "name": "Twitch",
+      "category": "streaming",
+      "main_domain": "twitch.tv",
+      "check_url": "https://twitch.tv/{}",
+      "alternative_url": "https://m.twitch.tv/{}",
+      "detection_method": "content_analysis",
+      "success_indicators": [
+        "\"login\":\"{}\"",
+        "\"displayName\":",
+        "\"followers\":",
+        "ChannelShell"
+      ],
+      "failure_indicators": [
+        "\"Sorry. Unless you've got a time machine\"",
+        "\"Channel not found\"",
+        "\"User not found\"",
+        "\"404 Not Found\""
+      ],
+      "confidence_threshold": 0.8,
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+      },
+      "logo": "https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png",
+      "tags": ["streaming", "gaming", "live"]
+    }
+  ],
+  "detection_methods": {
+    "status_code": "Verificación por código de estado HTTP",
+    "content_analysis": "Análisis del contenido de la página para indicadores específicos",
+    "api_response": "Validación mediante respuesta de API estructurada",
+    "response_url_and_content": "Combinación de análisis de URL final y contenido"
+  },
+  "confidence_levels": {
+    "high": 0.8,
+    "medium": 0.6,
+    "low": 0.4
+  }
+}

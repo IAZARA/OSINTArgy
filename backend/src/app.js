@@ -16,6 +16,10 @@ import ratingsRoutes from './routes/ratings.js'
 import searchRoutes from './routes/search.js'
 import dorksRoutes from './routes/dorks.js'
 import categoriesRoutes from './routes/categories.js'
+import emailOsintRoutes from './routes/emailOsint.js'
+import fileAnalysisRoutes from './routes/fileAnalysis.js'
+import usernameOsintRoutes from './routes/usernameOsint.js'
+import infrastructureScannerRoutes from './routes/infrastructureScanner.js'
 
 // Importar middleware
 import { errorHandler } from './middleware/errorHandler.js'
@@ -101,6 +105,10 @@ app.use('/api/ratings', ratingsRoutes)
 app.use('/api/search', searchRoutes)
 app.use('/api/dorks', dorksRoutes)
 app.use('/api/categories', categoriesRoutes)
+app.use('/api/osint', emailOsintRoutes)
+app.use('/api/osint', usernameOsintRoutes)
+app.use('/api/file-analysis', fileAnalysisRoutes)
+app.use('/api/infrastructure-scanner', infrastructureScannerRoutes)
 
 // Ruta de health check
 app.get('/api/health', (req, res) => {
@@ -128,10 +136,7 @@ app.use(errorHandler)
 // Conectar a MongoDB
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/osintargy', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/osintargy')
     logger.info(`MongoDB conectado: ${conn.connection.host}`)
   } catch (error) {
     logger.error('Error conectando a MongoDB:', error)

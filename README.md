@@ -1,36 +1,130 @@
-# OSINTArgy - Framework OSINT en Español Argentino
+# OSINTArgy - Plataforma OSINT Integral
 
 ## 📋 Descripción
 
-OSINTArgy es una versión mejorada y localizada de osintframework.com, diseñada específicamente para la comunidad de habla hispana, con énfasis en Argentina y Latinoamérica. Ofrece una interfaz dual innovadora (vista árbol D3.js + vista cards), contenido 100% en español argentino, y herramientas especializadas para la región.
+OSINTArgy es una plataforma OSINT integral de código abierto diseñada para democratizar el acceso a herramientas de inteligencia de fuentes abiertas (OSINT) en Argentina y Latinoamérica. Combina una interfaz innovadora tipo galaxia con herramientas especializadas y una base de datos de 200+ recursos OSINT categorizados.
+
+### ¿Qué es OSINTArgy?
+
+Este proyecto personal de **Ivan Agustin Zarate** busca crear una plataforma transparente y educativa para la comunidad OSINT hispanohablante, proporcionando tanto herramientas automatizadas como acceso a recursos especializados, todo en una interfaz cohesiva y visualmente atractiva.
 
 ## ✨ Características Principales
 
-- **🌳 Vista Árbol Interactiva**: Navegación visual con D3.js
-- **🃏 Vista Cards Moderna**: Interfaz de tarjetas responsive
-- **🇦🇷 Localización Completa**: 100% en español argentino
-- **🛠️ +500 Herramientas**: Más herramientas que el framework original
-- **🌎 Herramientas Locales**: Sección específica Argentina/LATAM
-- **👤 Sistema de Usuario**: Favoritos, historial, notas y ratings
-- **🔧 Backend Completo**: API REST con autenticación y base de datos
+- **🌌 Interfaz Galaxy**: Navegación innovadora tipo galaxia con constelaciones (categorías) y estrellas (herramientas)
+- **🎯 Generador de Dorks Avanzado**: Creación automática de 400+ Google Dorks especializados
+- **📧 OSINT de Emails**: Investigación y verificación de correos electrónicos
+- **📄 Análisis de Archivos**: Extracción de metadatos de imágenes y documentos
+- **👤 Búsqueda de Usernames**: Localización de perfiles en múltiples plataformas
+- **🛡️ Scanner de Infraestructura**: Análisis defensivo de superficie de ataque
+- **🇦🇷 Base de Datos Local**: 200+ herramientas categorizadas con enfoque en LATAM
+- **🔧 API REST Completa**: Backend robusto con autenticación y gestión de datos
 
-## 🏗️ Arquitectura
+## 🏗️ Arquitectura del Sistema
 
-### Frontend
-- **React 18** con Hooks y Context API
-- **D3.js v7** para visualización de árbol interactivo
-- **CSS Variables** para theming consistente
-- **React Router v6** para navegación
-- **Axios** para comunicación con API
-- **Lucide React** para iconografía
+### Frontend (React + Vite)
+- **React 18** con Hooks modernos y Context API
+- **Canvas HTML5** para animaciones de galaxia interactiva
+- **React Router v6** para navegación SPA
+- **CSS Variables** para theming oscuro consistente
+- **Lucide React** para iconografía profesional
+- **Toast Notifications** para feedback del usuario
 
-### Backend
-- **Node.js 18+** con Express.js
-- **MongoDB** con Mongoose ODM
-- **JWT** para autenticación
-- **Joi** para validación de datos
-- **Winston** para logging
-- **Rate Limiting** para seguridad
+### Backend (Node.js + Express)
+- **Node.js 18+** con Express.js y arquitectura RESTful
+- **MongoDB** con Mongoose ODM para persistencia
+- **JWT** para autenticación segura
+- **Winston** para logging estructurado
+- **Rate Limiting** y CORS para seguridad
+- **Helmet.js** para headers de seguridad
+
+## 🧩 Módulos y Funcionamiento
+
+### 🌌 Vista Galaxy (Componente Principal)
+La interfaz principal simula una galaxia interactiva donde:
+- **Constelaciones**: Representan las 15 categorías OSINT principales
+- **Estrellas**: Cada herramienta con brillo basado en su rating
+- **Navegación Orbital**: Zoom, rotación y exploración fluida
+- **Efectos Visuales**: Nebulosas, partículas y animaciones suaves
+- **Modal de Preview**: Vista previa completa antes de abrir herramientas
+
+### 🎯 Generador de Dorks Avanzado
+Herramienta estrella que automatiza la creación de Google Dorks:
+
+**Tipos de Búsqueda Disponibles:**
+- **Usernames** (10 plantillas): Facebook, Twitter, Instagram, LinkedIn, GitHub, Reddit, YouTube
+- **Emails** (8 plantillas): Gmail, Hotmail, Pastebin, HaveIBeenPwned, listas de correos
+- **Websites** (8 plantillas): site:, inurl:, intitle:, related:, cache:, link:
+- **Documentos** (8 plantillas): PDF, DOC, XLS, PPT por filetype y extensión
+- **Imágenes** (20 plantillas): Formatos, tamaños, plataformas como Imgur, Flickr
+- **Videos** (21 plantillas): Formatos multimedia, YouTube, Vimeo, Twitch
+- **Redes Sociales** (8 plantillas): Principales plataformas sociales
+- **Multimedia** (18 plantillas): Plataformas creativas y repositorios
+
+**Funcionalidades:**
+- Generación automática de hasta 400+ dorks especializados
+- Soporte para 4 motores: Google, Yandex, Bing, DuckDuckGo
+- URLs directas para cada búsqueda
+- Descarga masiva en formato TXT estructurado
+- Apertura en pestañas del navegador
+- Filtros avanzados (fechas, términos, exclusiones)
+
+### 📧 Módulo OSINT de Emails
+Sistema de investigación de correos electrónicos:
+- **Validación de formato** y sintaxis
+- **Verificación de existencia** en servidores
+- **Búsqueda en múltiples fuentes** y bases de datos
+- **Análisis de dominios** asociados
+- **Detección de filtraciones** en brechas conocidas
+
+### 📄 Análisis de Archivos
+Extractor de metadatos especializado:
+- **Imágenes**: EXIF, geolocalización, cámara, fecha
+- **Documentos**: Autor, fechas de creación/modificación, software
+- **Archivos multimedia**: Duración, resolución, códecs
+- **Análisis forense**: Hash, firmas digitales
+
+### 👤 Búsqueda de Usernames
+Localizador de perfiles en plataformas:
+- **Redes sociales principales**: Facebook, Twitter, Instagram, LinkedIn
+- **Plataformas técnicas**: GitHub, GitLab, Stack Overflow
+- **Foros y comunidades**: Reddit, Discord, Telegram
+- **Sitios especializados**: según región y temática
+
+### 🛡️ Scanner de Infraestructura
+Herramienta de análisis defensivo:
+- **Escaneo de puertos** y servicios
+- **Detección de tecnologías** web
+- **Análisis de superficie** de ataque
+- **Verificación de configuraciones** de seguridad
+- **Reportes estructurados** de hallazgos
+
+### 🗃️ Base de Datos de Herramientas
+Sistema de catalogación con 200+ herramientas:
+
+**15 Categorías Principales:**
+1. **Buscadores** y motores especializados
+2. **Redes Sociales** y análisis de perfiles
+3. **Email** y comunicaciones
+4. **Teléfonos** y mensajería
+5. **Geolocalización** y mapas
+6. **Dominios** e infraestructura IP
+7. **Imágenes** y análisis visual
+8. **Archivos** y documentos
+9. **Darkweb** y amenazas
+10. **Criptomonedas** y blockchain
+11. **Argentina** y LATAM específico
+12. **Infraestructura** y sistemas
+13. **Análisis** y visualización
+14. **Utilidades** generales
+15. **Nuevas herramientas**
+
+**Cada herramienta incluye:**
+- URL directa y estado de funcionamiento
+- Descripción detallada de funcionalidad
+- Tags y categorización múltiple
+- Rating comunitario y estadísticas de uso
+- Información de acceso (gratuito/pago, registro requerido)
+- Nivel de dificultad (principiante a experto)
 
 ## 🚀 Instalación y Configuración
 
@@ -342,23 +436,31 @@ npm run test:e2e
 
 Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
-## 👥 Equipo
+## 👥 Autor
 
-- **Kilo Code** - Desarrollo principal
-- **Comunidad OSINT Argentina** - Feedback y testing
+**Ivan Agustin Zarate** - Desarrollo principal y mantenimiento
 
-## 📞 Soporte
+- 📧 Email: [osintargy@gmail.com](mailto:osintargy@gmail.com)
+- 💼 LinkedIn: [ivan-agustin-zarate](https://www.linkedin.com/in/ivan-agustin-zarate/)
+- 🐙 GitHub: [IAZARA](https://github.com/IAZARA)
 
-- **Issues**: [GitHub Issues](https://github.com/tu-usuario/OSINTArgy/issues)
-- **Email**: soporte@osintargy.com
-- **Telegram**: @OSINTArgy
+## 📞 Soporte y Colaboración
+
+- **Issues**: [GitHub Issues](https://github.com/IAZARA/OSINTArgy/issues)
+- **Email**: [osintargy@gmail.com](mailto:osintargy@gmail.com)
+- **Contribuciones**: ¡Los comentarios o sugerencias de nuevas herramientas son extremadamente bienvenidos!
+
+### Transparencia del Proyecto
+
+Este es un proyecto personal de código abierto creado para la comunidad OSINT de Argentina y Latinoamérica. Todo el código fuente está disponible para:
+- **Auditoría de seguridad**: Verificar que no hay código malicioso
+- **Mejoras comunitarias**: Contribuir con nuevas funcionalidades
+- **Aprendizaje**: Estudiar implementaciones de herramientas OSINT
+- **Transparencia**: Entender exactamente cómo funcionan las herramientas
 
 ## 🙏 Agradecimientos
 
 - Inspirado en [osintframework.com](https://osintframework.com)
-- Comunidad OSINT internacional
-- Desarrolladores de herramientas OSINT
-- Beta testers y colaboradores
 
 ---
 

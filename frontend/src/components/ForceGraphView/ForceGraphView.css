@@ -1,0 +1,1230 @@
+.force-graph-container {
+  width: 100%;
+  height: 100vh;
+  background: var(--dark-bg, #0a0a0a);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.force-graph-container svg {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 30%, #0f1419 70%, #0a0a0a 100%);
+  /* Patrón de grid sutil tipo Maltego */
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(0, 212, 255, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px, 25px 25px;
+  animation: backgroundPulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    background-position: 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%, -100% -100%;
+  }
+}
+
+/* Estilos para enlaces estilo Maltego */
+.links .link {
+  transition: all 0.4s ease;
+  filter: drop-shadow(0px 0px 3px rgba(0, 212, 255, 0.3));
+}
+
+.links .link:hover {
+  stroke-opacity: 1 !important;
+  stroke-width: calc(var(--stroke-width, 2px) + 1px) !important;
+  filter: drop-shadow(0px 0px 8px rgba(0, 212, 255, 0.8));
+}
+
+.links .link.category-link {
+  stroke: #00D4FF;
+  stroke-width: 3px;
+  stroke-opacity: 0.9;
+  stroke-dasharray: none;
+  /* Animación de flujo de datos */
+  animation: dataFlow 3s linear infinite;
+}
+
+.links .link.tool-link {
+  stroke: #FFD700;
+  stroke-width: 2px;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5,5;
+  animation: dataFlow 2s linear infinite reverse;
+}
+
+/* Nuevos estilos para relaciones entre herramientas */
+.links .link.tool-relationship,
+.links .link.cross-category-relationship {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0px 0px 2px currentColor);
+}
+
+.links .link.tool-relationship:hover,
+.links .link.cross-category-relationship:hover {
+  stroke-width: calc(var(--stroke-width, 2px) + 1px) !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0px 0px 6px currentColor);
+}
+
+/* Estilos específicos por tipo de relación */
+.links .link[data-relationship="workflow"] {
+  stroke: #00FF88;
+  animation: workflowPulse 3s ease-in-out infinite;
+}
+
+.links .link[data-relationship="data-type"] {
+  stroke: #FF8800;
+  stroke-dasharray: 8,4;
+  animation: dataTypeFlow 2.5s linear infinite;
+}
+
+.links .link[data-relationship="tag-based"] {
+  stroke: #8800FF;
+  stroke-dasharray: 4,4;
+  animation: tagBasedPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes workflowPulse {
+  0%, 100% {
+    stroke-opacity: 0.4;
+  }
+  50% {
+    stroke-opacity: 0.8;
+  }
+}
+
+@keyframes dataTypeFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 24;
+  }
+}
+
+@keyframes tagBasedPulse {
+  0% {
+    stroke-opacity: 0.3;
+    stroke-width: 1px;
+  }
+  100% {
+    stroke-opacity: 0.6;
+    stroke-width: 2px;
+  }
+}
+
+@keyframes dataFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 20;
+  }
+}
+
+/* Estilos para nodos estilo Maltego */
+.nodes .node {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.nodes .node:hover {
+  transform: scale(1.15);
+  filter: brightness(1.2) saturate(1.3);
+}
+
+.nodes .node:active {
+  transform: scale(0.95);
+  transition: all 0.1s ease;
+}
+
+.nodes .node.central circle {
+  stroke: #00D4FF;
+  stroke-width: 4px;
+  transition: all 0.4s ease;
+  /* Efecto de resplandor intenso */
+  filter: 
+    drop-shadow(0px 0px 15px #00D4FF) 
+    drop-shadow(0px 0px 30px rgba(0, 212, 255, 0.5))
+    drop-shadow(0px 0px 45px rgba(0, 212, 255, 0.2));
+}
+
+.nodes .node.central:hover circle {
+  stroke-width: 5px;
+  filter: 
+    drop-shadow(0px 0px 20px #00D4FF) 
+    drop-shadow(0px 0px 40px rgba(0, 212, 255, 0.7))
+    drop-shadow(0px 0px 80px rgba(0, 212, 255, 0.3));
+}
+
+.nodes .node.category circle {
+  stroke: #00D4FF;
+  stroke-width: 2px;
+  transition: all 0.4s ease;
+  filter: 
+    drop-shadow(0px 0px 8px #00D4FF)
+    drop-shadow(0px 0px 16px rgba(0, 212, 255, 0.3));
+}
+
+.nodes .node.category:hover circle {
+  stroke-width: 3px;
+  filter: 
+    drop-shadow(0px 0px 12px #00D4FF)
+    drop-shadow(0px 0px 24px rgba(0, 212, 255, 0.5));
+}
+
+.nodes .node.category.active circle {
+  stroke: #FFD700;
+  stroke-width: 4px;
+  filter: 
+    drop-shadow(0px 0px 15px #FFD700)
+    drop-shadow(0px 0px 30px rgba(255, 215, 0, 0.6))
+    drop-shadow(0px 0px 45px rgba(255, 215, 0, 0.3));
+  animation: activeNodePulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes activeNodePulse {
+  0% {
+    stroke-width: 4px;
+    filter: 
+      drop-shadow(0px 0px 15px #FFD700)
+      drop-shadow(0px 0px 30px rgba(255, 215, 0, 0.6));
+  }
+  100% {
+    stroke-width: 5px;
+    filter: 
+      drop-shadow(0px 0px 20px #FFD700)
+      drop-shadow(0px 0px 40px rgba(255, 215, 0, 0.8));
+  }
+}
+
+.nodes .node.tool circle {
+  stroke: #FFFFFF;
+  stroke-width: 1.5px;
+  transition: all 0.4s ease;
+  filter: 
+    drop-shadow(0px 0px 6px #FF9800)
+    drop-shadow(0px 0px 12px rgba(255, 152, 0, 0.3));
+}
+
+.nodes .node.tool:hover circle {
+  stroke-width: 2.5px;
+  filter: 
+    drop-shadow(0px 0px 10px #FF9800)
+    drop-shadow(0px 0px 20px rgba(255, 152, 0, 0.5))
+    drop-shadow(0px 0px 30px rgba(255, 152, 0, 0.2));
+}
+
+.nodes .node.tool.favorite circle {
+  stroke: #FF6B6B;
+  stroke-width: 2px;
+  filter: 
+    drop-shadow(0px 0px 12px #FFD700)
+    drop-shadow(0px 0px 24px rgba(255, 215, 0, 0.4))
+    drop-shadow(0px 0px 36px rgba(255, 107, 107, 0.2));
+  animation: favoritePulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes favoritePulse {
+  0% {
+    stroke-width: 2px;
+  }
+  100% {
+    stroke-width: 3px;
+  }
+}
+
+/* Estilos para texto */
+.nodes .node text {
+  pointer-events: none;
+  user-select: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.nodes .node.central text {
+  font-size: 24px;
+  fill: white;
+}
+
+.nodes .node.category text {
+  font-size: 20px;
+  fill: white;
+}
+
+.nodes .node.tool text {
+  font-size: 14px;
+  fill: black;
+}
+
+/* Animaciones estilo Maltego */
+@keyframes maltegoHeartbeat {
+  0%, 100% {
+    transform: scale(1);
+    filter: 
+      drop-shadow(0px 0px 15px #00D4FF) 
+      drop-shadow(0px 0px 30px rgba(0, 212, 255, 0.5));
+  }
+  25% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: 
+      drop-shadow(0px 0px 20px #00D4FF) 
+      drop-shadow(0px 0px 40px rgba(0, 212, 255, 0.7))
+      drop-shadow(0px 0px 60px rgba(0, 212, 255, 0.3));
+  }
+  75% {
+    transform: scale(1.02);
+  }
+}
+
+.nodes .node.central {
+  animation: maltegoHeartbeat 4s ease-in-out infinite;
+}
+
+/* Efectos de entrada para nodos */
+@keyframes nodeEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.nodes .node {
+  animation: nodeEntry 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .force-graph-container {
+    height: calc(100vh - 80px);
+  }
+  
+  .nodes .node.central circle {
+    r: 45px;
+  }
+  
+  .nodes .node.category circle {
+    r: 32px;
+  }
+  
+  .nodes .node.tool circle {
+    r: 18px;
+  }
+  
+  .nodes .node.central text {
+    font-size: 18px;
+  }
+  
+  .nodes .node.category text {
+    font-size: 14px;
+  }
+  
+  .nodes .node.tool text {
+    font-size: 10px;
+  }
+  
+  .links .link.category-link {
+    stroke-width: 2px;
+  }
+  
+  .links .link.tool-link {
+    stroke-width: 1.5px;
+  }
+  
+  .custom-tooltip {
+    font-size: 11px;
+    max-width: 200px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nodes .node.central circle {
+    r: 40px;
+  }
+  
+  .nodes .node.category circle {
+    r: 28px;
+  }
+  
+  .nodes .node.tool circle {
+    r: 16px;
+  }
+  
+  .custom-tooltip {
+    font-size: 10px;
+    max-width: 180px;
+    padding: 6px 10px;
+  }
+}
+
+/* Botones de favoritos estilo Maltego */
+.nodes .node .favorite-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.nodes .node .favorite-btn:hover {
+  transform: scale(1.3);
+  filter: 
+    drop-shadow(0px 0px 8px #FF6B6B)
+    drop-shadow(0px 0px 16px rgba(255, 107, 107, 0.4));
+}
+
+.nodes .node .favorite-icon {
+  user-select: none;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.nodes .node .favorite-btn:hover + .favorite-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0px 0px 3px currentColor);
+}
+
+/* Estados de carga estilo Maltego */
+.force-graph-container.loading {
+  opacity: 0.8;
+}
+
+.force-graph-container.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border: 4px solid transparent;
+  border-top: 4px solid #00D4FF;
+  border-right: 4px solid rgba(0, 212, 255, 0.3);
+  border-radius: 50%;
+  animation: maltegoSpin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.3),
+    inset 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+@keyframes maltegoSpin {
+  0% { 
+    transform: translate(-50%, -50%) rotate(0deg);
+    border-top-color: #00D4FF;
+    border-right-color: rgba(0, 212, 255, 0.3);
+  }
+  50% {
+    border-top-color: #FFD700;
+    border-right-color: rgba(255, 215, 0, 0.3);
+  }
+  100% { 
+    transform: translate(-50%, -50%) rotate(360deg);
+    border-top-color: #00D4FF;
+    border-right-color: rgba(0, 212, 255, 0.3);
+  }
+}
+
+/* Tooltip estilo Maltego */
+.custom-tooltip {
+  position: absolute;
+  display: none;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 46, 0.95) 100%);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  pointer-events: none;
+  z-index: 1000;
+  max-width: 250px;
+  line-height: 1.5;
+  border: 2px solid #00D4FF;
+  box-shadow: 
+    0 8px 32px rgba(0, 212, 255, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-10px);
+}
+
+.custom-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 15px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #00D4FF;
+}
+
+.custom-tooltip::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 17px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid rgba(0, 0, 0, 0.95);
+}
+
+/* Efectos para crear atmósfera Maltego */
+.force-graph-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 70%, rgba(255, 152, 0, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+  animation: ambientGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes ambientGlow {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* Efectos adicionales para interacciones */
+.nodes .node.central:active {
+  animation: none;
+  transform: scale(0.98);
+}
+
+.nodes .node:focus {
+  outline: 2px solid #00D4FF;
+  outline-offset: 4px;
+}
+
+/* Efectos de selección */
+.nodes .node.selected circle {
+  stroke: #FFD700;
+  stroke-width: 4px;
+  filter: 
+    drop-shadow(0px 0px 15px #FFD700)
+    drop-shadow(0px 0px 30px rgba(255, 215, 0, 0.6));
+  animation: selectedNodeGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes selectedNodeGlow {
+  0% {
+    stroke-width: 4px;
+    filter: 
+      drop-shadow(0px 0px 15px #FFD700)
+      drop-shadow(0px 0px 30px rgba(255, 215, 0, 0.6));
+  }
+  100% {
+    stroke-width: 5px;
+    filter: 
+      drop-shadow(0px 0px 20px #FFD700)
+      drop-shadow(0px 0px 40px rgba(255, 215, 0, 0.8));
+  }
+}
+
+/* Estilos para menú contextual */
+.context-menu {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(26, 26, 46, 0.95) 100%);
+  border: 2px solid #00D4FF;
+  border-radius: 8px;
+  box-shadow: 
+    0 8px 32px rgba(0, 212, 255, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  min-width: 200px;
+  animation: contextMenuEntry 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.context-menu-content {
+  padding: 8px 0;
+}
+
+.context-menu button {
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.context-menu button:hover {
+  background: rgba(0, 212, 255, 0.2);
+  color: #00D4FF;
+}
+
+.context-menu hr {
+  margin: 4px 8px;
+  border: none;
+  border-top: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+@keyframes contextMenuEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Estilos para selección múltiple */
+.selection-indicator {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(26, 26, 46, 0.9) 100%);
+  border: 2px solid #00D4FF;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: white;
+  font-size: 12px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideInRight 0.3s ease;
+}
+
+.multi-select-mode {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+.selected-count {
+  color: #00FF88;
+}
+
+.clear-selection {
+  background: transparent;
+  border: 1px solid #FF6B6B;
+  color: #FF6B6B;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: all 0.2s ease;
+}
+
+.clear-selection:hover {
+  background: #FF6B6B;
+  color: white;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Efectos de selección mejorados */
+.nodes .node.selected circle {
+  stroke: #FFD700;
+  stroke-width: 4px;
+  filter: 
+    drop-shadow(0px 0px 15px #FFD700)
+    drop-shadow(0px 0px 30px rgba(255, 215, 0, 0.6));
+  animation: selectedNodeGlow 1.5s ease-in-out infinite alternate;
+}
+
+.nodes .node.selected {
+  z-index: 10;
+}
+
+/* Efectos para nodos relacionados cuando uno está seleccionado */
+.nodes .node.related-to-selected circle {
+  stroke: #00FF88;
+  stroke-width: 3px;
+  filter: drop-shadow(0px 0px 10px rgba(0, 255, 136, 0.5));
+  animation: relatedNodePulse 2s ease-in-out infinite;
+}
+
+@keyframes relatedNodePulse {
+  0%, 100% {
+    stroke-opacity: 0.7;
+  }
+  50% {
+    stroke-opacity: 1;
+  }
+}
+
+/* Controles de teclado - indicadores visuales */
+.force-graph-container[data-shift-held="true"] {
+  cursor: crosshair;
+}
+
+.force-graph-container[data-ctrl-held="true"] .nodes .node {
+  cursor: copy;
+}
+
+/* Estilos para diferentes estados de interacción */
+.nodes .node.pinned circle {
+  stroke-dasharray: 3,3;
+  animation: pinnedNodeIndicator 2s linear infinite;
+}
+
+@keyframes pinnedNodeIndicator {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 12;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .nodes .node.central,
+  .nodes .node.category.active,
+  .nodes .node.tool.favorite,
+  .nodes .node.selected,
+  .nodes .node.related-to-selected,
+  .nodes .node.pinned,
+  .links .link {
+    animation: none;
+  }
+  
+  .force-graph-container svg {
+    animation: none;
+  }
+  
+  .force-graph-container::before {
+    animation: none;
+  }
+  
+  .context-menu {
+    animation: none;
+  }
+  
+  .selection-indicator {
+    animation: none;
+  }
+}
+
+/* Indicadores de ayuda para interacciones */
+.interaction-help {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.interaction-help ul {
+  margin: 0;
+  padding-left: 16px;
+  list-style: none;
+}
+
+.interaction-help li {
+  margin: 2px 0;
+}
+
+.interaction-help li::before {
+  content: "⌨️ ";
+  margin-right: 4px;
+}
+
+/* Controles de vista */
+.view-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1500;
+}
+
+.control-group {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(26, 26, 46, 0.9) 100%);
+  border: 2px solid #00D4FF;
+  border-radius: 8px;
+  padding: 8px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.control-group button {
+  background: transparent;
+  border: 1px solid #00D4FF;
+  color: #00D4FF;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  min-width: 35px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-group button:hover {
+  background: #00D4FF;
+  color: #000;
+  transform: scale(1.05);
+}
+
+.control-group button:active {
+  transform: scale(0.95);
+}
+
+.layout-controls select {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #00D4FF;
+  color: #00D4FF;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.layout-controls select:hover,
+.layout-controls select:focus {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: #FFD700;
+}
+
+.layout-controls option {
+  background: #1a1a2e;
+  color: white;
+}
+
+.hide-controls {
+  background: transparent !important;
+  border-color: #FF6B6B !important;
+  color: #FF6B6B !important;
+}
+
+.hide-controls:hover {
+  background: #FF6B6B !important;
+  color: white !important;
+}
+
+.show-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #00D4FF;
+  color: #00D4FF;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  z-index: 1500;
+  animation: pulseControl 2s ease-in-out infinite;
+}
+
+.show-controls:hover {
+  background: #00D4FF;
+  color: #000;
+  transform: scale(1.1);
+  animation: none;
+}
+
+@keyframes pulseControl {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
+  }
+}
+
+/* Animaciones de entrada para controles */
+.view-controls {
+  animation: slideInLeft 0.3s ease;
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Estilos responsive para controles */
+@media (max-width: 768px) {
+  .view-controls {
+    top: 10px;
+    left: 10px;
+    gap: 6px;
+  }
+  
+  .control-group {
+    padding: 6px;
+    gap: 4px;
+  }
+  
+  .control-group button {
+    padding: 4px 6px;
+    font-size: 10px;
+    min-width: 28px;
+    height: 28px;
+  }
+  
+  .layout-controls select {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+  
+  .show-controls {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .selection-indicator {
+    top: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+  
+  .interaction-help {
+    bottom: 10px;
+    left: 10px;
+    font-size: 9px;
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .view-controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .control-group {
+    flex-direction: column;
+    padding: 4px;
+  }
+  
+  .control-group button {
+    width: 100%;
+    margin: 1px 0;
+  }
+  
+  .layout-controls {
+    order: -1;
+    width: 100%;
+  }
+  
+  .layout-controls select {
+    width: 100%;
+  }
+}
+
+/* Estados especiales para pantalla completa */
+.force-graph-container:fullscreen .view-controls {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.force-graph-container:fullscreen .interaction-help {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Indicadores de estado del layout */
+.layout-controls::after {
+  content: attr(data-layout-name);
+  position: absolute;
+  top: -25px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: #FFD700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.layout-controls:hover::after {
+  opacity: 1;
+}
+
+/* Estilos para búsqueda y resaltado */
+.nodes .node.highlighted circle {
+  stroke: #00FF00 !important;
+  stroke-width: 4px !important;
+  filter: 
+    drop-shadow(0px 0px 20px #00FF00)
+    drop-shadow(0px 0px 40px rgba(0, 255, 0, 0.6))
+    drop-shadow(0px 0px 60px rgba(0, 255, 0, 0.3)) !important;
+  animation: searchHighlight 2s ease-in-out infinite alternate;
+}
+
+.nodes .node.dimmed {
+  opacity: 0.3;
+  filter: grayscale(0.7) !important;
+}
+
+.nodes .node.dimmed circle {
+  stroke-opacity: 0.3 !important;
+}
+
+@keyframes searchHighlight {
+  0% {
+    stroke-width: 4px;
+    filter: 
+      drop-shadow(0px 0px 20px #00FF00)
+      drop-shadow(0px 0px 40px rgba(0, 255, 0, 0.6));
+  }
+  100% {
+    stroke-width: 5px;
+    filter: 
+      drop-shadow(0px 0px 25px #00FF00)
+      drop-shadow(0px 0px 50px rgba(0, 255, 0, 0.8))
+      drop-shadow(0px 0px 75px rgba(0, 255, 0, 0.4));
+  }
+}
+
+/* Indicador de resultados de búsqueda */
+.search-results-indicator {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 100, 0, 0.3) 100%);
+  border: 2px solid #00FF00;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: white;
+  font-size: 12px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: slideInBottom 0.3s ease;
+  box-shadow: 
+    0 8px 32px rgba(0, 255, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.search-icon {
+  color: #00FF00;
+  font-size: 14px;
+}
+
+.results-count {
+  color: #00FF00;
+  font-weight: bold;
+}
+
+.search-query {
+  color: #FFD700;
+  font-style: italic;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clear-search {
+  background: transparent;
+  border: 1px solid #FF6B6B;
+  color: #FF6B6B;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-search:hover {
+  background: #FF6B6B;
+  color: white;
+  transform: scale(1.1);
+}
+
+@keyframes slideInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enlaces resaltados por búsqueda */
+.links .link.search-highlighted {
+  stroke-opacity: 1 !important;
+  stroke-width: 3px !important;
+  filter: drop-shadow(0px 0px 8px #00FF00);
+  animation: linkHighlight 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes linkHighlight {
+  0% {
+    stroke-opacity: 0.8;
+  }
+  100% {
+    stroke-opacity: 1;
+  }
+}
+
+/* Efectos especiales para nodos destacados */
+.nodes .node.highlighted text {
+  filter: drop-shadow(0px 0px 5px #00FF00);
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  0% {
+    filter: drop-shadow(0px 0px 5px #00FF00);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 10px #00FF00);
+  }
+}
+
+/* Responsive para indicador de búsqueda */
+@media (max-width: 768px) {
+  .search-results-indicator {
+    bottom: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    font-size: 10px;
+    gap: 6px;
+  }
+  
+  .search-query {
+    max-width: 100px;
+  }
+  
+  .clear-search {
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-results-indicator {
+    bottom: 80px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .search-query {
+    max-width: none;
+    flex: 1;
+    text-align: center;
+  }
+}
+
+/* Mejoras de accesibilidad para búsqueda */
+@media (prefers-reduced-motion: reduce) {
+  .nodes .node.highlighted,
+  .nodes .node.highlighted circle,
+  .nodes .node.highlighted text,
+  .links .link.search-highlighted {
+    animation: none;
+  }
+  
+  .search-results-indicator {
+    animation: none;
+  }
+}
+
+/* Estados de carga durante búsqueda */
+.force-graph-container.searching::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid transparent;
+  border-top: 3px solid #00FF00;
+  border-right: 3px solid rgba(0, 255, 0, 0.3);
+  border-radius: 50%;
+  animation: searchSpin 1s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes searchSpin {
+  0% { 
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% { 
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

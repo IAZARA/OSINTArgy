@@ -4,34 +4,35 @@ import { Toaster } from 'react-hot-toast'
 
 // Componentes
 import Header from '@components/Header/Header'
-import CircularView from '@components/CircularView/CircularView' // Importar nuevo componente
-import CardsView from '@components/CardsView/CardsView'
-import UserPanel from '@components/UserPanel/UserPanel'
-import Auth from '@components/Auth/Auth'
+import GalaxyView from '@components/GalaxyView/GalaxyView'
 import Loading from '@components/Common/Loading'
 import DorkGenerator from '@components/DorkGenerator/DorkGenerator'
+import EmailOSINT from '@components/EmailOSINT/EmailOSINT'
+import FileAnalysis from '@components/FileAnalysis/FileAnalysis'
+import UsernameOSINT from '@components/UsernameOSINT/UsernameOSINT'
+import InfrastructureScanner from '@components/InfrastructureScanner/InfrastructureScanner'
+import DisclaimerModal from '@components/DisclaimerModal/DisclaimerModal'
+import About from '@components/About/About'
 
 // Hooks
-import { useAuth } from '@hooks/useAuth'
 import { useTools } from '@hooks/useTools'
+import { useDisclaimer } from '@hooks/useDisclaimer'
 
 // Estilos
 import './App.css'
 import './styles/maltego-theme.css'
 
 function App() {
-  const [currentView, setCurrentView] = useState('tree') // 'tree' o 'cards'
-  const [isUserPanelOpen, setIsUserPanelOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState(null)
-  
-  const { user, isLoading: authLoading } = useAuth()
-  const { tools, categories, isLoading: toolsLoading, error } = useTools()
 
-  // Manejar cambio de vista
-  const handleViewChange = (view) => {
-    setCurrentView(view)
-  }
+  const { tools, categories, isLoading: toolsLoading, error } = useTools()
+  const { 
+    isAccepted: disclaimerAccepted, 
+    isLoading: disclaimerLoading, 
+    acceptDisclaimer, 
+    declineDisclaimer 
+  } = useDisclaimer()
 
   // Manejar búsqueda
   const handleSearch = (query) => {
@@ -67,13 +68,23 @@ function App() {
     return filtered
   }, [tools, searchQuery, selectedCategory])
 
-  // Mostrar loading si está cargando
-  if (authLoading || toolsLoading) {
+  // Mostrar loading si está cargando disclaimer o herramientas
+  if (disclaimerLoading || toolsLoading) {
     return (
       <div className="app-loading">
         <Loading />
         <p>Cargando OSINTArgy...</p>
       </div>
+    )
+  }
+
+  // Mostrar disclaimer si no ha sido aceptado
+  if (!disclaimerAccepted) {
+    return (
+      <DisclaimerModal
+        onAccept={acceptDisclaimer}
+        onDecline={declineDisclaimer}
+      />
     )
   }
 
@@ -94,62 +105,38 @@ function App() {
     <div className="app">
       {/* Header principal */}
       <Header
-        currentView={currentView}
-        onViewChange={handleViewChange}
         onSearch={handleSearch}
         searchQuery={searchQuery}
-        onUserPanelToggle={() => setIsUserPanelOpen(!isUserPanelOpen)}
-        user={user}
       />
 
       {/* Contenido principal */}
       <main className="app-main">
         <Routes>
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
               <div className="app-content">
-                {currentView === 'tree' ? (
-                  <CircularView
-                    tools={filteredTools}
-                    categories={categories}
-                    onCategorySelect={handleCategorySelect}
-                    selectedCategory={selectedCategory}
-                  />
-                ) : (
-                  <CardsView
-                    tools={filteredTools}
-                    categories={categories}
-                    onCategorySelect={handleCategorySelect}
-                    selectedCategory={selectedCategory}
-                    searchQuery={searchQuery}
-                  />
-                )}
+                <GalaxyView
+                  tools={filteredTools}
+                  categories={categories}
+                  onCategorySelect={handleCategorySelect}
+                  selectedCategory={selectedCategory}
+                  searchQuery={searchQuery}
+                />
               </div>
-            } 
+            }
           />
-          <Route path="/auth" element={<Auth />} />
+
           <Route path="/dorks" element={<DorkGenerator />} />
-          <Route path="/categoria/:categoryId" element={
-            <CardsView
-              tools={filteredTools}
-              categories={categories}
-              onCategorySelect={handleCategorySelect}
-              selectedCategory={selectedCategory}
-              searchQuery={searchQuery}
-            />
-          } />
+          <Route path="/email-osint" element={<EmailOSINT />} />
+          <Route path="/file-analysis" element={<FileAnalysis />} />
+          <Route path="/username-osint" element={<UsernameOSINT />} />
+          <Route path="/infrastructure-scanner" element={<InfrastructureScanner />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </main>
 
-      {/* Panel de usuario */}
-      {isUserPanelOpen && (
-        <UserPanel
-          isOpen={isUserPanelOpen}
-          onClose={() => setIsUserPanelOpen(false)}
-          user={user}
-        />
-      )}
+
 
       {/* Notificaciones toast */}
       <Toaster

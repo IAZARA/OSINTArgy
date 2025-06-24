@@ -1,224 +1,83 @@
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-19T17:47:36.364Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-19T17:48:13.268Z"}
-{"level":"info","message":"Servidor corriendo en puerto 5001","service":"osintargy-backend","timestamp":"2025-06-19T17:48:13.270Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-19T17:48:13.271Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:08:32.381Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:20:58.610Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:28:38.455Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:30:51.748Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-20T12:30:51.751Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-20T12:30:51.751Z"}
-{"level":"info","message":"GET /api/health - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:31:15.000Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:31:34.256Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:31:51.852Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:37:45.418Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:37:45.419Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:37:45.422Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:37:45.424Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:37:45.431Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:37:45.456Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:00.819Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:00.821Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:00.824Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:00.841Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:06.142Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:06.143Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:06.144Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:06.146Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:55.305Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:38:55.306Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:39:17.305Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:39:17.314Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:39:30.749Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:39:30.762Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:39:30.802Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:39:30.805Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:40:08.442Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:40:08.446Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:40:08.461Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:40:08.471Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:00.568Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:00.576Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:00.581Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:00.585Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:00.594Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:01.099Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:01.104Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:01.106Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:01.108Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:41:01.114Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:45:11.590Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-20T12:45:11.593Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-20T12:45:11.593Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:45:28.823Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:45:28.835Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:45:28.851Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:45:28.853Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:46:28.775Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-20T12:46:28.778Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-20T12:46:28.778Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:46:44.345Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-20T12:46:44.348Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-20T12:46:44.348Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:46:54.424Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-20T12:46:54.426Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-20T12:46:54.427Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:46:58.193Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-20T12:46:58.196Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-20T12:46:58.196Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T12:47:13.083Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-20T12:47:13.085Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-20T12:47:13.086Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:47:22.884Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:47:22.900Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:47:22.902Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:47:22.918Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:08.701Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:08.707Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:08.708Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:08.714Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:09.568Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:09.574Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:09.575Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:09.579Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:18.023Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:18.029Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:18.030Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:18.035Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:46.795Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:46.805Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:46.807Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:48:46.812Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:55:19.724Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:55:19.729Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:55:19.760Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:55:19.768Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:55:47.365Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:55:47.370Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:55:47.382Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:55:47.388Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:56:24.581Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:56:24.586Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:56:24.598Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:56:24.606Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:59:28.958Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:59:28.962Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:59:28.964Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T12:59:28.970Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:00:20.144Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:00:30.119Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:03:09.952Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:03:09.956Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:03:09.998Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:03:10.006Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-20T13:04:42.221Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-20T13:04:42.224Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-20T13:04:42.224Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:04:54.894Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:04:54.908Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:04:54.909Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:04:54.917Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:05:38.698Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:05:38.704Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:05:38.706Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:05:38.711Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:05:52.399Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:05:52.405Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:05:52.407Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:05:52.411Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:06:48.980Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:06:48.986Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:06:49.037Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:06:49.042Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:07:36.381Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:07:36.388Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:07:36.419Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:07:36.453Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:09:53.643Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:09:53.652Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:09:54.350Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:09:54.356Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:10:25.784Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:10:25.789Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:10:25.798Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:10:25.803Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:10:53.104Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:10:53.122Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:10:53.350Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:10:53.355Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:11:19.197Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:11:19.203Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:11:19.352Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:11:19.359Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:12:33.762Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:12:33.769Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:12:34.363Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-20T13:12:34.376Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-21T21:27:33.175Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-21T21:27:33.178Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-21T21:27:33.178Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:27:37.082Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:27:37.193Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:27:37.194Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:27:37.224Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:30:46.185Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:30:46.196Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:30:46.197Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:30:46.207Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:33:33.367Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:33:33.398Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:33:33.400Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:33:33.407Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:34:33.206Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:34:33.211Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:34:33.213Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-21T21:34:33.220Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-22T00:43:28.285Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-22T00:43:28.288Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-22T00:43:28.289Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T00:47:28.586Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T00:47:28.636Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T00:47:28.638Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T00:47:28.658Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T00:52:50.832Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T00:52:50.837Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T00:52:50.844Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T00:52:50.849Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-22T00:56:41.795Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-22T00:56:41.797Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-22T00:56:41.797Z"}
-{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-22T22:26:48.397Z"}
-{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-22T22:26:48.400Z"}
-{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-22T22:26:48.400Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:26:55.384Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:26:55.452Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:26:55.454Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:26:55.471Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:27:11.851Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:27:11.860Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:27:11.863Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:27:11.869Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:10.431Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:10.437Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:10.439Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:10.445Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:26.368Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:26.372Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:26.375Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:26.379Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:27.297Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:27.308Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:27.308Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:29:27.313Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:36:22.128Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:36:22.135Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:36:22.136Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:36:22.142Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:37:19.455Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:37:19.455Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:37:19.463Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:37:19.464Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:40:38.551Z"}
-{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:40:38.558Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:40:38.566Z"}
-{"level":"info","message":"GET /api/categories - ::1","service":"osintargy-backend","timestamp":"2025-06-22T22:40:38.571Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T18:17:20.920Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T18:18:12.038Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T18:18:39.388Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T18:18:39.390Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T18:18:39.390Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T18:25:19.317Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T18:25:19.320Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T18:25:19.320Z"}
+{"level":"info","message":"GET /api/health - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:25:20.527Z"}
+{"level":"info","message":"GET /api/file-analysis/supported-types - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:25:20.618Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:25:20.706Z"}
+{"level":"info","message":"GET /api/osint/email-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:25:21.131Z"}
+{"level":"info","message":"POST /api/osint/username-lookup - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:25:49.474Z"}
+{"level":"info","message":"POST /api/osint/email-lookup - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:26:02.745Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T18:31:06.820Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T18:31:06.822Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T18:31:06.822Z"}
+{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:33:19.299Z"}
+{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:33:26.402Z"}
+{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:33:33.199Z"}
+{"level":"info","message":"GET /api/tools/search - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:33:40.721Z"}
+{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:33:46.829Z"}
+{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:33:53.131Z"}
+{"level":"info","message":"POST /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:34:16.121Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T18:35:05.077Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T18:35:05.080Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T18:35:05.080Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T18:35:29.497Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T18:35:29.500Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T18:35:29.500Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T18:35:34.957Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T18:35:34.960Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T18:35:34.960Z"}
+{"level":"info","message":"GET /api/tools/search - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:35:49.043Z"}
+{"level":"info","message":"GET /api/tools - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:35:55.283Z"}
+{"level":"info","message":"POST /api/osint/email-lookup - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:39:06.992Z"}
+{"level":"info","message":"POST /api/osint/username-lookup - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:39:14.000Z"}
+{"level":"info","message":"GET /api/file-analysis/supported-types - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:39:23.451Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:40:21.471Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:59:33.701Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-24T18:59:33.708Z"}
+{"level":"info","message":"POST /api/osint/username-quick - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:08:53.727Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:09:34.641Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:09:34.645Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:11:21.524Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T19:11:21.528Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T19:11:21.528Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:20:10.735Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T19:20:10.737Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T19:20:10.738Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:20:27.371Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T19:20:27.373Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T19:20:27.373Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:20:36.979Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T19:20:36.982Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T19:20:36.982Z"}
+{"level":"info","message":"POST /api/osint/username-lookup-improved - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:20:45.648Z"}
+{"level":"info","message":"POST /api/osint/username-lookup-improved - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:36:23.651Z"}
+{"level":"info","message":"GET /api/osint/username-sites-improved - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:36:31.284Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:36:42.708Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T19:36:42.711Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T19:36:42.711Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:37:01.002Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T19:37:01.005Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T19:37:01.005Z"}
+{"level":"info","message":"POST /api/osint/username-lookup - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:38:15.954Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:40:27.220Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T19:40:27.223Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T19:40:27.223Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:40:58.538Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T19:40:58.541Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T19:40:58.541Z"}
+{"level":"info","message":"POST /api/osint/username-lookup - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:41:06.901Z"}
+{"level":"info","message":"GET /api/file-analysis/supported-types - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:42:45.864Z"}
+{"level":"info","message":"GET /api/file-analysis/supported-types - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:42:45.866Z"}
+{"level":"info","message":"POST /api/file-analysis/analyze - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:42:50.120Z"}
+{"level":"info","message":"GET /api/file-analysis/supported-types - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:48:10.600Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:48:43.224Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T19:48:43.226Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T19:48:43.226Z"}
+{"level":"info","message":"GET /api/file-analysis/supported-types - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:49:04.268Z"}
+{"level":"info","message":"GET /api/file-analysis/supported-types - ::1","service":"osintargy-backend","timestamp":"2025-06-24T19:49:04.271Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T19:52:39.643Z"}

@@ -1,0 +1,26 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Eye shape outline -->
+  <path d="M20 30C20 30 35 10 60 10C85 10 100 30 100 30C100 30 85 50 60 50C35 50 20 30 20 30Z" 
+        fill="none" stroke="#e5e7eb" stroke-width="2" opacity="0.3"/>
+  <path d="M15 30C15 30 32 5 60 5C88 5 105 30 105 30C105 30 88 55 60 55C32 55 15 30 15 30Z" 
+        fill="none" stroke="#e5e7eb" stroke-width="1.5" opacity="0.2"/>
+  
+  <!-- Globe with Argentina -->
+  <circle cx="60" cy="30" r="18" fill="#3b82f6" stroke="#1e40af" stroke-width="2"/>
+  
+  <!-- Grid lines on globe -->
+  <path d="M42 30 L78 30 M60 12 L60 48 M50 15 Q60 12 70 15 M50 45 Q60 48 70 45" 
+        stroke="#1e40af" stroke-width="1" fill="none"/>
+  
+  <!-- Argentina silhouette -->
+  <path d="M58 18 L62 18 L63 22 L64 28 L63 35 L62 42 L58 42 L57 35 L56 28 L57 22 Z" 
+        fill="white"/>
+  
+  <!-- Text -->
+  <text x="120" y="25" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#374151">
+    OSINT
+  </text>
+  <text x="120" y="45" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#3b82f6">
+    Argy
+  </text>
+</svg>

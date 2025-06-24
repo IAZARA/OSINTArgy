@@ -35,15 +35,15 @@ const CircularView = ({ tools = [], categories = [], onCategorySelect, selectedC
 
     const mainGroup = svg.append('g').attr('transform', `translate(${centerX}, ${centerY})`);
 
-    // 1. Botón Central (Logo OSINTArgy)
+    // 1. Botón Central (Logo OSINTArgy) - SIMPLIFICADO
     const centralButton = mainGroup.append('g')
       .attr('class', 'central-button')
-      .style('cursor', 'pointer')
-      .on('click', () => {
+      .on('click', (event) => {
+        event.stopPropagation();
         setShowCategories(prev => !prev);
-        setActiveCategory(null); // Resetear categoría activa al clickear el central
+        setActiveCategory(null);
         if (onCategorySelect) {
-          onCategorySelect(null); // Informar que no hay categoría seleccionada
+          onCategorySelect(null);
         }
       });
 
@@ -78,8 +78,8 @@ const CircularView = ({ tools = [], categories = [], onCategorySelect, selectedC
         const categoryGroup = mainGroup.append('g')
           .attr('class', 'category-node')
           .attr('transform', `translate(${catX}, ${catY})`)
-          .style('cursor', 'pointer')
-          .on('click', () => {
+          .on('click', (event) => {
+            event.stopPropagation();
             setActiveCategory(prev => (prev === category.id ? null : category.id));
             if (onCategorySelect) {
               onCategorySelect(category);
@@ -116,12 +116,11 @@ const CircularView = ({ tools = [], categories = [], onCategorySelect, selectedC
               const toolX = toolRadius * Math.cos(toolAngle);
               const toolY = toolRadius * Math.sin(toolAngle);
 
-              const toolGroup = categoryGroup.append('g') // Anidar herramientas a su categoría
+              const toolGroup = categoryGroup.append('g')
                 .attr('class', 'tool-node')
                 .attr('transform', `translate(${toolX}, ${toolY})`)
-                .style('cursor', 'pointer')
                 .on('click', (event) => {
-                  event.stopPropagation(); // Evitar que el click se propague a la categoría
+                  event.stopPropagation();
                   if (tool.url) {
                     window.open(tool.url, '_blank', 'noopener,noreferrer');
                   }

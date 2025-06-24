@@ -111,7 +111,7 @@ const categorySchema = new mongoose.Schema({
 // Índices
 categorySchema.index({ name: 'text', description: 'text' })
 categorySchema.index({ is_active: 1, order: 1 })
-categorySchema.index({ slug: 1 })
+// slug ya tiene índice único definido en el schema
 
 // Virtual para obtener herramientas de la categoría
 categorySchema.virtual('tools', {

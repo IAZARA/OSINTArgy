@@ -226,41 +226,14 @@
         }
       ]
     },
-    {
-      "id": "registros-publicos",
-      "name": "Registros Públicos y Financieros",
-      "description": "Bases de datos gubernamentales y registros oficiales",
-      "icon": "🏛️",
-      "color": "#607D8B",
-      "order": 8,
-      "subcategories": [
-        {
-          "id": "registros-comerciales",
-          "name": "Registros Comerciales",
-          "description": "OpenCorporates, registros de empresas",
-          "order": 1
-        },
-        {
-          "id": "registros-propiedad",
-          "name": "Registros de Propiedad",
-          "description": "Propiedades inmobiliarias",
-          "order": 2
-        },
-        {
-          "id": "cortes-legal",
-          "name": "Cortes y Legal",
-          "description": "Expedientes judiciales",
-          "order": 3
-        }
-      ]
-    },
+
     {
       "id": "darkweb-amenazas",
       "name": "Dark Web y Amenazas",
       "description": "Monitoreo de amenazas y inteligencia de ciberseguridad",
       "icon": "🕵️",
       "color": "#424242",
-      "order": 9,
+      "order": 8,
       "subcategories": [
         {
           "id": "motores-darkweb",
@@ -288,7 +261,7 @@
       "description": "Análisis de datos y visualización de información",
       "icon": "📊",
       "color": "#00BCD4",
-      "order": 10,
+      "order": 9,
       "subcategories": [
         {
           "id": "mapeo-relaciones",
@@ -322,7 +295,7 @@
       "description": "Herramientas auxiliares y utilidades diversas",
       "icon": "🛠️",
       "color": "#8BC34A",
-      "order": 11,
+      "order": 10,
       "subcategories": [
         {
           "id": "codificacion",
@@ -341,6 +314,12 @@
           "name": "Utilidades de Red",
           "description": "Nmap, Masscan, escaneo",
           "order": 3
+        },
+        {
+          "id": "sistema-infraestructura",
+          "name": "Sistema e Infraestructura",
+          "description": "Scanner de infraestructura, monitoreo defensivo",
+          "order": 4
         }
       ]
     },
@@ -350,7 +329,7 @@
       "description": "Herramientas específicas para Argentina y Latinoamérica",
       "icon": "🇦🇷",
       "color": "#FF9800",
-      "order": 12,
+      "order": 11,
       "subcategories": [
         {
           "id": "registros-publicos-ar",
@@ -384,7 +363,7 @@
       "description": "Herramientas para investigar números de teléfono, buscar información de contacto y analizar comunicaciones.",
       "icon": "📞",
       "color": "#3F51B5",
-      "order": 13,
+      "order": 12,
       "subcategories": [
         {
           "id": "busqueda-inversa-directa",
@@ -418,7 +397,7 @@
       "description": "Archivos web históricos, bases de datos y documentos filtrados",
       "icon": "📁",
       "color": "#8E24AA",
-      "order": 14,
+      "order": 13,
       "subcategories": [
         {
           "id": "archivos-web",
@@ -464,7 +443,7 @@
       "description": "Análisis de transacciones, exploradores de blockchain y herramientas forenses",
       "icon": "₿",
       "color": "#FF6F00",
-      "order": 15,
+      "order": 14,
       "subcategories": [
         {
           "id": "exploradores-bitcoin",

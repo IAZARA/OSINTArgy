@@ -9,7 +9,7 @@ export const getTools = async (req, res) => {
   try {
     const {
       page = 1,
-      limit = 50,
+      limit = null, // Cambiar default a null para obtener todas las herramientas por defecto
       category,
       subcategory,
       region,
@@ -60,12 +60,15 @@ export const getTools = async (req, res) => {
         sortOptions = { rating: -1, usage_count: -1 }
     }
 
-    // Ejecutar consulta con paginación
-    const tools = await Tool.find(filters)
-      .sort(sortOptions)
-      .limit(limit * 1)
-      .skip((page - 1) * limit)
-      .lean()
+    // Ejecutar consulta con paginación opcional
+    let query = Tool.find(filters).sort(sortOptions)
+    
+    // Solo aplicar paginación si se especifica un límite
+    if (limit !== null) {
+      query = query.limit(limit * 1).skip((page - 1) * limit)
+    }
+    
+    const tools = await query.lean()
 
     // Contar total de documentos
     const total = await Tool.countDocuments(filters)
@@ -73,11 +76,16 @@ export const getTools = async (req, res) => {
     res.json({
       success: true,
       data: tools,
-      pagination: {
+      pagination: limit !== null ? {
         page: parseInt(page),
         limit: parseInt(limit),
         total,
         pages: Math.ceil(total / limit)
+      } : {
+        page: 1,
+        limit: total,
+        total,
+        pages: 1
       }
     })
   } catch (error) {

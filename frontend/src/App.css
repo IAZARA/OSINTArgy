@@ -14,11 +14,12 @@
   justify-content: center;
   min-height: 100vh;
   gap: var(--spacing-4);
-  background-color: var(--white);
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-secondary) 100%);
+  color: var(--dark-text-primary);
 }
 
 .app-loading p {
-  color: var(--gray-600);
+  color: var(--dark-text-secondary);
   font-size: var(--font-size-lg);
   margin: 0;
 }

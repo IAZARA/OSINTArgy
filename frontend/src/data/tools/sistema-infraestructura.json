@@ -1,0 +1,74 @@
+{
+  "tools": [
+    {
+      "id": "osintargy-infrastructure-scanner",
+      "name": "Infrastructure Scanner (S)",
+      "description": "Scanner defensivo de infraestructura OSINT - Mapea tu huella digital desde la perspectiva de un atacante",
+      "utility": "Descubre subdominios, analiza configuraciones de seguridad, identifica tecnologías y detecta exposiciones de datos en tu infraestructura. Sistema de auto-reconocimiento defensivo con scoring de riesgo automático.",
+      "url": "/infrastructure-scanner",
+      "category": "utilidades-varios",
+      "subcategory": "sistema-infraestructura",
+      "tags": ["scanner", "infraestructura", "subdominios", "seguridad", "ssl", "monitoreo", "defensivo", "superficie de ataque", "osint"],
+      "type": "internal",
+      "indicators": ["S", "D", "A", "I"],
+      "difficulty_level": "intermediate",
+      "author": "OSINTArgy Team",
+      "created_at": "2024-06-24",
+      "updated_at": "2024-06-24",
+      "features": [
+        "Descubrimiento automatizado de subdominios",
+        "Análisis de certificados SSL/TLS",
+        "Detección de tecnologías web",
+        "Evaluación de headers de seguridad",
+        "Identificación de exposiciones de datos",
+        "Scoring automático de riesgo",
+        "Sistema de alertas inteligente",
+        "Reportes descargables en TXT",
+        "Monitoreo de superficie de ataque",
+        "Búsqueda en Certificate Transparency"
+      ],
+      "languages": ["Español"],
+      "cost": "free",
+      "requires_registration": false,
+      "api_available": true,
+      "rating": {
+        "average": 4.8,
+        "count": 1,
+        "distribution": {
+          "5": 1,
+          "4": 0,
+          "3": 0,
+          "2": 0,
+          "1": 0
+        }
+      },
+      "documentation": {
+        "description": "El Infrastructure Scanner es una herramienta de auto-reconocimiento defensivo que te permite ver tu infraestructura desde la perspectiva de un atacante. Utiliza técnicas OSINT para descubrir assets, analizar configuraciones de seguridad y evaluar el riesgo de tu superficie de ataque.",
+        "use_cases": [
+          "Auditorías de seguridad defensivas",
+          "Descubrimiento de shadow IT",
+          "Compliance y gestión de riesgo",
+          "Monitoreo continuo de infraestructura",
+          "Preparación para pentesting",
+          "Verificación de configuraciones de seguridad"
+        ],
+        "techniques": [
+          "Certificate Transparency Logs (crt.sh)",
+          "DNS Brute Force con diccionarios",
+          "Search Engine Dorking",
+          "Análisis de headers HTTP",
+          "Detección de tecnologías web",
+          "Evaluación de configuración SSL",
+          "Verificación de archivos expuestos"
+        ],
+        "output_formats": ["Interfaz web interactiva", "Reporte TXT descargable"],
+        "limitations": [
+          "Requiere conectividad a internet",
+          "Dependiente de fuentes públicas",
+          "No incluye técnicas invasivas",
+          "Limitado a información públicamente disponible"
+        ]
+      }
+    }
+  ]
+}

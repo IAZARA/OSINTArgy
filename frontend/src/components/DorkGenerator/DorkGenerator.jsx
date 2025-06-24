@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { Copy, Search, Info, Settings, RefreshCw, ExternalLink, BookOpen, Download, Globe } from 'lucide-react'
 import DorkService from '../../services/dorkService.js'
 import './DorkGenerator.css'
 
 const DorkGenerator = () => {
+  
   // Estados principales
   const [query, setQuery] = useState('')
   const [targetType, setTargetType] = useState('usernames')
@@ -25,6 +27,14 @@ const DorkGenerator = () => {
   const [searchEngines, setSearchEngines] = useState([])
   const [copiedItems, setCopiedItems] = useState(new Set())
 
+  // Estados para opciones multimedia
+  const [imageSize, setImageSize] = useState('')
+  const [imageType, setImageType] = useState('')
+  const [imageColor, setImageColor] = useState('')
+  const [videoFormat, setVideoFormat] = useState('')
+  const [videoDuration, setVideoDuration] = useState('')
+  const [videoQuality, setVideoQuality] = useState('')
+
   // Cargar datos iniciales
   useEffect(() => {
     loadInitialData()
@@ -32,13 +42,75 @@ const DorkGenerator = () => {
 
   const loadInitialData = async () => {
     try {
-      const [targetTypesData, searchEnginesData] = await Promise.all([
-        DorkService.getTargetTypes(),
-        DorkService.getSearchEngines()
-      ])
-      
-      setTargetTypes(targetTypesData.targetTypes || [])
-      setSearchEngines(searchEnginesData.searchEngines || [])
+      // Usar datos locales en lugar de API
+      const localTargetTypes = [
+        {
+          id: 'usernames',
+          name: 'Nombres de Usuario',
+          description: 'Buscar perfiles y cuentas de usuario'
+        },
+        {
+          id: 'emails',
+          name: 'Correos Electrónicos',
+          description: 'Encontrar direcciones de email'
+        },
+        {
+          id: 'websites',
+          name: 'Sitios Web',
+          description: 'Buscar dominios y sitios específicos'
+        },
+        {
+          id: 'documents',
+          name: 'Documentos',
+          description: 'Encontrar archivos PDF, DOC, etc.'
+        },
+        {
+          id: 'images',
+          name: 'Imágenes',
+          description: 'Buscar imágenes por tipo, tamaño y contenido'
+        },
+        {
+          id: 'videos',
+          name: 'Videos',
+          description: 'Encontrar videos por formato y plataforma'
+        },
+        {
+          id: 'social',
+          name: 'Redes Sociales',
+          description: 'Buscar en plataformas sociales'
+        },
+        {
+          id: 'multimedia_platforms',
+          name: 'Plataformas Multimedia',
+          description: 'Buscar en YouTube, Vimeo, Instagram, etc.'
+        }
+      ]
+
+      const localSearchEngines = [
+        {
+          id: 'google',
+          name: 'Google',
+          description: 'Motor de búsqueda más completo'
+        },
+        {
+          id: 'yandex',
+          name: 'Yandex',
+          description: 'Excelente para contenido en cirílico'
+        },
+        {
+          id: 'bing',
+          name: 'Bing',
+          description: 'Motor de búsqueda de Microsoft'
+        },
+        {
+          id: 'duckduckgo',
+          name: 'DuckDuckGo',
+          description: 'Búsqueda privada'
+        }
+      ]
+
+      setTargetTypes(localTargetTypes)
+      setSearchEngines(localSearchEngines)
     } catch (error) {
       console.error('Error cargando datos iniciales:', error)
       setError('Error cargando la configuración inicial')
@@ -56,18 +128,18 @@ const DorkGenerator = () => {
     })
   }
 
-  // Añadir término a incluir
+  // Agregar término de inclusión
   const addIncludeTerm = () => {
     if (includeInput.trim() && !includeTerms.includes(includeInput.trim())) {
-      setIncludeTerms(prev => [...prev, includeInput.trim()])
+      setIncludeTerms([...includeTerms, includeInput.trim()])
       setIncludeInput('')
     }
   }
 
-  // Añadir término a excluir
+  // Agregar término de exclusión
   const addExcludeTerm = () => {
     if (excludeInput.trim() && !excludeTerms.includes(excludeInput.trim())) {
-      setExcludeTerms(prev => [...prev, excludeInput.trim()])
+      setExcludeTerms([...excludeTerms, excludeInput.trim()])
       setExcludeInput('')
     }
   }
@@ -75,368 +147,933 @@ const DorkGenerator = () => {
   // Remover término
   const removeTerm = (term, type) => {
     if (type === 'include') {
-      setIncludeTerms(prev => prev.filter(t => t !== term))
+      setIncludeTerms(includeTerms.filter(t => t !== term))
     } else {
-      setExcludeTerms(prev => prev.filter(t => t !== term))
+      setExcludeTerms(excludeTerms.filter(t => t !== term))
     }
   }
 
-  // Manejar envío del formulario
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    
+  // Función local para generar dorks
+  const generateDorksLocal = (params) => {
+    const { query, targetType, engines, includeTerms = [], excludeTerms = [], dateAfter, dateBefore } = params
+    const dorks = []
+
+    // Plantillas de dorks por tipo
+    const dorkTemplates = {
+      usernames: [
+        'site:facebook.com "{query}"',
+        'site:twitter.com "{query}"',
+        'site:instagram.com "{query}"',
+        'site:linkedin.com "{query}"',
+        'site:github.com "{query}"',
+        'site:reddit.com "{query}"',
+        'site:youtube.com "{query}"',
+        'inurl:"{query}" site:social',
+        '"{query}" profile',
+        '"{query}" usuario OR user'
+      ],
+      emails: [
+        '"{query}" email OR mail',
+        '"{query}" @gmail.com OR @hotmail.com OR @yahoo.com',
+        'site:pastebin.com "{query}"',
+        'filetype:txt "{query}" email',
+        'intext:"{query}" "@"',
+        '"{query}" contact OR contacto',
+        'site:haveibeenpwned.com "{query}"',
+        '"{query}" leaked OR filtrado'
+      ],
+      websites: [
+        'site:{query}',
+        'inurl:{query}',
+        'intitle:"{query}"',
+        'related:{query}',
+        'link:{query}',
+        'cache:{query}',
+        'info:{query}',
+        'inanchor:"{query}"'
+      ],
+      documents: [
+        'filetype:pdf "{query}"',
+        'filetype:doc "{query}"',
+        'filetype:docx "{query}"',
+        'filetype:xls "{query}"',
+        'filetype:xlsx "{query}"',
+        'filetype:ppt "{query}"',
+        'filetype:txt "{query}"',
+        'ext:pdf "{query}"'
+      ],
+      images: [
+        'filetype:jpg "{query}"',
+        'filetype:jpeg "{query}"',
+        'filetype:png "{query}"',
+        'filetype:gif "{query}"',
+        'filetype:bmp "{query}"',
+        'filetype:svg "{query}"',
+        'filetype:webp "{query}"',
+        'ext:jpg "{query}"',
+        'ext:png "{query}"',
+        'imagesize:large "{query}"',
+        'imagesize:medium "{query}"',
+        'imagesize:small "{query}"',
+        'site:imgur.com "{query}"',
+        'site:flickr.com "{query}"',
+        'site:pinterest.com "{query}"',
+        'inurl:image "{query}"',
+        'inurl:photo "{query}"',
+        'inurl:picture "{query}"',
+        '"{query}" foto OR photo OR imagen',
+        '"{query}" wallpaper OR background'
+      ],
+      videos: [
+        'filetype:mp4 "{query}"',
+        'filetype:avi "{query}"',
+        'filetype:mov "{query}"',
+        'filetype:wmv "{query}"',
+        'filetype:flv "{query}"',
+        'filetype:webm "{query}"',
+        'filetype:mkv "{query}"',
+        'ext:mp4 "{query}"',
+        'ext:avi "{query}"',
+        'site:youtube.com "{query}"',
+        'site:vimeo.com "{query}"',
+        'site:dailymotion.com "{query}"',
+        'site:twitch.tv "{query}"',
+        'inurl:video "{query}"',
+        'inurl:watch "{query}"',
+        'inurl:stream "{query}"',
+        '"{query}" video OR película OR movie',
+        '"{query}" streaming OR live',
+        '"{query}" tutorial OR how-to',
+        '"{query}" documentary OR documental'
+      ],
+      social: [
+        'site:facebook.com "{query}"',
+        'site:twitter.com "{query}"',
+        'site:instagram.com "{query}"',
+        'site:tiktok.com "{query}"',
+        'site:linkedin.com "{query}"',
+        'site:pinterest.com "{query}"',
+        'site:snapchat.com "{query}"',
+        'site:telegram.me "{query}"'
+      ],
+      multimedia_platforms: [
+        'site:youtube.com "{query}"',
+        'site:vimeo.com "{query}"',
+        'site:instagram.com "{query}"',
+        'site:tiktok.com "{query}"',
+        'site:pinterest.com "{query}"',
+        'site:flickr.com "{query}"',
+        'site:imgur.com "{query}"',
+        'site:twitch.tv "{query}"',
+        'site:dailymotion.com "{query}"',
+        'site:soundcloud.com "{query}"',
+        'site:spotify.com "{query}"',
+        'site:deviantart.com "{query}"',
+        'site:behance.net "{query}"',
+        'site:dribbble.com "{query}"',
+        '"{query}" multimedia OR media',
+        '"{query}" gallery OR galería',
+        '"{query}" portfolio OR portafolio',
+        '"{query}" creative OR creativo'
+      ]
+    }
+
+    // Obtener plantillas para el tipo seleccionado
+    const templates = dorkTemplates[targetType] || dorkTemplates.usernames
+
+    // Generar dorks para cada motor y plantilla
+    engines.forEach(engine => {
+      templates.forEach((template, index) => {
+        let dorkQuery = template.replace(/\{query\}/g, query)
+
+        // Agregar términos adicionales
+        if (includeTerms.length > 0) {
+          dorkQuery += ' ' + includeTerms.map(term => `"${term}"`).join(' ')
+        }
+
+        // Agregar términos a excluir
+        if (excludeTerms.length > 0) {
+          dorkQuery += ' ' + excludeTerms.map(term => `-"${term}"`).join(' ')
+        }
+
+        // Agregar filtros específicos para multimedia
+        if (targetType === 'images') {
+          if (imageSize) {
+            dorkQuery += ` imagesize:${imageSize}`
+          }
+          if (imageType) {
+            dorkQuery += ` imagetype:${imageType}`
+          }
+          if (imageColor) {
+            dorkQuery += ` imagecolor:${imageColor}`
+          }
+        }
+
+        if (targetType === 'videos') {
+          if (videoFormat) {
+            dorkQuery += ` filetype:${videoFormat}`
+          }
+          if (videoDuration && engine === 'google') {
+            dorkQuery += ` videoduration:${videoDuration}`
+          }
+          if (videoQuality && engine === 'google') {
+            dorkQuery += ` videoquality:${videoQuality}`
+          }
+        }
+
+        // Agregar filtros de fecha (solo para Google)
+        if (engine === 'google') {
+          if (dateAfter) {
+            dorkQuery += ` after:${dateAfter}`
+          }
+          if (dateBefore) {
+            dorkQuery += ` before:${dateBefore}`
+          }
+        }
+
+        // Crear URL del motor de búsqueda
+        let searchUrl = ''
+        switch (engine) {
+          case 'google':
+            searchUrl = `https://www.google.com/search?q=${encodeURIComponent(dorkQuery)}`
+            break
+          case 'yandex':
+            searchUrl = `https://yandex.com/search/?text=${encodeURIComponent(dorkQuery)}`
+            break
+          case 'bing':
+            searchUrl = `https://www.bing.com/search?q=${encodeURIComponent(dorkQuery)}`
+            break
+          case 'duckduckgo':
+            searchUrl = `https://duckduckgo.com/?q=${encodeURIComponent(dorkQuery)}`
+            break
+        }
+
+        dorks.push({
+          engine: engine.charAt(0).toUpperCase() + engine.slice(1),
+          type: targetType,
+          query: dorkQuery,
+          url: searchUrl,
+          id: `${engine}-${targetType}-${index}`
+        })
+      })
+    })
+
+    return { dorks }
+  }
+
+  // Generar dorks
+  const generateDorks = async () => {
     if (!query.trim()) {
       setError('Por favor ingresa un término de búsqueda')
       return
     }
 
     if (selectedEngines.length === 0) {
-      setError('Por favor selecciona al menos un motor de búsqueda')
+      setError('Selecciona al menos un motor de búsqueda')
       return
     }
 
     setLoading(true)
     setError('')
-    setResults(null)
 
     try {
       const params = {
         query: query.trim(),
         targetType,
         engines: selectedEngines,
-        options: {
-          includeTerms: includeTerms.length > 0 ? includeTerms : undefined,
-          excludeTerms: excludeTerms.length > 0 ? excludeTerms : undefined,
-          dateAfter: dateAfter || undefined,
-          dateBefore: dateBefore || undefined
-        }
+        includeTerms,
+        excludeTerms,
+        dateAfter,
+        dateBefore,
+        imageSize,
+        imageType,
+        imageColor,
+        videoFormat,
+        videoDuration,
+        videoQuality
       }
 
-      // Validar parámetros
-      const validation = DorkService.validateParams(params)
-      if (!validation.isValid) {
-        setError(validation.errors.join(', '))
-        return
-      }
-
-      const response = await DorkService.generateDorks(params)
+      // Usar función local en lugar de API
+      const response = generateDorksLocal(params)
       setResults(response)
     } catch (error) {
-      setError(error.message || 'Error generando los dorks')
+      console.error('Error generando dorks:', error)
+      setError('Error al generar los dorks. Inténtalo de nuevo.')
     } finally {
       setLoading(false)
     }
   }
 
-  // Abrir URL
-  const openUrl = (url) => {
-    DorkService.openUrl(url)
-  }
-
   // Copiar al portapapeles
-  const copyToClipboard = async (text, itemId) => {
+  const copyToClipboard = async (text, id) => {
     try {
-      const success = await DorkService.copyToClipboard(text)
-      if (success) {
-        setCopiedItems(prev => new Set([...prev, itemId]))
+      await navigator.clipboard.writeText(text)
+      setCopiedItems(prev => new Set([...prev, id]))
+      setTimeout(() => {
+        setCopiedItems(prev => {
+          const newSet = new Set(prev)
+          newSet.delete(id)
+          return newSet
+        })
+      }, 2000)
+    } catch (error) {
+      console.error('Error copiando al portapapeles:', error)
+    }
+  }
+
+  // Abrir en nueva ventana
+  const openInNewTab = (url) => {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
+  // Abrir todas las URLs en pestañas separadas
+  const openAllTabs = () => {
+    if (!results || !results.dorks) return
+
+    // Confirmar antes de abrir muchas pestañas
+    const totalTabs = results.dorks.filter(dork => dork.url).length
+    if (totalTabs > 10) {
+      const confirmed = window.confirm(
+        `Esto abrirá ${totalTabs} pestañas nuevas. ¿Estás seguro de que quieres continuar?\n\n` +
+        `Nota: Tu navegador puede bloquear algunas pestañas emergentes.`
+      )
+      if (!confirmed) return
+    }
+
+    // Abrir cada URL con un pequeño delay para evitar bloqueos del navegador
+    results.dorks.forEach((dork, index) => {
+      if (dork.url) {
         setTimeout(() => {
-          setCopiedItems(prev => {
-            const newSet = new Set(prev)
-            newSet.delete(itemId)
-            return newSet
-          })
-        }, 2000)
+          window.open(dork.url, '_blank', 'noopener,noreferrer')
+        }, index * 100) // 100ms de delay entre cada pestaña
       }
-    } catch (error) {
-      console.error('Error copiando:', error)
-    }
-  }
-
-  // Copiar todas las URLs
-  const copyAllUrls = async () => {
-    if (!results) return
-    
-    let allUrls = []
-    Object.values(results.results).forEach(engineResults => {
-      engineResults.forEach(item => {
-        allUrls.push(item.url)
-      })
     })
-    
-    const text = allUrls.join('\n')
-    await copyToClipboard(text, 'all-urls')
   }
 
-  // Exportar resultados
-  const exportResults = () => {
-    if (!results) return
-    
+  // Descargar todos los dorks como archivo de texto
+  const downloadDorks = () => {
+    if (!results || !results.dorks) return
+
     try {
-      DorkService.exportResults(results.results, results.query)
+      // Crear contenido del archivo
+      let content = `# Dorks OSINT Generados\n`
+      content += `# Término de búsqueda: ${query}\n`
+      content += `# Tipo de búsqueda: ${targetType}\n`
+      content += `# Motores seleccionados: ${selectedEngines.join(', ')}\n`
+      content += `# Generado el: ${new Date().toLocaleString()}\n`
+      content += `# Total de dorks: ${results.dorks.length}\n\n`
+
+      if (includeTerms.length > 0) {
+        content += `# Términos incluidos: ${includeTerms.join(', ')}\n`
+      }
+      if (excludeTerms.length > 0) {
+        content += `# Términos excluidos: ${excludeTerms.join(', ')}\n`
+      }
+      if (dateAfter || dateBefore) {
+        content += `# Filtros de fecha: ${dateAfter ? `después de ${dateAfter}` : ''} ${dateBefore ? `antes de ${dateBefore}` : ''}\n`
+      }
+      content += `\n${'='.repeat(80)}\n\n`
+
+      // Agrupar por motor de búsqueda
+      const groupedByEngine = results.dorks.reduce((acc, dork) => {
+        if (!acc[dork.engine]) {
+          acc[dork.engine] = []
+        }
+        acc[dork.engine].push(dork)
+        return acc
+      }, {})
+
+      // Escribir cada grupo
+      Object.entries(groupedByEngine).forEach(([engine, dorks]) => {
+        content += `## ${engine.toUpperCase()}\n\n`
+
+        dorks.forEach((dork, index) => {
+          content += `${index + 1}. Query: ${dork.query}\n`
+          if (dork.url) {
+            content += `   URL: ${dork.url}\n`
+          }
+          content += `\n`
+        })
+
+        content += `${'-'.repeat(40)}\n\n`
+      })
+
+      // Añadir sección de URLs para copiar fácilmente
+      content += `## URLS PARA COPIAR\n\n`
+      results.dorks.forEach((dork, index) => {
+        if (dork.url) {
+          content += `${dork.url}\n`
+        }
+      })
+
+      // Crear y descargar archivo
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+
+      // Crear nombre de archivo seguro
+      const safeQuery = query.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 20)
+      const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '')
+      link.download = `dorks_${safeQuery}_${targetType}_${timestamp}.txt`
+
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+
+      // Mostrar confirmación
+      setCopiedItems(prev => new Set([...prev, 'download']))
+      setTimeout(() => {
+        setCopiedItems(prev => {
+          const newSet = new Set(prev)
+          newSet.delete('download')
+          return newSet
+        })
+      }, 3000)
+
     } catch (error) {
-      setError('Error exportando los resultados')
+      console.error('Error descargando archivo:', error)
+      setError('Error al descargar el archivo. Inténtalo de nuevo.')
     }
   }
 
-  // Limpiar formulario
-  const clearForm = () => {
-    setQuery('')
-    setIncludeTerms([])
-    setExcludeTerms([])
-    setIncludeInput('')
-    setExcludeInput('')
-    setDateAfter('')
-    setDateBefore('')
-    setResults(null)
-    setError('')
+  // Función para obtener información sobre el tipo de búsqueda
+  const getSearchTypeInfo = () => {
+    const typeInfo = {
+      usernames: {
+        icon: '👤',
+        description: 'Buscar perfiles de usuario en redes sociales y plataformas',
+        examples: ['Facebook', 'Twitter', 'LinkedIn', 'Instagram', 'GitHub']
+      },
+      emails: {
+        icon: '📧',
+        description: 'Encontrar direcciones de correo electrónico',
+        examples: ['Gmail', 'Outlook', 'Yahoo', 'Documentos PDF', 'Pastebin']
+      },
+      websites: {
+        icon: '🌐',
+        description: 'Analizar sitios web y encontrar información específica',
+        examples: ['Paneles admin', 'Archivos sensibles', 'Subdominios']
+      },
+      documents: {
+        icon: '📄',
+        description: 'Localizar documentos y archivos específicos',
+        examples: ['PDF', 'DOC', 'XLS', 'PPT', 'TXT']
+      },
+      images: {
+        icon: '🖼️',
+        description: 'Buscar imágenes por formato, tamaño y contenido',
+        examples: ['JPG', 'PNG', 'GIF', 'Flickr', 'Pinterest']
+      },
+      videos: {
+        icon: '🎥',
+        description: 'Encontrar videos por formato y plataforma',
+        examples: ['MP4', 'AVI', 'YouTube', 'Vimeo', 'Twitch']
+      },
+      social: {
+        icon: '📱',
+        description: 'Búsquedas específicas en redes sociales',
+        examples: ['Facebook', 'Twitter', 'Instagram', 'TikTok']
+      },
+      multimedia_platforms: {
+        icon: '🎨',
+        description: 'Plataformas de contenido multimedia y creativo',
+        examples: ['YouTube', 'Instagram', 'Pinterest', 'DeviantArt']
+      }
+    }
+    return typeInfo[targetType] || typeInfo.usernames
   }
 
   return (
     <div className="dork-generator">
-      <div className="dork-generator__header">
-        <h1 className="dork-generator__title">🔍 Generador de Dorks</h1>
-        <p className="dork-generator__subtitle">
-          Genera consultas avanzadas para Google y Yandex basadas en tu término de búsqueda
-        </p>
-      </div>
+      <div className="dork-generator__container">
+        {/* Columna izquierda - Instrucciones y guía */}
+        <div className="dork-generator__guide">
+          <div className="guide-section">
+            <div className="guide-header">
+              <BookOpen className="guide-icon" size={24} />
+              <h2>Generador de Dorks OSINT</h2>
+            </div>
+            
+            <div className="guide-content">
+              <div className="guide-item">
+                <h3>¿Qué son los Google Dorks?</h3>
+                <p>
+                  Los Google Dorks son consultas de búsqueda avanzadas que utilizan operadores especiales
+                  para encontrar información específica en motores de búsqueda. Esta herramienta genera
+                  automáticamente múltiples dorks basados en plantillas predefinidas para investigaciones OSINT.
+                </p>
+              </div>
 
-      <form className="dork-generator__form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="query">Término de búsqueda *</label>
-          <input
-            type="text"
-            id="query"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ej: john.doe, ejemplo@email.com, sitio.com"
-            maxLength={200}
-            required
-          />
-        </div>
+              <div className="guide-item">
+                <h3>Cómo Funciona</h3>
+                <p>
+                  El generador utiliza plantillas de dorks específicas para cada tipo de búsqueda y motor.
+                  Simplemente ingresa tu término de búsqueda y selecciona las opciones deseadas.
+                  La herramienta creará automáticamente múltiples consultas optimizadas.
+                </p>
+              </div>
 
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="targetType">Tipo de objetivo</label>
-            <select
-              id="targetType"
-              value={targetType}
-              onChange={(e) => setTargetType(e.target.value)}
-            >
-              {targetTypes.map(type => (
-                <option key={type.id} value={type.id}>
-                  {type.name}
-                </option>
-              ))}
-            </select>
-          </div>
+              <div className="guide-item">
+                <h3>Tipos de Búsqueda Disponibles</h3>
+                <ul>
+                  <li><strong>Nombres de usuario:</strong> Busca perfiles en redes sociales (Facebook, Twitter, LinkedIn, Instagram, GitHub, Reddit, etc.)</li>
+                  <li><strong>Emails:</strong> Encuentra direcciones de correo en documentos PDF, DOC, sitios como Pastebin, GitHub, y proveedores populares</li>
+                  <li><strong>Sitios web:</strong> Analiza dominios, encuentra archivos sensibles, paneles de administración y información técnica</li>
+                  <li><strong>Documentos:</strong> Localiza archivos PDF, DOC, XLS, PPT y otros documentos específicos</li>
+                  <li><strong>Imágenes:</strong> Busca imágenes por formato (JPG, PNG, GIF), tamaño, tipo y plataformas como Flickr, Pinterest, Imgur</li>
+                  <li><strong>Videos:</strong> Encuentra videos por formato (MP4, AVI, MOV), duración y plataformas como YouTube, Vimeo, Twitch</li>
+                  <li><strong>Plataformas Multimedia:</strong> Búsquedas especializadas en YouTube, Instagram, TikTok, SoundCloud y otras plataformas de contenido</li>
+                </ul>
+              </div>
 
-          <div className="engines-group">
-            <label>Motores de búsqueda *</label>
-            <div className="engines-checkboxes">
-              {searchEngines.map(engine => (
-                <div key={engine.id} className="checkbox-item">
-                  <input
-                    type="checkbox"
-                    id={engine.id}
-                    checked={selectedEngines.includes(engine.id)}
-                    onChange={() => handleEngineChange(engine.id)}
-                  />
-                  <label htmlFor={engine.id}>{engine.name}</label>
-                </div>
-              ))}
+              <div className="guide-item">
+                <h3>Motores de Búsqueda Soportados</h3>
+                <ul>
+                  <li><strong>Google:</strong> El más completo, ideal para búsquedas generales</li>
+                  <li><strong>Yandex:</strong> Excelente para contenido en ruso y Europa del Este</li>
+                  <li><strong>Bing:</strong> Alternativa de Microsoft, buenos resultados únicos</li>
+                  <li><strong>DuckDuckGo:</strong> Búsquedas privadas sin seguimiento del usuario</li>
+                </ul>
+              </div>
+
+              <div className="guide-item">
+                <h3>Funciones Avanzadas</h3>
+                <ul>
+                  <li><strong>Términos a incluir:</strong> Palabras que DEBEN aparecer en todos los resultados</li>
+                  <li><strong>Términos a excluir:</strong> Palabras que NO deben aparecer en los resultados</li>
+                  <li><strong>Filtros de fecha:</strong> Limita resultados por período específico</li>
+                  <li><strong>Acciones masivas:</strong> Abre todos los resultados en pestañas separadas o descarga como archivo de texto</li>
+                </ul>
+              </div>
+
+              <div className="guide-item">
+                <h3>Consejos para Mejores Resultados</h3>
+                <ul>
+                  <li>Usa términos específicos y únicos (nombres completos, dominios exactos)</li>
+                  <li>Combina múltiples motores para cobertura completa</li>
+                  <li>Prueba diferentes tipos de búsqueda para el mismo objetivo</li>
+                  <li>Utiliza las opciones avanzadas para refinar resultados</li>
+                  <li>Guarda los dorks más efectivos para investigaciones futuras</li>
+                </ul>
+              </div>
+
+              <div className="guide-item">
+                <h3>Ejemplos de Uso</h3>
+                <ul>
+                  <li><strong>Investigar una persona:</strong> Usa "nombres de usuario" con el nombre completo</li>
+                  <li><strong>Encontrar contactos:</strong> Usa "emails" con el nombre de la empresa o dominio</li>
+                  <li><strong>Analizar un sitio web:</strong> Usa "sitios web" con el dominio objetivo</li>
+                  <li><strong>Buscar imágenes específicas:</strong> Usa "imágenes" con términos descriptivos para encontrar fotos, logos o gráficos</li>
+                  <li><strong>Localizar videos:</strong> Usa "videos" para encontrar contenido audiovisual, tutoriales o documentales</li>
+                  <li><strong>Investigar en plataformas multimedia:</strong> Usa "plataformas multimedia" para búsquedas dirigidas en redes sociales visuales</li>
+                  <li><strong>Encontrar documentos sensibles:</strong> Usa "documentos" para localizar PDFs, presentaciones o hojas de cálculo</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="advanced-options">
-          <div 
-            className="advanced-options__header"
-            onClick={() => setShowAdvanced(!showAdvanced)}
-          >
-            <span>{showAdvanced ? '▼' : '▶'}</span>
-            <h3 className="advanced-options__title">Opciones Avanzadas</h3>
-          </div>
+        {/* Columna derecha - Formulario y resultados */}
+        <div className="dork-generator__form">
+          <div className="form-section">
+            <h2>Configurar búsqueda</h2>
+            
+            {error && (
+              <div className="error-message">
+                <Info size={16} />
+                {error}
+              </div>
+            )}
 
-          {showAdvanced && (
-            <div className="advanced-options__content">
-              <div className="form-group">
-                <label>Términos a incluir</label>
-                <div className="terms-input">
-                  <input
-                    type="text"
-                    value={includeInput}
-                    onChange={(e) => setIncludeInput(e.target.value)}
-                    placeholder="Término adicional a incluir"
-                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addIncludeTerm())}
-                  />
-                  <button type="button" className="btn-add-term" onClick={addIncludeTerm}>
-                    Añadir
-                  </button>
+            {/* Término de búsqueda principal */}
+            <div className="form-group">
+              <label htmlFor="query">Término de búsqueda *</label>
+              <input
+                id="query"
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Ej: john.doe, empresa.com, usuario123"
+                className="form-input"
+                disabled={loading}
+              />
+            </div>
+
+            {/* Tipo de objetivo */}
+            <div className="form-group">
+              <label htmlFor="targetType">Tipo de búsqueda</label>
+              <select
+                id="targetType"
+                value={targetType}
+                onChange={(e) => setTargetType(e.target.value)}
+                className="form-select"
+                disabled={loading}
+              >
+                {targetTypes.map(type => (
+                  <option key={type.id} value={type.id}>
+                    {type.name} - {type.description}
+                  </option>
+                ))}
+              </select>
+
+              {/* Información del tipo de búsqueda seleccionado */}
+              <div className="search-type-info">
+                <div className="search-type-header">
+                  <span className="search-type-icon">{getSearchTypeInfo().icon}</span>
+                  <span className="search-type-description">{getSearchTypeInfo().description}</span>
                 </div>
-                {includeTerms.length > 0 && (
+                <div className="search-type-examples">
+                  <strong>Ejemplos:</strong> {getSearchTypeInfo().examples.join(', ')}
+                </div>
+              </div>
+            </div>
+
+            {/* Motores de búsqueda */}
+            <div className="form-group">
+              <label>Motores de búsqueda</label>
+              <div className="checkbox-group">
+                {searchEngines.map(engine => (
+                  <label key={engine.id} className="checkbox-item">
+                    <input
+                      type="checkbox"
+                      checked={selectedEngines.includes(engine.id)}
+                      onChange={() => handleEngineChange(engine.id)}
+                      disabled={loading}
+                    />
+                    <span className="checkbox-label">{engine.name}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Opciones avanzadas */}
+            <div className="form-group">
+              <button
+                type="button"
+                onClick={() => setShowAdvanced(!showAdvanced)}
+                className="advanced-toggle"
+                disabled={loading}
+              >
+                <Settings size={16} />
+                Opciones avanzadas
+                {showAdvanced ? ' ▼' : ' ▶'}
+              </button>
+            </div>
+
+            {showAdvanced && (
+              <div className="advanced-options">
+                {/* Términos a incluir */}
+                <div className="form-group">
+                  <label>Términos adicionales a incluir</label>
+                  <div className="term-input">
+                    <input
+                      type="text"
+                      value={includeInput}
+                      onChange={(e) => setIncludeInput(e.target.value)}
+                      placeholder="Término adicional"
+                      className="form-input"
+                      onKeyPress={(e) => e.key === 'Enter' && addIncludeTerm()}
+                      disabled={loading}
+                    />
+                    <button
+                      type="button"
+                      onClick={addIncludeTerm}
+                      className="add-term-btn"
+                      disabled={loading}
+                    >
+                      Agregar
+                    </button>
+                  </div>
                   <div className="terms-list">
                     {includeTerms.map(term => (
-                      <div key={term} className="term-tag">
-                        <span>{term}</span>
-                        <button type="button" onClick={() => removeTerm(term, 'include')}>
-                          ×
-                        </button>
-                      </div>
+                      <span key={term} className="term-tag include">
+                        {term}
+                        <button onClick={() => removeTerm(term, 'include')}>×</button>
+                      </span>
                     ))}
                   </div>
-                )}
-              </div>
-
-              <div className="form-group">
-                <label>Términos a excluir</label>
-                <div className="terms-input">
-                  <input
-                    type="text"
-                    value={excludeInput}
-                    onChange={(e) => setExcludeInput(e.target.value)}
-                    placeholder="Término a excluir de los resultados"
-                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addExcludeTerm())}
-                  />
-                  <button type="button" className="btn-add-term" onClick={addExcludeTerm}>
-                    Añadir
-                  </button>
                 </div>
-                {excludeTerms.length > 0 && (
+
+                {/* Términos a excluir */}
+                <div className="form-group">
+                  <label>Términos a excluir</label>
+                  <div className="term-input">
+                    <input
+                      type="text"
+                      value={excludeInput}
+                      onChange={(e) => setExcludeInput(e.target.value)}
+                      placeholder="Término a excluir"
+                      className="form-input"
+                      onKeyPress={(e) => e.key === 'Enter' && addExcludeTerm()}
+                      disabled={loading}
+                    />
+                    <button
+                      type="button"
+                      onClick={addExcludeTerm}
+                      className="add-term-btn"
+                      disabled={loading}
+                    >
+                      Agregar
+                    </button>
+                  </div>
                   <div className="terms-list">
                     {excludeTerms.map(term => (
-                      <div key={term} className="term-tag">
-                        <span>{term}</span>
-                        <button type="button" onClick={() => removeTerm(term, 'exclude')}>
-                          ×
-                        </button>
-                      </div>
+                      <span key={term} className="term-tag exclude">
+                        {term}
+                        <button onClick={() => removeTerm(term, 'exclude')}>×</button>
+                      </span>
                     ))}
+                  </div>
+                </div>
+
+                {/* Filtros de fecha */}
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="dateAfter">Después de</label>
+                    <input
+                      id="dateAfter"
+                      type="date"
+                      value={dateAfter}
+                      onChange={(e) => setDateAfter(e.target.value)}
+                      className="form-input"
+                      disabled={loading}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="dateBefore">Antes de</label>
+                    <input
+                      id="dateBefore"
+                      type="date"
+                      value={dateBefore}
+                      onChange={(e) => setDateBefore(e.target.value)}
+                      className="form-input"
+                      disabled={loading}
+                    />
+                  </div>
+                </div>
+
+                {/* Opciones específicas para imágenes */}
+                {(targetType === 'images' || targetType === 'multimedia_platforms') && (
+                  <div className="multimedia-options">
+                    <h4>🖼️ Opciones para Imágenes</h4>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="imageSize">Tamaño de imagen</label>
+                        <select
+                          id="imageSize"
+                          value={imageSize}
+                          onChange={(e) => setImageSize(e.target.value)}
+                          className="form-input"
+                          disabled={loading}
+                        >
+                          <option value="">Cualquier tamaño</option>
+                          <option value="large">Grande (&gt;2MP)</option>
+                          <option value="medium">Mediano (0.3-2MP)</option>
+                          <option value="small">Pequeño (&lt;0.3MP)</option>
+                          <option value="1920x1080">1920x1080 (Full HD)</option>
+                          <option value="1280x720">1280x720 (HD)</option>
+                          <option value="800x600">800x600</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="imageType">Tipo de imagen</label>
+                        <select
+                          id="imageType"
+                          value={imageType}
+                          onChange={(e) => setImageType(e.target.value)}
+                          className="form-input"
+                          disabled={loading}
+                        >
+                          <option value="">Cualquier tipo</option>
+                          <option value="photo">Fotografía</option>
+                          <option value="clipart">Clipart</option>
+                          <option value="lineart">Arte lineal</option>
+                          <option value="face">Rostros</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="imageColor">Color predominante</label>
+                      <select
+                        id="imageColor"
+                        value={imageColor}
+                        onChange={(e) => setImageColor(e.target.value)}
+                        className="form-input"
+                        disabled={loading}
+                      >
+                        <option value="">Cualquier color</option>
+                        <option value="red">Rojo</option>
+                        <option value="blue">Azul</option>
+                        <option value="green">Verde</option>
+                        <option value="yellow">Amarillo</option>
+                        <option value="orange">Naranja</option>
+                        <option value="purple">Púrpura</option>
+                        <option value="pink">Rosa</option>
+                        <option value="white">Blanco</option>
+                        <option value="black">Negro</option>
+                        <option value="gray">Gris</option>
+                        <option value="brown">Marrón</option>
+                      </select>
+                    </div>
+                  </div>
+                )}
+
+                {/* Opciones específicas para videos */}
+                {(targetType === 'videos' || targetType === 'multimedia_platforms') && (
+                  <div className="multimedia-options">
+                    <h4>🎥 Opciones para Videos</h4>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="videoFormat">Formato de video</label>
+                        <select
+                          id="videoFormat"
+                          value={videoFormat}
+                          onChange={(e) => setVideoFormat(e.target.value)}
+                          className="form-input"
+                          disabled={loading}
+                        >
+                          <option value="">Cualquier formato</option>
+                          <option value="mp4">MP4</option>
+                          <option value="avi">AVI</option>
+                          <option value="mov">MOV</option>
+                          <option value="wmv">WMV</option>
+                          <option value="flv">FLV</option>
+                          <option value="webm">WebM</option>
+                          <option value="mkv">MKV</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="videoDuration">Duración</label>
+                        <select
+                          id="videoDuration"
+                          value={videoDuration}
+                          onChange={(e) => setVideoDuration(e.target.value)}
+                          className="form-input"
+                          disabled={loading}
+                        >
+                          <option value="">Cualquier duración</option>
+                          <option value="short">Corto (&lt; 4 min)</option>
+                          <option value="medium">Mediano (4-20 min)</option>
+                          <option value="long">Largo (&gt; 20 min)</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="videoQuality">Calidad de video</label>
+                      <select
+                        id="videoQuality"
+                        value={videoQuality}
+                        onChange={(e) => setVideoQuality(e.target.value)}
+                        className="form-input"
+                        disabled={loading}
+                      >
+                        <option value="">Cualquier calidad</option>
+                        <option value="high">Alta calidad</option>
+                        <option value="standard">Calidad estándar</option>
+                      </select>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Botón generar */}
+            <button
+              onClick={generateDorks}
+              disabled={loading || !query.trim() || selectedEngines.length === 0}
+              className="generate-btn"
+            >
+              {loading ? (
+                <>
+                  <RefreshCw className="spinning" size={16} />
+                  Generando...
+                </>
+              ) : (
+                <>
+                  <Search size={16} />
+                  Generar Dorks
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* Resultados */}
+          {results && (
+            <div className="results-section">
+              <div className="results-header">
+                <h3>Dorks generados ({results.dorks?.length || 0})</h3>
+
+                {results.dorks && results.dorks.length > 0 && (
+                  <div className="results-actions">
+                    <button
+                      onClick={openAllTabs}
+                      className="action-btn secondary"
+                      title="Abrir todas las búsquedas en pestañas separadas"
+                    >
+                      <Globe size={16} />
+                      Abrir Todo ({results.dorks.filter(d => d.url).length} pestañas)
+                    </button>
+
+                    <button
+                      onClick={downloadDorks}
+                      className="action-btn primary"
+                      title="Descargar todos los dorks como archivo de texto"
+                    >
+                      <Download size={16} />
+                      {copiedItems.has('download') ? 'Descargado!' : 'Descargar TXT'}
+                    </button>
                   </div>
                 )}
               </div>
 
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="dateAfter">Fecha después de</label>
-                  <input
-                    type="date"
-                    id="dateAfter"
-                    value={dateAfter}
-                    onChange={(e) => setDateAfter(e.target.value)}
-                  />
+              {results.dorks && results.dorks.length > 0 ? (
+                <div className="results-list">
+                  {results.dorks.map((dork, index) => (
+                    <div key={index} className="result-item">
+                      <div className="result-header">
+                        <span className="result-engine">{dork.engine}</span>
+                        <span className="result-type">{dork.type}</span>
+                      </div>
+                      
+                      <div className="result-query">
+                        <code>{dork.query}</code>
+                      </div>
+                      
+                      <div className="result-actions">
+                        <button
+                          onClick={() => copyToClipboard(dork.query, `${index}-query`)}
+                          className="action-btn"
+                          title="Copiar query"
+                        >
+                          <Copy size={14} />
+                          {copiedItems.has(`${index}-query`) ? 'Copiado!' : 'Copiar'}
+                        </button>
+                        
+                        {dork.url && (
+                          <button
+                            onClick={() => openInNewTab(dork.url)}
+                            className="action-btn primary"
+                            title="Abrir en nueva pestaña"
+                          >
+                            <ExternalLink size={14} />
+                            Buscar
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="dateBefore">Fecha antes de</label>
-                  <input
-                    type="date"
-                    id="dateBefore"
-                    value={dateBefore}
-                    onChange={(e) => setDateBefore(e.target.value)}
-                  />
+              ) : (
+                <div className="no-results">
+                  <p>No se generaron dorks con los parámetros especificados.</p>
                 </div>
-              </div>
+              )}
             </div>
           )}
         </div>
-
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-          <button
-            type="submit"
-            className="btn-generate"
-            disabled={loading || !query.trim() || selectedEngines.length === 0}
-          >
-            {loading ? 'Generando...' : 'Generar Dorks'}
-          </button>
-          
-          <button
-            type="button"
-            className="btn-generate"
-            onClick={clearForm}
-            style={{ background: 'var(--text-secondary)' }}
-          >
-            Limpiar
-          </button>
-        </div>
-      </form>
-
-      {loading && (
-        <div className="loading">
-          <div className="loading-spinner"></div>
-          <span>Generando dorks...</span>
-        </div>
-      )}
-
-      {error && (
-        <div className="error-message">
-          <strong>Error:</strong> {error}
-        </div>
-      )}
-
-      {results && (
-        <div className="results">
-          <div className="results__header">
-            <div>
-              <h2 className="results__title">Resultados</h2>
-              <div className="results__stats">
-                {results.totalUrls} dorks generados para "{results.query}"
-              </div>
-            </div>
-            <div className="results__actions">
-              <button className="btn-copy-all" onClick={copyAllUrls}>
-                {copiedItems.has('all-urls') ? '✓ Copiado' : 'Copiar Todas'}
-              </button>
-              <button className="btn-export" onClick={exportResults}>
-                📥 Exportar
-              </button>
-            </div>
-          </div>
-
-          {Object.entries(results.results).map(([engine, urls]) => (
-            <div key={engine} className="engine-results">
-              <div className="engine-results__header">
-                <h3 className="engine-results__title">{engine}</h3>
-                <span className="engine-results__count">{urls.length} dorks</span>
-              </div>
-
-              <div className="dork-list">
-                {urls.map((item, index) => {
-                  const itemId = `${engine}-${index}`
-                  return (
-                    <div key={index} className="dork-item">
-                      <div className="dork-item__query">{item.query}</div>
-                      <div className="dork-item__actions">
-                        <button
-                          className="btn-open"
-                          onClick={() => openUrl(item.url)}
-                        >
-                          🔗 Abrir
-                        </button>
-                        <button
-                          className={`btn-copy ${copiedItems.has(itemId) ? 'copied' : ''}`}
-                          onClick={() => copyToClipboard(item.url, itemId)}
-                        >
-                          {copiedItems.has(itemId) ? '✓ Copiado' : '📋 Copiar'}
-                        </button>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {!results && !loading && !error && (
-        <div className="empty-state">
-          <div className="empty-state__icon">🎯</div>
-          <h3 className="empty-state__title">¡Comienza tu búsqueda OSINT!</h3>
-          <p className="empty-state__description">
-            Ingresa un término de búsqueda y genera dorks personalizados para tus investigaciones
-          </p>
-        </div>
-      )}
+      </div>
     </div>
   )
 }

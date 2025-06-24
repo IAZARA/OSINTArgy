@@ -15,34 +15,33 @@ export const toolsService = {
    */
   getAllTools: async (params = {}) => {
     try {
-      const defaultParams = {
-        page: 1,
-        limit: PAGINATION.DEFAULT_PAGE_SIZE,
-        sort: 'name',
-        order: 'asc',
-        ...params
-      }
+      // Usar datos locales directamente
+      const toolsData = await import('@data/tools/index.js')
+      const allToolsData = toolsData.getAllTools()
 
-      const response = await toolsAPI.getAll(defaultParams)
-      
-      if (response.success) {
-        return {
-          success: true,
-          data: response.data.tools || response.data,
-          pagination: response.data.pagination || null,
-          message: 'Herramientas obtenidas correctamente'
-        }
-      }
-      
       return {
-        success: false,
-        message: response.error || 'Error al obtener herramientas'
+        success: true,
+        data: allToolsData.tools,
+        totalCount: allToolsData.totalCount,
+        message: 'Herramientas obtenidas correctamente desde archivos locales'
       }
     } catch (error) {
-      console.error('Error al obtener herramientas:', error)
-      return {
-        success: false,
-        message: 'Error de conexión'
+      console.error('Error al obtener herramientas desde archivos locales:', error)
+
+      // Fallback al archivo tools.json básico
+      try {
+        const basicToolsData = await import('@data/tools.json')
+        return {
+          success: true,
+          data: basicToolsData.default.tools || [],
+          message: 'Herramientas obtenidas desde archivo básico'
+        }
+      } catch (fallbackError) {
+        console.error('Error en fallback:', fallbackError)
+        return {
+          success: false,
+          message: 'Error al cargar herramientas'
+        }
       }
     }
   },
