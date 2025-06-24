@@ -162,7 +162,7 @@ const tools = [
 // Usuario administrador de ejemplo
 const adminUser = {
   username: "admin",
-  email: "admin@osintargy.com",
+  email: "admin@osintargy.online",
   password: "admin123",
   profile: {
     firstName: "Administrador",

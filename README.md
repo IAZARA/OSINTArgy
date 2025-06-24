@@ -1,5 +1,7 @@
 # OSINTArgy - Plataforma OSINT Integral
 
+🌐 **[ACCEDER A LA PLATAFORMA](https://osintargy.online)** - ¡Disponible online!
+
 ## 📋 Descripción
 
 OSINTArgy es una plataforma OSINT integral de código abierto diseñada para democratizar el acceso a herramientas de inteligencia de fuentes abiertas (OSINT) en Argentina y Latinoamérica. Combina una interfaz innovadora tipo galaxia con herramientas especializadas y una base de datos de 200+ recursos OSINT categorizados.
@@ -199,7 +201,7 @@ npm run dev
 - **Health Check**: http://localhost:5000/api/health
 
 ### Credenciales de Administrador
-- **Email**: admin@osintargy.com
+- **Email**: admin@osintargy.online
 - **Password**: admin123
 
 ### Funcionalidades Principales

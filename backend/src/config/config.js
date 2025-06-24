@@ -59,7 +59,7 @@ const config = {
     service: process.env.EMAIL_SERVICE || 'gmail',
     user: process.env.EMAIL_USER,
     password: process.env.EMAIL_PASSWORD,
-    from: process.env.EMAIL_FROM || 'noreply@osintargy.com'
+    from: process.env.EMAIL_FROM || 'noreply@osintargy.online'
   },
 
   // Configuración de logging
@@ -104,8 +104,8 @@ const config = {
     version: '1.0.0',
     description: 'Framework OSINT mejorado en español argentino',
     author: 'Kilo Code',
-    homepage: process.env.APP_HOMEPAGE || 'https://osintargy.com',
-    supportEmail: process.env.SUPPORT_EMAIL || 'soporte@osintargy.com'
+    homepage: process.env.APP_HOMEPAGE || 'https://osintargy.online',
+    supportEmail: process.env.SUPPORT_EMAIL || 'soporte@osintargy.online'
   },
 
   // Configuración de desarrollo

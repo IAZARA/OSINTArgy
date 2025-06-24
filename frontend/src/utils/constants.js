@@ -237,7 +237,7 @@ export const URLS = {
   GITHUB: 'https://github.com/osintargy/osintargy',
   TWITTER: 'https://twitter.com/osintargy',
   DISCORD: 'https://discord.gg/osintargy',
-  DOCUMENTATION: 'https://docs.osintargy.com',
+  DOCUMENTATION: 'https://docs.osintargy.online',
   FEEDBACK: 'https://github.com/osintargy/osintargy/issues'
 }
 
