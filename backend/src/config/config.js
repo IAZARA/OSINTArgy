@@ -103,7 +103,7 @@ const config = {
     name: 'OSINTArgy',
     version: '1.0.0',
     description: 'Framework OSINT mejorado en español argentino',
-    author: 'Kilo Code',
+    author: 'Ivan Agustin Zarate',
     homepage: process.env.APP_HOMEPAGE || 'https://osintargy.online',
     supportEmail: process.env.SUPPORT_EMAIL || 'soporte@osintargy.online'
   },

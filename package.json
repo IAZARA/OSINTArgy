@@ -23,7 +23,7 @@
     "framework",
     "tools"
   ],
-  "author": "Kilo Code",
+  "author": "Ivan Agustin Zarate",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
