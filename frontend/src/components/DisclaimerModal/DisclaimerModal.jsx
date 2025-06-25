@@ -1,5 +1,6 @@
 import React from 'react'
 import { Shield, AlertTriangle, CheckCircle, X } from 'lucide-react'
+import logoImage from '@/assets/images/OSINTA2.png'
 import './DisclaimerModal.css'
 
 const DisclaimerModal = ({ onAccept, onDecline }) => {
@@ -24,7 +25,7 @@ const DisclaimerModal = ({ onAccept, onDecline }) => {
         <div className="disclaimer-header">
           <div className="disclaimer-logo">
             <img 
-              src="/src/assets/images/OSINTA2.png" 
+              src={logoImage} 
               alt="OSINT Argy Logo" 
               className="disclaimer-logo-image"
             />

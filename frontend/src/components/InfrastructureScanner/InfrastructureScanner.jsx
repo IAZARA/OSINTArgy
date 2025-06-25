@@ -53,7 +53,7 @@ const InfrastructureScanner = () => {
     setScanResult(null)
 
     try {
-      const response = await fetch('http://localhost:3001/api/infrastructure-scanner/scan', {
+      const response = await fetch('/api/infrastructure-scanner/scan', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

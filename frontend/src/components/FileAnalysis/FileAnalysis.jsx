@@ -34,7 +34,7 @@ const FileAnalysis = () => {
 
   const loadSupportedTypes = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/file-analysis/supported-types')
+      const response = await fetch('/api/file-analysis/supported-types')
       const data = await response.json()
       
       if (data.success) {
@@ -111,7 +111,7 @@ const FileAnalysis = () => {
       const formData = new FormData()
       formData.append('file', file)
 
-      const response = await fetch('http://localhost:3001/api/file-analysis/analyze', {
+      const response = await fetch('/api/file-analysis/analyze', {
         method: 'POST',
         body: formData
       })

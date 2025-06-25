@@ -29,7 +29,7 @@ const EmailOSINT = () => {
 
   const loadAvailableSites = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/osint/email-sites')
+      const response = await fetch('/api/osint/email-sites')
       const data = await response.json()
 
       if (data.success) {
@@ -63,7 +63,7 @@ const EmailOSINT = () => {
     setResults(null)
 
     try {
-      const response = await fetch('http://localhost:3001/api/osint/email-lookup', {
+      const response = await fetch('/api/osint/email-lookup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

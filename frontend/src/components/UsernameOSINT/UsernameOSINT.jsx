@@ -35,7 +35,7 @@ const UsernameOSINT = () => {
 
   const loadAvailableSites = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/osint/username-sites')
+      const response = await fetch('/api/osint/username-sites')
       const data = await response.json()
       
       if (data.success) {
@@ -70,7 +70,7 @@ const UsernameOSINT = () => {
 
     try {
       const endpoint = searchType === 'quick' ? 'username-quick' : 'username-lookup'
-      const response = await fetch(`http://localhost:3001/api/osint/${endpoint}`, {
+      const response = await fetch(`/api/osint/${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

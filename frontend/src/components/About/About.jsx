@@ -1,5 +1,6 @@
 import React from 'react'
 import { Shield, Globe, Users, Code, Heart, ExternalLink, Github, Mail } from 'lucide-react'
+import logoImage from '@/assets/images/OSINTA2.png'
 import './About.css'
 
 const About = () => {
@@ -10,7 +11,7 @@ const About = () => {
         <div className="about-header">
           <div className="about-logo">
             <img 
-              src="/src/assets/images/OSINTA2.png" 
+              src={logoImage} 
               alt="OSINT Argy Logo" 
               className="about-logo-image"
             />

@@ -5,6 +5,7 @@ import { debounce } from '@utils/helpers'
 import { SEARCH } from '@utils/constants'
 import { useTools } from '@hooks/useTools'
 import { useSearchSuggestions } from '@hooks/useSearchSuggestions'
+import logoImage from '@/assets/images/OSINTA2.png'
 import './Header.css'
 
 /**
@@ -198,7 +199,7 @@ const Header = ({
         <div className="header__brand">
           <Link to="/" className="header__logo">
             <img 
-              src="/src/assets/images/OSINTA2.png" 
+              src={logoImage} 
               alt="OSINT Argy Logo" 
               className="header__logo-image"
             />
