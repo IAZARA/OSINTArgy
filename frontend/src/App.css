@@ -3,7 +3,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--gray-50);
+  background: #0a0a0a;
 }
 
 /* Loading de la aplicación */

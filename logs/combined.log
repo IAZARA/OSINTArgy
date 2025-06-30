@@ -107,3 +107,13 @@
 {"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-24T20:27:29.951Z"}
 {"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-24T20:27:29.952Z"}
 {"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-24T20:27:29.952Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-29T22:39:14.983Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-29T22:39:14.986Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-29T22:39:14.987Z"}
+{"level":"info","message":"GET /api/osint/email-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-29T22:46:14.198Z"}
+{"level":"info","message":"GET /api/osint/email-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-29T22:46:14.207Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-29T22:46:19.734Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-06-29T22:46:19.740Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-06-30T00:46:23.842Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-06-30T00:46:23.844Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-06-30T00:46:23.845Z"}

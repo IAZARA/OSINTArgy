@@ -1,0 +1,399 @@
+/* Detective Game - Maltego Theme */
+.detective-game {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--maltego-spacing-xl);
+  min-height: calc(100vh - 80px);
+  background: var(--maltego-bg);
+  color: var(--maltego-text-primary);
+  font-family: var(--maltego-font-family);
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: var(--maltego-spacing-xl);
+  padding: var(--maltego-spacing-xl);
+  background: var(--maltego-card);
+  border: 1px solid var(--maltego-border);
+  border-radius: var(--maltego-border-radius-xl);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--maltego-shadow-lg);
+}
+
+.game-header h1 {
+  font-size: var(--maltego-font-size-3xl);
+  font-weight: var(--maltego-font-weight-bold);
+  background: var(--maltego-gradient-central);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--maltego-spacing-md);
+}
+
+.game-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--maltego-spacing-xl);
+  margin-top: var(--maltego-spacing-lg);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: var(--maltego-spacing-sm);
+  font-size: var(--maltego-font-size-lg);
+  font-weight: var(--maltego-font-weight-semibold);
+  color: var(--maltego-text-secondary);
+  background: var(--maltego-secondary-alpha);
+  padding: var(--maltego-spacing-sm) var(--maltego-spacing-lg);
+  border-radius: var(--maltego-border-radius-full);
+  border: 1px solid var(--maltego-secondary);
+}
+
+/* Menu del juego */
+.game-menu {
+  background: var(--maltego-card);
+  border-radius: var(--maltego-border-radius-xl);
+  padding: var(--maltego-spacing-2xl);
+  box-shadow: var(--maltego-shadow-xl);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--maltego-border);
+  backdrop-filter: blur(20px);
+}
+
+.game-menu h2 {
+  font-size: var(--maltego-font-size-2xl);
+  color: var(--maltego-text-primary);
+  margin-bottom: var(--maltego-spacing-lg);
+}
+
+.game-menu p {
+  font-size: var(--maltego-font-size-lg);
+  color: var(--maltego-text-secondary);
+  margin-bottom: var(--maltego-spacing-xl);
+  line-height: 1.6;
+}
+
+.menu-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--maltego-spacing-xl);
+  margin-bottom: var(--maltego-spacing-2xl);
+}
+
+.feature {
+  text-align: center;
+  background: var(--maltego-primary-alpha);
+  padding: var(--maltego-spacing-xl);
+  border-radius: var(--maltego-border-radius-lg);
+  border: 1px solid var(--maltego-primary);
+  transition: var(--maltego-transition-medium);
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--maltego-glow-primary);
+}
+
+.feature svg {
+  color: var(--maltego-primary);
+  margin-bottom: var(--maltego-spacing-lg);
+}
+
+.feature h3 {
+  font-size: var(--maltego-font-size-xl);
+  color: var(--maltego-text-primary);
+  margin-bottom: var(--maltego-spacing-sm);
+}
+
+.feature p {
+  font-size: var(--maltego-font-size-sm);
+  color: var(--maltego-text-secondary);
+  margin: 0;
+}
+
+.start-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--maltego-spacing-sm);
+  padding: var(--maltego-spacing-lg) var(--maltego-spacing-2xl);
+  background: var(--maltego-gradient-button);
+  color: var(--maltego-text-primary);
+  border: none;
+  border-radius: var(--maltego-border-radius-full);
+  font-size: var(--maltego-font-size-lg);
+  font-weight: var(--maltego-font-weight-semibold);
+  cursor: pointer;
+  transition: var(--maltego-transition-medium);
+  box-shadow: var(--maltego-shadow-lg);
+}
+
+.start-button:hover {
+  background: var(--maltego-gradient-button-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--maltego-glow-primary);
+}
+
+/* Area de juego */
+.game-area {
+  background: var(--maltego-card);
+  border-radius: var(--maltego-border-radius-xl);
+  padding: var(--maltego-spacing-xl);
+  box-shadow: var(--maltego-shadow-xl);
+  border: 1px solid var(--maltego-border);
+  backdrop-filter: blur(20px);
+}
+
+.case-info {
+  margin-bottom: var(--maltego-spacing-xl);
+  text-align: center;
+  background: var(--maltego-primary-alpha);
+  padding: var(--maltego-spacing-lg);
+  border-radius: var(--maltego-border-radius-lg);
+  border: 1px solid var(--maltego-primary);
+}
+
+.case-info h3 {
+  font-size: var(--maltego-font-size-xl);
+  color: var(--maltego-text-primary);
+  margin-bottom: var(--maltego-spacing-sm);
+}
+
+.case-info p {
+  color: var(--maltego-text-secondary);
+  margin-bottom: var(--maltego-spacing-lg);
+}
+
+.progress {
+  font-size: var(--maltego-font-size-sm);
+  color: var(--maltego-text-muted);
+}
+
+.game-canvas-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--maltego-spacing-xl);
+}
+
+.game-canvas {
+  border: 2px solid var(--maltego-border);
+  border-radius: var(--maltego-border-radius-lg);
+  cursor: crosshair;
+  box-shadow: var(--maltego-shadow-lg);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.game-tools {
+  display: flex;
+  justify-content: center;
+  gap: var(--maltego-spacing-lg);
+}
+
+.tool-button {
+  display: flex;
+  align-items: center;
+  gap: var(--maltego-spacing-sm);
+  padding: var(--maltego-spacing-md) var(--maltego-spacing-lg);
+  background: var(--maltego-card);
+  border: 2px solid var(--maltego-border);
+  border-radius: var(--maltego-border-radius-lg);
+  color: var(--maltego-text-primary);
+  font-weight: var(--maltego-font-weight-medium);
+  cursor: pointer;
+  transition: var(--maltego-transition-medium);
+}
+
+.tool-button:hover:not(:disabled) {
+  background: var(--maltego-card-hover);
+  border-color: var(--maltego-border-active);
+  color: var(--maltego-primary);
+  transform: translateY(-2px);
+}
+
+.tool-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Estados del juego */
+.game-completed,
+.game-paused {
+  background: var(--maltego-card);
+  border-radius: var(--maltego-border-radius-xl);
+  padding: var(--maltego-spacing-2xl);
+  box-shadow: var(--maltego-shadow-xl);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--maltego-border);
+  backdrop-filter: blur(20px);
+}
+
+.game-completed h2 {
+  font-size: var(--maltego-font-size-2xl);
+  color: var(--maltego-accent-green);
+  margin-bottom: var(--maltego-spacing-xl);
+  text-shadow: var(--maltego-glow-verified);
+}
+
+.completion-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--maltego-spacing-xl);
+  margin-bottom: var(--maltego-spacing-2xl);
+}
+
+.stat-card {
+  background: var(--maltego-primary-alpha);
+  padding: var(--maltego-spacing-xl);
+  border-radius: var(--maltego-border-radius-lg);
+  border: 1px solid var(--maltego-primary);
+}
+
+.stat-card svg {
+  color: var(--maltego-primary);
+  margin-bottom: var(--maltego-spacing-lg);
+}
+
+.stat-card h3 {
+  font-size: var(--maltego-font-size-base);
+  color: var(--maltego-text-secondary);
+  margin-bottom: var(--maltego-spacing-sm);
+}
+
+.stat-card p {
+  font-size: var(--maltego-font-size-xl);
+  font-weight: var(--maltego-font-weight-bold);
+  color: var(--maltego-text-primary);
+  margin: 0;
+}
+
+.completion-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--maltego-spacing-lg);
+}
+
+.next-button,
+.menu-button,
+.resume-button {
+  padding: var(--maltego-spacing-md) var(--maltego-spacing-xl);
+  border: none;
+  border-radius: var(--maltego-border-radius-lg);
+  font-weight: var(--maltego-font-weight-semibold);
+  cursor: pointer;
+  transition: var(--maltego-transition-medium);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--maltego-spacing-sm);
+}
+
+.next-button {
+  background: var(--maltego-gradient-tool-verified);
+  color: var(--maltego-text-primary);
+}
+
+.next-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--maltego-glow-verified);
+}
+
+.menu-button {
+  background: var(--maltego-card);
+  color: var(--maltego-text-secondary);
+  border: 1px solid var(--maltego-border);
+}
+
+.menu-button:hover {
+  background: var(--maltego-card-hover);
+  color: var(--maltego-text-primary);
+}
+
+.resume-button {
+  background: var(--maltego-gradient-button);
+  color: var(--maltego-text-primary);
+}
+
+.resume-button:hover {
+  background: var(--maltego-gradient-button-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--maltego-glow-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .detective-game {
+    padding: var(--maltego-spacing-lg);
+  }
+
+  .menu-features {
+    grid-template-columns: 1fr;
+    gap: var(--maltego-spacing-lg);
+  }
+
+  .completion-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .game-canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .game-stats {
+    flex-wrap: wrap;
+    gap: var(--maltego-spacing-lg);
+  }
+
+  .completion-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .next-button,
+  .menu-button,
+  .resume-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Animaciones */
+.game-menu,
+.game-area,
+.game-completed,
+.game-paused {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.feature {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.feature:nth-child(1) { animation-delay: 0.1s; }
+.feature:nth-child(2) { animation-delay: 0.2s; }
+.feature:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

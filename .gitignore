@@ -1,1 +1,3 @@
 node_modules
+.claude/
+mcp-ssh-server/

@@ -13,6 +13,12 @@ import UsernameOSINT from '@components/UsernameOSINT/UsernameOSINT'
 import InfrastructureScanner from '@components/InfrastructureScanner/InfrastructureScanner'
 import DisclaimerModal from '@components/DisclaimerModal/DisclaimerModal'
 import About from '@components/About/About'
+import AcademyDashboard from '@components/OSINTAcademy/AcademyDashboard'
+import DetectiveGame from '@components/OSINTAcademy/DetectiveGame/DetectiveGame'
+import OSINTMindMap from '@components/OSINTAcademy/MindMap/OSINTMindMap'
+import DorkSimulator from '@components/OSINTAcademy/Simulator/DorkSimulator'
+import LessonViewer from '@components/OSINTAcademy/Lessons/LessonViewer'
+import AudioPlayer from '@components/OSINTAcademy/Audio/AudioPlayer'
 
 // Hooks
 import { useTools } from '@hooks/useTools'
@@ -133,6 +139,12 @@ function App() {
           <Route path="/username-osint" element={<UsernameOSINT />} />
           <Route path="/infrastructure-scanner" element={<InfrastructureScanner />} />
           <Route path="/about" element={<About />} />
+          <Route path="/academy" element={<AcademyDashboard />} />
+          <Route path="/academy/detective-game" element={<DetectiveGame />} />
+          <Route path="/academy/mindmap" element={<OSINTMindMap />} />
+          <Route path="/academy/dork-simulator" element={<DorkSimulator />} />
+          <Route path="/academy/lesson/:lessonId" element={<LessonViewer />} />
+          <Route path="/academy/audio" element={<AudioPlayer />} />
         </Routes>
       </main>
 

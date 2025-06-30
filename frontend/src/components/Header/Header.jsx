@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info } from 'lucide-react'
+import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap } from 'lucide-react'
 import { debounce } from '@utils/helpers'
 import { SEARCH } from '@utils/constants'
 import { useTools } from '@hooks/useTools'
@@ -316,6 +316,12 @@ const Header = ({
 
         {/* Menú de Herramientas del Sistema y Acerca de */}
         <div className="header__system">
+          {/* Botón Academia */}
+          <Link to="/academy" className="academy-button" aria-label="Academia OSINT">
+            <GraduationCap size={20} />
+            <span className="academy-button__text">Academia</span>
+          </Link>
+
           {/* Botón Acerca de */}
           <Link to="/about" className="about-button" aria-label="Acerca de OSINT Argy">
             <Info size={20} />
@@ -449,6 +455,17 @@ const Header = ({
               <span>Herramientas del Sistema</span>
             </div>
             <div className="mobile-system-actions">
+              <Link
+                to="/academy"
+                className="mobile-system-action"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <GraduationCap size={16} />
+                <div className="mobile-system-action-content">
+                  <span className="mobile-system-action-title">Academia OSINT</span>
+                  <span className="mobile-system-action-description">Aprende OSINT de forma interactiva</span>
+                </div>
+              </Link>
               <Link
                 to="/about"
                 className="mobile-system-action"

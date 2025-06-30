@@ -34,6 +34,12 @@ const DorkGenerator = () => {
   const [videoFormat, setVideoFormat] = useState('')
   const [videoDuration, setVideoDuration] = useState('')
   const [videoQuality, setVideoQuality] = useState('')
+  
+  // Estados para funciones avanzadas
+  const [enableChaining, setEnableChaining] = useState(false)
+  const [chainedTypes, setChainedTypes] = useState([])
+  const [suggestions, setSuggestions] = useState([])
+  const [showSuggestions, setShowSuggestions] = useState(false)
 
   // Cargar datos iniciales
   useEffect(() => {
@@ -83,6 +89,21 @@ const DorkGenerator = () => {
           id: 'multimedia_platforms',
           name: 'Plataformas Multimedia',
           description: 'Buscar en YouTube, Vimeo, Instagram, etc.'
+        },
+        {
+          id: 'phones',
+          name: 'Números Telefónicos',
+          description: 'Buscar números de teléfono y contactos'
+        },
+        {
+          id: 'cryptocurrency',
+          name: 'Criptomonedas',
+          description: 'Buscar wallets, direcciones y transacciones crypto'
+        },
+        {
+          id: 'iot_devices',
+          name: 'Dispositivos IoT',
+          description: 'Buscar cámaras, routers y dispositivos inteligentes'
         }
       ]
 
@@ -126,6 +147,71 @@ const DorkGenerator = () => {
         return [...prev, engineId]
       }
     })
+  }
+
+  // Manejar cambios en tipos encadenados
+  const handleChainedTypeChange = (typeId) => {
+    setChainedTypes(prev => {
+      if (prev.includes(typeId)) {
+        return prev.filter(id => id !== typeId)
+      } else {
+        return [...prev, typeId]
+      }
+    })
+  }
+
+  // Generar sugerencias inteligentes basadas en el input
+  const generateSmartSuggestions = (inputQuery) => {
+    const suggestions = []
+    const lowerQuery = inputQuery.toLowerCase()
+    
+    // Detectar patrones y sugerir tipos apropiados
+    if (lowerQuery.includes('@') || lowerQuery.includes('email') || lowerQuery.includes('mail')) {
+      suggestions.push({ type: 'emails', reason: 'Detectado patrón de email' })
+    }
+    
+    if (lowerQuery.includes('.com') || lowerQuery.includes('.org') || lowerQuery.includes('.net') || lowerQuery.includes('www.')) {
+      suggestions.push({ type: 'websites', reason: 'Detectado dominio web' })
+    }
+    
+    if (lowerQuery.match(/\+?\d{1,4}[\s-]?\(?\d{1,4}\)?[\s-]?\d{1,4}[\s-]?\d{1,9}/)) {
+      suggestions.push({ type: 'phones', reason: 'Detectado formato de teléfono' })
+    }
+    
+    if (lowerQuery.match(/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$|^bc1[a-z0-9]{39,59}$|^0x[a-fA-F0-9]{40}$/)) {
+      suggestions.push({ type: 'cryptocurrency', reason: 'Detectada dirección crypto' })
+    }
+    
+    if (lowerQuery.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/)) {
+      suggestions.push({ type: 'iot_devices', reason: 'Detectada dirección IP' })
+    }
+    
+    if (lowerQuery.includes('camera') || lowerQuery.includes('router') || lowerQuery.includes('device')) {
+      suggestions.push({ type: 'iot_devices', reason: 'Detectado dispositivo IoT' })
+    }
+    
+    return suggestions
+  }
+
+  // Manejar cambios en el query principal
+  const handleQueryChange = (value) => {
+    setQuery(value)
+    
+    // Generar sugerencias si hay contenido
+    if (value.trim().length > 2) {
+      const newSuggestions = generateSmartSuggestions(value)
+      setSuggestions(newSuggestions)
+      setShowSuggestions(newSuggestions.length > 0)
+    } else {
+      setSuggestions([])
+      setShowSuggestions(false)
+    }
+  }
+
+  // Aplicar sugerencia
+  const applySuggestion = (suggestionType) => {
+    setTargetType(suggestionType)
+    setShowSuggestions(false)
   }
 
   // Agregar término de inclusión
@@ -175,12 +261,24 @@ const DorkGenerator = () => {
       emails: [
         '"{query}" email OR mail',
         '"{query}" @gmail.com OR @hotmail.com OR @yahoo.com',
+        '"{query}" @outlook.com OR @live.com OR @msn.com',
+        '"{query}" @corporate.com OR @empresa.com',
         'site:pastebin.com "{query}"',
+        'site:paste.org "{query}"',
+        'site:ghostbin.com "{query}"',
+        'site:github.com "{query}" email',
         'filetype:txt "{query}" email',
+        'filetype:csv "{query}" email',
+        'filetype:sql "{query}" email',
         'intext:"{query}" "@"',
         '"{query}" contact OR contacto',
         'site:haveibeenpwned.com "{query}"',
-        '"{query}" leaked OR filtrado'
+        'site:breachdirectory.org "{query}"',
+        '"{query}" leaked OR filtrado OR breach',
+        '"{query}" "email list" OR "lista email"',
+        '"{query}" "mailing list" OR "lista correo"',
+        'inurl:"email" "{query}"',
+        'intext:"{query}" "mailto:"'
       ],
       websites: [
         'site:{query}',
@@ -199,8 +297,22 @@ const DorkGenerator = () => {
         'filetype:xls "{query}"',
         'filetype:xlsx "{query}"',
         'filetype:ppt "{query}"',
+        'filetype:pptx "{query}"',
         'filetype:txt "{query}"',
-        'ext:pdf "{query}"'
+        'filetype:csv "{query}"',
+        'filetype:xml "{query}"',
+        'filetype:json "{query}"',
+        'filetype:epub "{query}"',
+        'filetype:rtf "{query}"',
+        'filetype:odt "{query}"',
+        'filetype:ods "{query}"',
+        'filetype:odp "{query}"',
+        'ext:pdf "{query}"',
+        'ext:doc "{query}"',
+        'ext:xls "{query}"',
+        'intext:"{query}" filetype:conf',
+        'intext:"{query}" filetype:cfg',
+        'intext:"{query}" filetype:ini'
       ],
       images: [
         'filetype:jpg "{query}"',
@@ -254,7 +366,17 @@ const DorkGenerator = () => {
         'site:linkedin.com "{query}"',
         'site:pinterest.com "{query}"',
         'site:snapchat.com "{query}"',
-        'site:telegram.me "{query}"'
+        'site:telegram.me "{query}"',
+        'site:discord.com "{query}"',
+        'site:reddit.com "{query}"',
+        'site:tumblr.com "{query}"',
+        'site:mastodon.social "{query}"',
+        'site:clubhouse.com "{query}"',
+        'site:signal.org "{query}"',
+        'site:whatsapp.com "{query}"',
+        'inurl:"t.me/" "{query}"',
+        'inurl:"discord.gg/" "{query}"',
+        '"{query}" "social media" OR "redes sociales"'
       ],
       multimedia_platforms: [
         'site:youtube.com "{query}"',
@@ -275,15 +397,80 @@ const DorkGenerator = () => {
         '"{query}" gallery OR galería',
         '"{query}" portfolio OR portafolio',
         '"{query}" creative OR creativo'
+      ],
+      phones: [
+        '"{query}" phone OR telefono OR tel',
+        '"{query}" mobile OR movil OR celular',
+        '"{query}" "phone number" OR "numero telefono"',
+        '"{query}" contact OR contacto',
+        '"{query}" "+1" OR "+34" OR "+52" OR "+44"',
+        '"{query}" "(" ")" phone',
+        'intext:"{query}" phone',
+        'intext:"{query}" "phone:" OR "tel:" OR "mobile:"',
+        'site:whitepages.com "{query}"',
+        'site:truecaller.com "{query}"',
+        'site:yellowpages.com "{query}"',
+        'filetype:vcf "{query}"',
+        'filetype:csv "{query}" phone',
+        '"{query}" directory OR directorio',
+        '"{query}" "área code" OR "codigo area"',
+        'inurl:phonebook "{query}"',
+        'inurl:directory "{query}"',
+        '"{query}" whatsapp OR telegram'
+      ],
+      cryptocurrency: [
+        '"{query}" bitcoin OR btc',
+        '"{query}" ethereum OR eth',
+        '"{query}" wallet OR billetera',
+        '"{query}" "bitcoin address" OR "dirección bitcoin"',
+        '"{query}" "1" "3" "bc1" bitcoin',
+        '"{query}" "0x" ethereum',
+        'site:blockchain.info "{query}"',
+        'site:blockchair.com "{query}"',
+        'site:etherscan.io "{query}"',
+        'site:bitcointalk.org "{query}"',
+        'intext:"{query}" "crypto" OR "cryptocurrency"',
+        '"{query}" "private key" OR "clave privada"',
+        '"{query}" "seed phrase" OR "frase semilla"',
+        '"{query}" exchange OR intercambio',
+        '"{query}" mining OR mineria',
+        '"{query}" "public key" OR "clave publica"',
+        'filetype:txt "{query}" wallet',
+        'inurl:address "{query}"'
+      ],
+      iot_devices: [
+        '"{query}" camera OR camara',
+        '"{query}" "IP camera" OR "camara IP"',
+        '"{query}" router OR enrutador',
+        '"{query}" "smart device" OR "dispositivo inteligente"',
+        'inurl:"view/live" "{query}"',
+        'inurl:"ViewerFrame?Mode=" "{query}"',
+        'inurl:"/cgi-bin/" "{query}"',
+        'intitle:"Live View" "{query}"',
+        'intitle:"Network Camera" "{query}"',
+        'site:shodan.io "{query}"',
+        'site:censys.io "{query}"',
+        '"{query}" "admin" "password" device',
+        '"{query}" "default password" OR "contraseña por defecto"',
+        'intext:"{query}" "IoT" OR "Internet of Things"',
+        '"{query}" "smart home" OR "casa inteligente"',
+        '"{query}" "webcam" OR "security camera"',
+        'inurl:"axis-cgi/mjpg" "{query}"',
+        'intitle:"D-Link" "{query}"',
+        'intitle:"TP-Link" "{query}"',
+        'intitle:"Netgear" "{query}"'
       ]
     }
 
-    // Obtener plantillas para el tipo seleccionado
-    const templates = dorkTemplates[targetType] || dorkTemplates.usernames
-
-    // Generar dorks para cada motor y plantilla
-    engines.forEach(engine => {
-      templates.forEach((template, index) => {
+    // Determinar qué tipos usar (encadenado o individual)
+    const typesToUse = enableChaining && chainedTypes.length > 0 ? [targetType, ...chainedTypes] : [targetType]
+    
+    // Generar dorks para cada tipo y motor
+    typesToUse.forEach(currentType => {
+      const templates = dorkTemplates[currentType] || dorkTemplates.usernames
+      
+      engines.forEach(engine => {
+        templates.forEach((template, index) => {
         let dorkQuery = template.replace(/\{query\}/g, query)
 
         // Agregar términos adicionales
@@ -348,12 +535,13 @@ const DorkGenerator = () => {
             break
         }
 
-        dorks.push({
-          engine: engine.charAt(0).toUpperCase() + engine.slice(1),
-          type: targetType,
-          query: dorkQuery,
-          url: searchUrl,
-          id: `${engine}-${targetType}-${index}`
+          dorks.push({
+            engine: engine.charAt(0).toUpperCase() + engine.slice(1),
+            type: currentType,
+            query: dorkQuery,
+            url: searchUrl,
+            id: `${engine}-${currentType}-${index}`
+          })
         })
       })
     })
@@ -450,8 +638,87 @@ const DorkGenerator = () => {
     })
   }
 
-  // Descargar todos los dorks como archivo de texto
-  const downloadDorks = () => {
+  // Descargar dorks en diferentes formatos
+  const downloadDorks = (format = 'txt') => {
+    if (!results || !results.dorks) return
+
+    switch (format) {
+      case 'json':
+        downloadDorksAsJSON()
+        break
+      case 'csv':
+        downloadDorksAsCSV()
+        break
+      case 'txt':
+      default:
+        downloadDorksAsText()
+        break
+    }
+  }
+
+  // Descargar como JSON
+  const downloadDorksAsJSON = () => {
+    if (!results || !results.dorks) return
+
+    const data = {
+      metadata: {
+        query,
+        targetType,
+        engines: selectedEngines,
+        includeTerms,
+        excludeTerms,
+        dateAfter,
+        dateBefore,
+        generatedAt: new Date().toISOString(),
+        totalDorks: results.dorks.length
+      },
+      dorks: results.dorks
+    }
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    
+    const safeQuery = query.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 20)
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '')
+    link.download = `dorks_${safeQuery}_${targetType}_${timestamp}.json`
+
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  }
+
+  // Descargar como CSV
+  const downloadDorksAsCSV = () => {
+    if (!results || !results.dorks) return
+
+    let csvContent = 'Engine,Type,Query,URL\n'
+    
+    results.dorks.forEach(dork => {
+      const escapedQuery = `"${dork.query.replace(/"/g, '""')}"`
+      const escapedUrl = `"${dork.url || ''}"`
+      csvContent += `${dork.engine},${dork.type},${escapedQuery},${escapedUrl}\n`
+    })
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    
+    const safeQuery = query.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 20)
+    const timestamp = new Date().toISOString().slice(0, 19).replace(/[:-]/g, '')
+    link.download = `dorks_${safeQuery}_${targetType}_${timestamp}.csv`
+
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  }
+
+  // Descargar como texto
+  const downloadDorksAsText = () => {
     if (!results || !results.dorks) return
 
     try {
@@ -580,6 +847,21 @@ const DorkGenerator = () => {
         icon: '🎨',
         description: 'Plataformas de contenido multimedia y creativo',
         examples: ['YouTube', 'Instagram', 'Pinterest', 'DeviantArt']
+      },
+      phones: {
+        icon: '📞',
+        description: 'Buscar números telefónicos y directorios de contactos',
+        examples: ['WhitePages', 'TrueCaller', 'YellowPages', 'Directorios']
+      },
+      cryptocurrency: {
+        icon: '₿',
+        description: 'Buscar wallets, direcciones y transacciones de criptomonedas',
+        examples: ['Bitcoin', 'Ethereum', 'Blockchain.info', 'Etherscan']
+      },
+      iot_devices: {
+        icon: '📷',
+        description: 'Buscar dispositivos IoT, cámaras y equipos conectados',
+        examples: ['Cámaras IP', 'Routers', 'Shodan', 'Dispositivos Smart']
       }
     }
     return typeInfo[targetType] || typeInfo.usernames
@@ -619,12 +901,16 @@ const DorkGenerator = () => {
                 <h3>Tipos de Búsqueda Disponibles</h3>
                 <ul>
                   <li><strong>Nombres de usuario:</strong> Busca perfiles en redes sociales (Facebook, Twitter, LinkedIn, Instagram, GitHub, Reddit, etc.)</li>
-                  <li><strong>Emails:</strong> Encuentra direcciones de correo en documentos PDF, DOC, sitios como Pastebin, GitHub, y proveedores populares</li>
+                  <li><strong>Emails:</strong> Encuentra direcciones de correo en documentos, Pastebin, GitHub, breaches y proveedores populares</li>
                   <li><strong>Sitios web:</strong> Analiza dominios, encuentra archivos sensibles, paneles de administración y información técnica</li>
-                  <li><strong>Documentos:</strong> Localiza archivos PDF, DOC, XLS, PPT y otros documentos específicos</li>
+                  <li><strong>Documentos:</strong> Localiza archivos PDF, DOC, XLS, PPT, XML, JSON, EPUB y configuraciones</li>
                   <li><strong>Imágenes:</strong> Busca imágenes por formato (JPG, PNG, GIF), tamaño, tipo y plataformas como Flickr, Pinterest, Imgur</li>
                   <li><strong>Videos:</strong> Encuentra videos por formato (MP4, AVI, MOV), duración y plataformas como YouTube, Vimeo, Twitch</li>
+                  <li><strong>Redes Sociales:</strong> Búsquedas ampliadas en Facebook, Twitter, Discord, Telegram, Reddit, Mastodon y más</li>
                   <li><strong>Plataformas Multimedia:</strong> Búsquedas especializadas en YouTube, Instagram, TikTok, SoundCloud y otras plataformas de contenido</li>
+                  <li><strong>Números Telefónicos:</strong> Busca teléfonos en directorios, WhitePages, TrueCaller y archivos de contactos</li>
+                  <li><strong>Criptomonedas:</strong> Encuentra wallets, direcciones Bitcoin/Ethereum, exchanges y transacciones crypto</li>
+                  <li><strong>Dispositivos IoT:</strong> Localiza cámaras IP, routers, dispositivos inteligentes y equipos conectados</li>
                 </ul>
               </div>
 
@@ -668,7 +954,10 @@ const DorkGenerator = () => {
                   <li><strong>Buscar imágenes específicas:</strong> Usa "imágenes" con términos descriptivos para encontrar fotos, logos o gráficos</li>
                   <li><strong>Localizar videos:</strong> Usa "videos" para encontrar contenido audiovisual, tutoriales o documentales</li>
                   <li><strong>Investigar en plataformas multimedia:</strong> Usa "plataformas multimedia" para búsquedas dirigidas en redes sociales visuales</li>
-                  <li><strong>Encontrar documentos sensibles:</strong> Usa "documentos" para localizar PDFs, presentaciones o hojas de cálculo</li>
+                  <li><strong>Encontrar documentos sensibles:</strong> Usa "documentos" para localizar PDFs, presentaciones, configuraciones XML/JSON</li>
+                  <li><strong>Buscar números telefónicos:</strong> Usa "números telefónicos" para encontrar contactos en directorios y bases de datos</li>
+                  <li><strong>Investigar actividad crypto:</strong> Usa "criptomonedas" para rastrear wallets, transacciones y actividad blockchain</li>
+                  <li><strong>Encontrar dispositivos IoT:</strong> Usa "dispositivos IoT" para localizar cámaras, routers y equipos conectados expuestos</li>
                 </ul>
               </div>
             </div>
@@ -694,11 +983,41 @@ const DorkGenerator = () => {
                 id="query"
                 type="text"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => handleQueryChange(e.target.value)}
                 placeholder="Ej: john.doe, empresa.com, usuario123"
                 className="form-input"
                 disabled={loading}
               />
+              
+              {/* Sugerencias inteligentes */}
+              {showSuggestions && suggestions.length > 0 && (
+                <div className="smart-suggestions">
+                  <div className="suggestions-header">
+                    <span>🧠 Sugerencias inteligentes:</span>
+                    <button 
+                      className="close-suggestions"
+                      onClick={() => setShowSuggestions(false)}
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <div className="suggestions-list">
+                    {suggestions.map((suggestion, index) => {
+                      const typeInfo = targetTypes.find(t => t.id === suggestion.type)
+                      return (
+                        <button
+                          key={index}
+                          className="suggestion-item"
+                          onClick={() => applySuggestion(suggestion.type)}
+                        >
+                          <span className="suggestion-type">{typeInfo?.name}</span>
+                          <span className="suggestion-reason">{suggestion.reason}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Tipo de objetivo */}
@@ -976,6 +1295,47 @@ const DorkGenerator = () => {
                     </div>
                   </div>
                 )}
+                
+                {/* Encadenamiento de tipos */}
+                <div className="form-group">
+                  <label className="checkbox-item">
+                    <input
+                      type="checkbox"
+                      checked={enableChaining}
+                      onChange={(e) => {
+                        setEnableChaining(e.target.checked)
+                        if (!e.target.checked) {
+                          setChainedTypes([])
+                        }
+                      }}
+                      disabled={loading}
+                    />
+                    <span className="checkbox-label">Habilitar encadenamiento de tipos de búsqueda</span>
+                  </label>
+                  <p className="help-text">Combina múltiples tipos de búsqueda para obtener resultados más completos</p>
+                </div>
+
+                {enableChaining && (
+                  <div className="form-group">
+                    <label>Tipos adicionales a incluir</label>
+                    <div className="checkbox-grid">
+                      {targetTypes
+                        .filter(type => type.id !== targetType)
+                        .map(type => (
+                          <label key={type.id} className="checkbox-item small">
+                            <input
+                              type="checkbox"
+                              checked={chainedTypes.includes(type.id)}
+                              onChange={() => handleChainedTypeChange(type.id)}
+                              disabled={loading}
+                            />
+                            <span className="checkbox-label">{type.name}</span>
+                          </label>
+                        ))
+                      }
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -1016,14 +1376,32 @@ const DorkGenerator = () => {
                       Abrir Todo ({results.dorks.filter(d => d.url).length} pestañas)
                     </button>
 
-                    <button
-                      onClick={downloadDorks}
-                      className="action-btn primary"
-                      title="Descargar todos los dorks como archivo de texto"
-                    >
-                      <Download size={16} />
-                      {copiedItems.has('download') ? 'Descargado!' : 'Descargar TXT'}
-                    </button>
+                    <div className="download-options">
+                      <button
+                        onClick={() => downloadDorks('txt')}
+                        className="action-btn primary"
+                        title="Descargar como archivo de texto"
+                      >
+                        <Download size={16} />
+                        TXT
+                      </button>
+                      <button
+                        onClick={() => downloadDorks('csv')}
+                        className="action-btn secondary"
+                        title="Descargar como CSV para Excel"
+                      >
+                        <Download size={16} />
+                        CSV
+                      </button>
+                      <button
+                        onClick={() => downloadDorks('json')}
+                        className="action-btn secondary"
+                        title="Descargar como JSON estructurado"
+                      >
+                        <Download size={16} />
+                        JSON
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

@@ -37,8 +37,42 @@
       "Bash(gtimeout 15 npm start)",
       "Bash(node:*)",
       "mcp__playwright__playwright_navigate",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "mcp__playwright__playwright_screenshot",
+      "mcp__playwright__playwright_click",
+      "mcp__playwright__playwright_close",
+      "mcp__playwright__playwright_console_logs",
+      "mcp__playwright__playwright_fill",
+      "Bash(./scripts/test-backend-final.sh:*)",
+      "Bash(./scripts/fix-nginx-simple.sh:*)",
+      "Bash(ssh:*)",
+      "Bash(expect:*)",
+      "mcp__playwright__playwright_evaluate",
+      "Bash(tar:*)",
+      "Bash(touch:*)",
+      "Bash(bash:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git clone:*)",
+      "Bash(pip install:*)",
+      "Bash(python3 -m pip install:*)",
+      "mcp__playwright__playwright_get_visible_html",
+      "Bash(ccusage)",
+      "Bash(cp:*)"
     ]
   },
-  "enableAllProjectMcpServers": false
+  "enableAllProjectMcpServers": false,
+  "mcpServers": {
+    "ssh": {
+      "command": "python",
+      "args": [
+        "/Users/macbook/Documents/OSINTArgy/mcp-ssh-server/app.py"
+      ],
+      "cwd": "/Users/macbook/Documents/OSINTArgy/mcp-ssh-server",
+      "env": {
+        "PATH": "/Users/macbook/Documents/OSINTArgy/mcp-ssh-server/venv/bin:/usr/local/bin:/usr/bin:/bin"
+      }
+    }
+  }
 }

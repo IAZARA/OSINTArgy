@@ -652,3 +652,129 @@
 .search-type-examples strong {
   color: var(--dark-text-primary);
 }
+
+/* Nuevas funcionalidades */
+.smart-suggestions {
+  background: var(--dark-surface-light);
+  border: 1px solid var(--dark-accent-blue);
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+}
+
+.suggestions-header {
+  background: var(--dark-accent-blue);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.close-suggestions {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestions-list {
+  padding: 0.5rem;
+}
+
+.suggestion-item {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  margin-bottom: 0.25rem;
+}
+
+.suggestion-item:hover {
+  background: var(--dark-surface);
+}
+
+.suggestion-type {
+  display: block;
+  color: var(--dark-text-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.suggestion-reason {
+  display: block;
+  color: var(--dark-text-secondary);
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-item.small {
+  font-size: 0.9rem;
+}
+
+.help-text {
+  font-size: 0.8rem;
+  color: var(--dark-text-secondary);
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.download-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.download-options .action-btn {
+  min-width: auto;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .download-options {
+    flex-direction: column;
+  }
+
+  .smart-suggestions {
+    margin-top: 0.5rem;
+  }
+}

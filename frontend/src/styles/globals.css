@@ -127,8 +127,8 @@ html {
 body {
   margin: 0;
   line-height: inherit;
-  background: var(--dark-bg);
-  color: var(--dark-text-primary);
+  background: #0a0a0a;
+  color: var(--maltego-text-primary);
   font-size: var(--font-size-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

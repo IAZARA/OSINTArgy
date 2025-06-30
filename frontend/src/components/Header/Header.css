@@ -271,7 +271,8 @@
   gap: var(--spacing-3);
 }
 
-/* Botón Acerca de */
+/* Botones Academia y Acerca de */
+.academy-button,
 .about-button {
   display: flex;
   align-items: center;
@@ -287,6 +288,7 @@
   font-weight: 500;
 }
 
+.academy-button:hover,
 .about-button:hover {
   background-color: var(--gray-50);
   border-color: var(--gray-400);
@@ -294,6 +296,7 @@
   transform: translateY(-1px);
 }
 
+.academy-button__text,
 .about-button__text {
   white-space: nowrap;
 }
@@ -816,10 +819,12 @@
     font-size: 1.5rem;
   }
 
+  .academy-button__text,
   .about-button__text {
     display: none;
   }
 
+  .academy-button,
   .about-button {
     padding: var(--spacing-2);
   }
@@ -845,6 +850,7 @@
 .mobile-view-button:focus,
 .mobile-user-action:focus,
 .mobile-auth-button:focus,
+.academy-button:focus,
 .about-button:focus,
 .system-menu__trigger:focus {
   outline: 2px solid var(--primary-blue);
