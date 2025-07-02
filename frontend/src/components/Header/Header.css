@@ -62,7 +62,7 @@
   display: flex;
   align-items: center;
   background-color: transparent;
-  border: none;
+  border: 2px solid var(--gray-200); /* Borde gris por defecto */
   border-radius: var(--border-radius-full);
   transition: all var(--transition-fast);
 }
@@ -85,6 +85,19 @@
   color: var(--gray-900);
   outline: none !important;
   box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}
+
+.search-input:focus,
+.search-input:active,
+.search-input:hover,
+.search-input:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
 }
 
 .search-input::placeholder {
@@ -852,15 +865,11 @@
   outline-offset: 2px;
 }
 
-.search-input:focus {
-  outline: none !important;
-  box-shadow: none !important;
-  border-color: var(--gray-200) !important;
-}
+
 
 .search-input-container:focus-within {
   background-color: transparent !important;
-  border: none !important;
+  border: 2px solid var(--gray-200) !important; /* Mantiene el borde gris sin cambios */
   box-shadow: none !important;
   outline: none !important;
 }
@@ -868,7 +877,6 @@
 .search-input-container:focus-within,
 .search-input-container:focus,
 .search-input-container.focused {
-  border: 2px solid var(--gray-200) !important;
   box-shadow: none !important;
   outline: none !important;
 }
@@ -880,48 +888,19 @@
   border: none !important;
 }
 
-/* Sobrescribir estilos globales Y tema Maltego específicamente para el input de búsqueda */
+/* Sobrescribir estilos globales para el input de búsqueda - eliminar óvalo azul */
 .search-input:focus {
-  border-color: var(--gray-200) !important;
-  box-shadow: none !important;
-}
-
-.search-input-container .search-input:focus {
-  border-color: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Sobrescribir específicamente los estilos del tema Maltego */
-.maltego-theme .search-input:focus,
-.maltego-theme .search-input-container .search-input:focus {
+  border: none !important;
   border-color: transparent !important;
   box-shadow: none !important;
   outline: none !important;
 }
 
-/* Reglas súper específicas para eliminar completamente cualquier outline azul */
-body .header .header__search .search-form .search-input-container .search-input:focus,
-.header__search .search-input-container .search-input:focus,
-input.search-input:focus {
-  border-color: var(--gray-200) !important;
-  border: 2px solid var(--gray-200) !important;
-  box-shadow: none !important;
-  outline: none !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-}
 
-/* Sobrescribir focus-visible también */
-body .header .header__search .search-form .search-input-container .search-input:focus-visible,
-.header__search .search-input-container .search-input:focus-visible,
-input.search-input:focus-visible {
-  border-color: var(--gray-200) !important;
-  border: 2px solid var(--gray-200) !important;
-  box-shadow: none !important;
-  outline: none !important;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-}
+
+
+
+
 
 /* Animaciones */
 @keyframes fadeIn {

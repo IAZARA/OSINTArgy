@@ -84,8 +84,8 @@
 
 .search-input:focus {
   outline: none;
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+  border-color: var(--gray-300);
+  box-shadow: none;
 }
 
 .search-icon {
