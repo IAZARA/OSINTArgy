@@ -3,7 +3,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--maltego-spacing-xl);
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   background: var(--maltego-bg);
   color: var(--maltego-text-primary);
   font-family: var(--maltego-font-family);
@@ -18,6 +18,42 @@
   border-radius: var(--maltego-border-radius-xl);
   backdrop-filter: blur(20px);
   box-shadow: var(--maltego-shadow-lg);
+}
+
+.game-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--maltego-spacing-xl);
+  gap: var(--maltego-spacing-md);
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: var(--maltego-spacing-sm);
+  padding: var(--maltego-spacing-sm) var(--maltego-spacing-md);
+  background: var(--maltego-button-bg);
+  color: var(--maltego-text-primary);
+  border: 1px solid var(--maltego-border);
+  border-radius: var(--maltego-border-radius);
+  font-size: var(--maltego-font-size-base);
+  font-weight: var(--maltego-font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--maltego-transition-base);
+}
+
+.nav-button:hover {
+  background: var(--maltego-button-hover-bg);
+  border-color: var(--maltego-accent-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--maltego-shadow-md);
+}
+
+.nav-button svg {
+  width: 20px;
+  height: 20px;
 }
 
 .game-header h1 {

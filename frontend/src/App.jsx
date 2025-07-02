@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 
 // Componentes
@@ -20,6 +20,7 @@ import OSINTMindMap from '@components/OSINTAcademy/MindMap/OSINTMindMap'
 import DorkSimulator from '@components/OSINTAcademy/Simulator/DorkSimulator'
 import LessonViewer from '@components/OSINTAcademy/Lessons/LessonViewer'
 import AudioPlayer from '@components/OSINTAcademy/Audio/AudioPlayer'
+import FloatingHomeButton from '@components/common/FloatingHomeButton'
 
 // Hooks
 import { useTools } from '@hooks/useTools'
@@ -32,6 +33,7 @@ import './styles/maltego-theme.css'
 function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const location = useLocation()
 
   const { tools, categories, isLoading: toolsLoading, error } = useTools()
   const { 
@@ -40,6 +42,9 @@ function App() {
     acceptDisclaimer, 
     declineDisclaimer 
   } = useDisclaimer()
+
+  // Determinar si estamos en una ruta de Academy
+  const isAcademyRoute = location.pathname.startsWith('/academy')
 
   // Manejar búsqueda
   const handleSearch = (query) => {
@@ -110,11 +115,13 @@ function App() {
 
   return (
     <div className="app">
-      {/* Header principal */}
-      <Header
-        onSearch={handleSearch}
-        searchQuery={searchQuery}
-      />
+      {/* Header principal - Solo mostrar si no estamos en Academy */}
+      {!isAcademyRoute && (
+        <Header
+          onSearch={handleSearch}
+          searchQuery={searchQuery}
+        />
+      )}
 
       {/* Contenido principal */}
       <main className="app-main">
@@ -150,7 +157,8 @@ function App() {
         </Routes>
       </main>
 
-
+      {/* Botón flotante para volver al inicio - Solo mostrar en Academy */}
+      {isAcademyRoute && <FloatingHomeButton />}
 
       {/* Notificaciones toast */}
       <Toaster

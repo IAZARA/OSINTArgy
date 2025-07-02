@@ -7,8 +7,10 @@ import {
   Clock,
   Search,
   AlertCircle,
-  CheckCircle
+  CheckCircle,
+  ArrowLeft
 } from 'lucide-react'
+import { Link, useNavigate } from 'react-router-dom'
 import './DetectiveGame.css'
 
 const DetectiveGame = () => {
@@ -345,9 +347,17 @@ const DetectiveGame = () => {
     return `${mins}:${secs.toString().padStart(2, '0')}`
   }
 
+  const navigate = useNavigate()
+
   return (
     <div className="detective-game">
       <div className="game-header">
+        <div className="game-navigation">
+          <button onClick={() => navigate('/academy')} className="nav-button">
+            <ArrowLeft size={20} />
+            <span>Volver a Academia</span>
+          </button>
+        </div>
         <h1>Detective Digital OSINT</h1>
         {gameState === 'playing' && (
           <div className="game-stats">

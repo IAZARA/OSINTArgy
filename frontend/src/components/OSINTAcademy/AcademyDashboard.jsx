@@ -8,7 +8,7 @@ import {
   Unlock,
   Play
 } from 'lucide-react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import './AcademyDashboard.css'
 
 const AcademyDashboard = () => {
@@ -151,12 +151,14 @@ const AcademyDashboard = () => {
         // Vista de módulos de la academia seleccionada
         <>
           <div className="academy-header">
-            <button 
-              onClick={handleBackToAcademies}
-              className="back-button"
-            >
-              ← Volver a Academias
-            </button>
+            <div className="academy-navigation">
+              <button 
+                onClick={handleBackToAcademies}
+                className="back-button"
+              >
+                ← Volver a Academias
+              </button>
+            </div>
             <h1>Academia OSINT</h1>
             <p>Aprende las técnicas de inteligencia de fuentes abiertas de forma interactiva</p>
           </div>

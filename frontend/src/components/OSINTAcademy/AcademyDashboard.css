@@ -3,7 +3,7 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: var(--maltego-spacing-xl);
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   background: #0a0a0a;
   color: var(--maltego-text-primary);
   font-family: var(--maltego-font-family);
@@ -365,5 +365,65 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Navigation styles */
+.academy-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--maltego-spacing-xl);
+  gap: var(--maltego-spacing-md);
+}
+
+.home-button,
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: var(--maltego-spacing-sm);
+  padding: var(--maltego-spacing-sm) var(--maltego-spacing-md);
+  background: var(--maltego-button-bg);
+  color: var(--maltego-text-primary);
+  border: 1px solid var(--maltego-border);
+  border-radius: var(--maltego-border-radius);
+  font-size: var(--maltego-font-size-base);
+  font-weight: var(--maltego-font-weight-medium);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--maltego-transition-base);
+}
+
+.home-button:hover,
+.back-button:hover {
+  background: var(--maltego-button-hover-bg);
+  border-color: var(--maltego-accent-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--maltego-shadow-md);
+}
+
+.home-button svg,
+.back-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* When home button is alone (main academy view) */
+.academy-header > .home-button {
+  position: absolute;
+  top: var(--maltego-spacing-lg);
+  left: var(--maltego-spacing-lg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .academy-navigation {
+    flex-direction: column;
+    gap: var(--maltego-spacing-sm);
+  }
+  
+  .academy-header > .home-button {
+    position: static;
+    margin-bottom: var(--maltego-spacing-md);
   }
 }

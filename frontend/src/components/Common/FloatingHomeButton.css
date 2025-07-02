@@ -1,0 +1,135 @@
+.floating-home-button {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 
+              0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 0;
+  overflow: hidden;
+}
+
+.floating-home-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 
+              0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.floating-home-button:active {
+  transform: scale(0.95);
+}
+
+.floating-button-logo {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-home-button {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Tooltip */
+.floating-home-button::before {
+  content: 'Ir a Inicio';
+  position: absolute;
+  top: 50%;
+  left: 80px;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1001;
+}
+
+.floating-home-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 72px;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1001;
+}
+
+.floating-home-button:hover::before,
+.floating-home-button:hover::after {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .floating-home-button {
+    top: 20px;
+    left: 20px;
+    width: 55px;
+    height: 55px;
+  }
+  
+  .floating-button-logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .floating-home-button::before {
+    left: 70px;
+  }
+  
+  .floating-home-button::after {
+    left: 62px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-home-button {
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .floating-button-logo {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .floating-home-button::before {
+    left: 65px;
+  }
+  
+  .floating-home-button::after {
+    left: 57px;
+  }
+}
