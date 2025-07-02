@@ -50,6 +50,7 @@
   flex: 1;
   max-width: 600px;
   position: relative;
+  background: transparent;
 }
 
 .search-form {
@@ -62,9 +63,10 @@
   display: flex;
   align-items: center;
   background-color: transparent;
-  border: 2px solid var(--gray-200); /* Borde gris por defecto */
+  border: 1px solid var(--gray-200);
   border-radius: var(--border-radius-full);
   transition: all var(--transition-fast);
+  transform: scale(0.92);
 }
 
 
@@ -79,14 +81,16 @@
 .search-input {
   width: 100%;
   padding: var(--spacing-3) var(--spacing-12) var(--spacing-3) var(--spacing-12);
-  border: none;
-  background: transparent;
+  border: none !important;
+  border-color: transparent !important;
+  background: rgba(249, 250, 251, 1);
   font-size: var(--font-size-base);
   color: var(--gray-900);
   outline: none !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
+  border-radius: var(--border-radius-full);
 }
 
 .search-input:focus,
@@ -869,9 +873,10 @@
 
 .search-input-container:focus-within {
   background-color: transparent !important;
-  border: 2px solid var(--gray-200) !important; /* Mantiene el borde gris sin cambios */
+  border: 1px solid var(--gray-200) !important;
   box-shadow: none !important;
   outline: none !important;
+  transform: scale(1);
 }
 
 .search-input-container:focus-within,
@@ -935,12 +940,12 @@
   
   .search-input-container {
     background-color: var(--gray-800);
-    border-color: var(--gray-600);
+    border-color: transparent;
   }
   
   .search-input-container:focus-within {
     background-color: var(--gray-700);
-    border-color: var(--primary-light);
+    border-color: transparent;
   }
   
   .search-input {

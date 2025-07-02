@@ -84,7 +84,8 @@
 /* Panel de información */
 .galaxy-info {
   position: absolute;
-  top: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 20px;
   z-index: 100;
 }
@@ -275,7 +276,8 @@
   }
   
   .galaxy-info {
-    top: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     right: 10px;
   }
   

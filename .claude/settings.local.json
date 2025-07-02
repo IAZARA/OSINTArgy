@@ -64,13 +64,15 @@
       "Bash(pip3 install:*)",
       "Bash(source:*)",
       "Bash(python:*)",
-      "mcp__playwright__playwright_get_visible_text"
+      "mcp__playwright__playwright_get_visible_text",
+      "Bash(/Users/macbook/Documents/OSINTArgy/mcp-ssh-server/venv/bin/python -c \"import app; print(''MCP SSH server modules loaded successfully'')\")",
+      "Bash(timeout:*)"
     ]
   },
   "enableAllProjectMcpServers": false,
   "mcpServers": {
     "ssh": {
-      "command": "python",
+      "command": "/Users/macbook/Documents/OSINTArgy/mcp-ssh-server/venv/bin/python",
       "args": [
         "/Users/macbook/Documents/OSINTArgy/mcp-ssh-server/app.py"
       ],
