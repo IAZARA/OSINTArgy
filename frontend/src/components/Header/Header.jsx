@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap } from 'lucide-react'
+import { Search, Menu, X, Target, Wrench, ChevronDown, Mail, Upload, User, Shield, Clock, TrendingUp, Info, GraduationCap, GitBranch } from 'lucide-react'
 import { debounce } from '@utils/helpers'
 import { SEARCH } from '@utils/constants'
 import { useTools } from '@hooks/useTools'
@@ -348,6 +348,18 @@ const Header = ({
 
                 <div className="system-menu__section">
                   <Link
+                    to="/osint-flowcharts"
+                    className="system-menu__item"
+                    onClick={() => setIsSystemMenuOpen(false)}
+                  >
+                    <GitBranch size={16} />
+                    <div className="system-menu__item-content">
+                      <span className="system-menu__item-title">OSINT Flowcharts</span>
+                      <span className="system-menu__item-description">Guías interactivas paso a paso para investigaciones</span>
+                    </div>
+                  </Link>
+
+                  <Link
                     to="/dorks"
                     className="system-menu__item"
                     onClick={() => setIsSystemMenuOpen(false)}
@@ -477,6 +489,18 @@ const Header = ({
                   <span className="mobile-system-action-description">Información sobre OSINT Argy</span>
                 </div>
               </Link>
+              <Link
+                to="/osint-flowcharts"
+                className="mobile-system-action"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <GitBranch size={16} />
+                <div className="mobile-system-action-content">
+                  <span className="mobile-system-action-title">OSINT Flowcharts</span>
+                  <span className="mobile-system-action-description">Guías paso a paso</span>
+                </div>
+              </Link>
+
               <Link
                 to="/dorks"
                 className="mobile-system-action"

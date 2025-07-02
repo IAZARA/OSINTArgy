@@ -973,6 +973,14 @@ const LessonViewer = () => {
             <div class="highlight-box">
               <p>📸 <strong>Dato fascinante:</strong> Una sola foto puede contener más de 100 datos diferentes en sus metadatos</p>
             </div>
+            <div class="highlight-box">
+              <p>🔧 <strong>Herramienta Integrada:</strong> OSINTArgy incluye su propio analizador de metadatos para extraer información de imágenes y documentos de forma fácil y rápida</p>
+              <div class="tool-access-button">
+                <a href="/file-analysis" target="_blank" class="internal-tool-button">
+                  🔍 Abrir Análisis de Archivos
+                </a>
+              </div>
+            </div>
             <ul>
               <li><strong>🗺️ Geolocalización:</strong> Coordenadas GPS exactas</li>
               <li><strong>📅 Temporal:</strong> Fecha y hora precisa</li>
@@ -1036,9 +1044,26 @@ const LessonViewer = () => {
                 <code>PhotoME</code>
                 <p>Software de escritorio con análisis avanzado</p>
               </div>
+              <div class="dork-example highlight-internal">
+                <code>🔧 OSINTArgy - Análisis de Archivos</code>
+                <p>Herramienta integrada con análisis completo de metadatos</p>
+                <div class="tool-access-button">
+                  <a href="/file-analysis" target="_blank" class="internal-tool-button">
+                    🚀 Usar Ahora
+                  </a>
+                </div>
+              </div>
             </div>
             <div class="highlight-box">
               <p>⚠️ <strong>Importante:</strong> Muchas redes sociales eliminan metadatos por privacidad</p>
+            </div>
+            <div class="highlight-box">
+              <p>🎯 <strong>Práctica Inmediata:</strong> Puedes probar ahora mismo el análisis de metadatos usando la herramienta integrada de OSINTArgy</p>
+              <div class="tool-access-button">
+                <a href="/file-analysis" target="_blank" class="internal-tool-button">
+                  📷 Practicar Análisis de Metadatos
+                </a>
+              </div>
             </div>
           `,
           interactive: {
@@ -1260,6 +1285,12 @@ const LessonViewer = () => {
                 <strong>🔧 Kit de Herramientas Esencial</strong>
                 <p>ExifTool, Google Images, TinEye</p>
                 <p>FotoForensics, Google Earth</p>
+                <p><strong>OSINTArgy:</strong> Análisis integrado de metadatos</p>
+                <div class="tool-access-button">
+                  <a href="/file-analysis" target="_blank" class="internal-tool-button">
+                    🔧 Acceder a Herramienta
+                  </a>
+                </div>
               </div>
               <div class="tool-item">
                 <strong>📱 Apps Móviles</strong>

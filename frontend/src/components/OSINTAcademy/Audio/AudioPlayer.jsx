@@ -4,10 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { 
   Play, 
   Pause, 
-  SkipBack, 
-  SkipForward, 
-  Volume2, 
-  VolumeX,
   ArrowLeft,
   Download,
   Clock
@@ -21,8 +17,6 @@ const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
-  const [volume, setVolume] = useState(1)
-  const [isMuted, setIsMuted] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   const audioSrc = '/Podcast - OSINT.wav'
@@ -85,39 +79,6 @@ const AudioPlayer = () => {
     setCurrentTime(newTime)
   }
 
-  const handleVolumeChange = (e) => {
-    const newVolume = parseFloat(e.target.value)
-    setVolume(newVolume)
-    audioRef.current.volume = newVolume
-    setIsMuted(newVolume === 0)
-  }
-
-  const toggleMute = () => {
-    const audio = audioRef.current
-    if (!audio) return
-
-    if (isMuted) {
-      audio.volume = volume
-      setIsMuted(false)
-    } else {
-      audio.volume = 0
-      setIsMuted(true)
-    }
-  }
-
-  const skipForward = () => {
-    const audio = audioRef.current
-    if (!audio) return
-    
-    audio.currentTime = Math.min(audio.currentTime + 15, duration)
-  }
-
-  const skipBackward = () => {
-    const audio = audioRef.current
-    if (!audio) return
-    
-    audio.currentTime = Math.max(audio.currentTime - 15, 0)
-  }
 
   const formatTime = (time) => {
     if (isNaN(time)) return '0:00'
@@ -161,25 +122,11 @@ const AudioPlayer = () => {
         >
           <audio ref={audioRef} src={audioSrc} preload="metadata" />
           
-          {/* Album Art Placeholder */}
-          <div className="album-art">
-            <div className="album-placeholder">
-              <Play size={64} />
-            </div>
-          </div>
 
           {/* Controls */}
           <div className="player-controls">
             {/* Main Controls */}
             <div className="main-controls">
-              <button 
-                onClick={skipBackward}
-                className="control-btn secondary"
-                disabled={isLoading}
-              >
-                <SkipBack size={24} />
-              </button>
-              
               <button 
                 onClick={togglePlayPause}
                 className="control-btn primary"
@@ -188,18 +135,10 @@ const AudioPlayer = () => {
                 {isLoading ? (
                   <div className="loading-spinner" />
                 ) : isPlaying ? (
-                  <Pause size={32} />
+                  <Pause size={48} />
                 ) : (
-                  <Play size={32} />
+                  <Play size={48} />
                 )}
-              </button>
-              
-              <button 
-                onClick={skipForward}
-                className="control-btn secondary"
-                disabled={isLoading}
-              >
-                <SkipForward size={24} />
               </button>
             </div>
 
@@ -223,26 +162,6 @@ const AudioPlayer = () => {
               <span className="time-display">{formatTime(duration)}</span>
             </div>
 
-            {/* Volume Controls */}
-            <div className="volume-controls">
-              <button onClick={toggleMute} className="volume-btn">
-                {isMuted || volume === 0 ? (
-                  <VolumeX size={20} />
-                ) : (
-                  <Volume2 size={20} />
-                )}
-              </button>
-              
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.1"
-                value={isMuted ? 0 : volume}
-                onChange={handleVolumeChange}
-                className="volume-slider"
-              />
-            </div>
           </div>
 
           {/* Additional Info */}

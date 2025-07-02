@@ -1,0 +1,608 @@
+/* OSINT Flowcharts Styles */
+.osint-flowcharts {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f1419 0%, #1a202c 100%);
+  color: white;
+  padding: 2rem;
+}
+
+.flowcharts__container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header Principal */
+.flowcharts__header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.flowcharts__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.flowcharts__icon {
+  color: #4A90E2;
+}
+
+.flowcharts__title h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #4A90E2, #50C878);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.flowcharts__title p {
+  font-size: 1.1rem;
+  color: #A0AEC0;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Grid de Flowcharts */
+.flowcharts__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flowchart__button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.flowchart__button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent-color, #4A90E2);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.flowchart__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent-color, #4A90E2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.flowchart__button:hover::before {
+  transform: scaleX(1);
+}
+
+.flowchart__button:active {
+  transform: translateY(0);
+}
+
+.flowchart__button-icon {
+  font-size: 2.5rem;
+  display: block;
+}
+
+.flowchart__button-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+  line-height: 1.2;
+}
+
+.flowchart__button-description {
+  color: #A0AEC0;
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Header del flowchart específico */
+.flowchart__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flowchart__nav {
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-2px);
+}
+
+.flowchart__info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.flowchart__icon-large {
+  font-size: 3rem;
+}
+
+.flowchart__info h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.flowchart__info p {
+  color: #A0AEC0;
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+}
+
+.flowchart__controls {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.progress-info {
+  text-align: center;
+}
+
+.progress-percentage {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4A90E2;
+}
+
+.progress-label {
+  font-size: 0.8rem;
+  color: #A0AEC0;
+}
+
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.zoom-level {
+  font-size: 0.9rem;
+  color: #A0AEC0;
+  margin: 0 0.5rem;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Área del diagrama */
+.flowchart__diagram-container {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+}
+
+.flowchart__svg {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.flowchart__svg:active {
+  cursor: grabbing;
+}
+
+.flowchart__connection {
+  transition: stroke-width 0.2s ease, stroke 0.2s ease;
+}
+
+.flowchart__connection:hover {
+  stroke-width: 3;
+  stroke: #4A90E2;
+}
+
+.flowchart__node-group {
+  transition: all 0.15s ease;
+}
+
+.flowchart__node-group:hover {
+  transform: translateY(-1px);
+}
+
+.flowchart__node {
+  transition: all 0.15s ease;
+}
+
+.flowchart__node:hover {
+  filter: brightness(1.1);
+}
+
+.flowchart__node-shadow {
+  transition: all 0.15s ease;
+}
+
+.flowchart__node-group:hover .flowchart__node-shadow {
+  transform: translate(1px, 1px);
+  opacity: 0.5;
+}
+
+.flowchart__node-highlight {
+  transition: opacity 0.15s ease;
+  opacity: 0.7;
+}
+
+.flowchart__node-group:hover .flowchart__node-highlight {
+  opacity: 1;
+}
+
+.flowchart__node-text {
+  user-select: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  transition: all 0.15s ease;
+}
+
+.flowchart__node-group:hover .flowchart__node-text {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.completion-indicator {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.completion-indicator:hover {
+  transform: scale(1.15);
+  filter: brightness(1.2);
+}
+
+/* Panel de información del nodo */
+.node-info-panel {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 350px;
+  max-height: 70vh;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  z-index: 1000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.node-info__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.node-info__header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.close-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.node-info__content {
+  padding: 1.5rem;
+  overflow-y: auto;
+  max-height: calc(70vh - 80px);
+}
+
+.node-info__content p {
+  color: #A0AEC0;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.node-info__example {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #F39C12;
+}
+
+.node-info__example strong {
+  color: #F39C12;
+}
+
+.node-info__tools {
+  margin-bottom: 1rem;
+}
+
+.node-info__tools strong {
+  color: #4A90E2;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.node-info__tools ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.node-info__tools li {
+  padding: 0.3rem 0;
+  color: #A0AEC0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.node-info__tools li:before {
+  content: "▸ ";
+  color: #4A90E2;
+  font-weight: bold;
+}
+
+.node-info__internal {
+  margin-bottom: 1.5rem;
+}
+
+.internal-tool-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #E67E22, #F39C12);
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.internal-tool-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.4);
+}
+
+.node-info__actions {
+  margin-top: 1.5rem;
+}
+
+.completion-button {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.completion-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.completion-button.completed {
+  background: linear-gradient(135deg, #27AE60, #2ECC71);
+  border-color: #27AE60;
+}
+
+.completion-button.completed:hover {
+  background: linear-gradient(135deg, #229954, #27AE60);
+}
+
+/* Información adicional */
+.flowcharts__info {
+  margin-top: 3rem;
+}
+
+.info__card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.info__card h3 {
+  margin: 0 0 1rem 0;
+  color: #4A90E2;
+  font-size: 1.2rem;
+}
+
+.info__card ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #A0AEC0;
+  line-height: 1.8;
+}
+
+.info__card li {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .node-info-panel {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-height: none;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .osint-flowcharts {
+    padding: 1rem;
+  }
+
+  .flowcharts__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 600px;
+  }
+
+  .flowchart__button {
+    min-height: 120px;
+    padding: 1rem;
+  }
+
+  .flowchart__button-icon {
+    font-size: 2rem;
+  }
+
+  .flowchart__button-title {
+    font-size: 1rem;
+  }
+
+  .flowchart__button-description {
+    font-size: 0.8rem;
+  }
+
+  .flowchart__header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .flowchart__info {
+    margin-left: 0;
+  }
+
+  .flowchart__controls {
+    justify-content: center;
+  }
+
+  .flowcharts__title h1 {
+    font-size: 2rem;
+  }
+
+  .flowchart__diagram-container {
+    height: 400px;
+  }
+
+  .info__card {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .flowcharts__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    max-width: 400px;
+  }
+
+  .flowchart__button {
+    padding: 1.25rem;
+    min-height: 110px;
+  }
+
+  .flowchart__button-icon {
+    font-size: 1.8rem;
+  }
+
+  .zoom-controls {
+    flex-wrap: wrap;
+  }
+
+  .flowcharts__title h1 {
+    font-size: 1.8rem;
+  }
+}

@@ -76,24 +76,6 @@
   margin-bottom: var(--maltego-spacing-2xl);
 }
 
-/* Album Art */
-.album-art {
-  display: flex;
-  justify-content: center;
-  margin-bottom: var(--maltego-spacing-2xl);
-}
-
-.album-placeholder {
-  width: 200px;
-  height: 200px;
-  background: var(--maltego-gradient-central);
-  border-radius: var(--maltego-border-radius-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--maltego-text-primary);
-  box-shadow: var(--maltego-glow-primary);
-}
 
 /* Player Controls */
 .player-controls {
@@ -122,18 +104,14 @@
 }
 
 .control-btn.primary {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   background: var(--maltego-gradient-central);
   border-color: var(--maltego-primary);
   box-shadow: var(--maltego-glow-primary);
+  font-size: 1.5rem;
 }
 
-.control-btn.secondary {
-  width: 60px;
-  height: 60px;
-  background: var(--maltego-card);
-}
 
 .control-btn:hover:not(:disabled) {
   transform: scale(1.05);
@@ -165,6 +143,10 @@
   display: flex;
   align-items: center;
   gap: var(--maltego-spacing-md);
+  background: rgba(0, 0, 0, 0.4);
+  padding: var(--maltego-spacing-lg);
+  border-radius: var(--maltego-border-radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .time-display {
@@ -186,92 +168,42 @@
 
 .progress-track {
   width: 100%;
-  height: 6px;
-  background: var(--maltego-surface);
-  border-radius: 3px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .progress-fill {
   height: 100%;
-  background: var(--maltego-gradient-central);
-  border-radius: 3px;
-  transition: width 0.1s ease;
+  background: linear-gradient(90deg, #00d4ff 0%, #0099cc 50%, #0066ff 100%);
+  border-radius: 4px;
+  transition: width 0.2s ease;
   position: relative;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
 }
 
 .progress-thumb {
   position: absolute;
   top: 50%;
-  width: 16px;
-  height: 16px;
-  background: var(--maltego-primary);
+  width: 20px;
+  height: 20px;
+  background: #00d4ff;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: var(--maltego-glow-primary);
-  transition: left 0.1s ease;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.6), 0 0 25px rgba(0, 212, 255, 0.3);
+  transition: left 0.2s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .progress-bar:hover .progress-thumb {
-  transform: translate(-50%, -50%) scale(1.2);
+  transform: translate(-50%, -50%) scale(1.3);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 35px rgba(0, 212, 255, 0.4);
 }
 
 /* Volume Controls */
-.volume-controls {
-  display: flex;
-  align-items: center;
-  gap: var(--maltego-spacing-md);
-  justify-content: center;
-}
-
-.volume-btn {
-  background: var(--maltego-surface);
-  border: 1px solid var(--maltego-border);
-  border-radius: var(--maltego-border-radius-lg);
-  padding: var(--maltego-spacing-sm);
-  color: var(--maltego-text-secondary);
-  cursor: pointer;
-  transition: var(--maltego-transition-medium);
-}
-
-.volume-btn:hover {
-  background: var(--maltego-card-hover);
-  color: var(--maltego-text-primary);
-  border-color: var(--maltego-border-active);
-}
-
-.volume-slider {
-  width: 100px;
-  height: 4px;
-  background: var(--maltego-surface);
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  background: var(--maltego-primary);
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: var(--maltego-glow-primary);
-}
-
-.volume-slider::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: var(--maltego-primary);
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
-  box-shadow: var(--maltego-glow-primary);
-}
 
 /* Audio Meta */
 .audio-meta {
@@ -363,19 +295,10 @@
     padding: var(--maltego-spacing-lg);
   }
 
-  .album-placeholder {
-    width: 150px;
-    height: 150px;
-  }
 
   .control-btn.primary {
-    width: 60px;
-    height: 60px;
-  }
-
-  .control-btn.secondary {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
   }
 
   .progress-section {
@@ -383,9 +306,6 @@
     gap: var(--maltego-spacing-sm);
   }
 
-  .volume-controls {
-    margin-top: var(--maltego-spacing-md);
-  }
 
   .audio-meta {
     flex-direction: column;
@@ -403,12 +323,5 @@
     font-size: var(--maltego-font-size-2xl);
   }
 
-  .album-placeholder {
-    width: 120px;
-    height: 120px;
-  }
 
-  .volume-slider {
-    width: 80px;
-  }
 }

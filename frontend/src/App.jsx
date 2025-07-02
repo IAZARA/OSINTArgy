@@ -6,6 +6,7 @@ import { Toaster } from 'react-hot-toast'
 import Header from '@components/Header/Header'
 import GalaxyView from '@components/GalaxyView/GalaxyView'
 import Loading from '@components/Common/Loading'
+import OSINTFlowcharts from '@components/OSINTFlowcharts/OSINTFlowcharts'
 import DorkGenerator from '@components/DorkGenerator/DorkGenerator'
 import EmailOSINT from '@components/EmailOSINT/EmailOSINT'
 import FileAnalysis from '@components/FileAnalysis/FileAnalysis'
@@ -133,6 +134,7 @@ function App() {
             }
           />
 
+          <Route path="/osint-flowcharts" element={<OSINTFlowcharts />} />
           <Route path="/dorks" element={<DorkGenerator />} />
           <Route path="/email-osint" element={<EmailOSINT />} />
           <Route path="/file-analysis" element={<FileAnalysis />} />
