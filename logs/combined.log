@@ -133,3 +133,6 @@
 {"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-07-02T02:36:05.834Z"}
 {"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-07-02T02:36:05.837Z"}
 {"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-07-02T02:36:05.837Z"}
+{"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-07-02T03:34:15.748Z"}
+{"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-07-02T03:34:15.750Z"}
+{"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-07-02T03:34:15.751Z"}

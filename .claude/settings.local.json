@@ -59,7 +59,12 @@
       "Bash(python3 -m pip install:*)",
       "mcp__playwright__playwright_get_visible_html",
       "Bash(ccusage)",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(python3:*)",
+      "Bash(pip3 install:*)",
+      "Bash(source:*)",
+      "Bash(python:*)",
+      "mcp__playwright__playwright_get_visible_text"
     ]
   },
   "enableAllProjectMcpServers": false,
