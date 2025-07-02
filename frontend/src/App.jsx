@@ -43,8 +43,10 @@ function App() {
     declineDisclaimer 
   } = useDisclaimer()
 
-  // Determinar si estamos en una ruta de Academy
+  // Determinar si estamos en una ruta de Academy o OSINT Flowcharts
   const isAcademyRoute = location.pathname.startsWith('/academy')
+  const isFlowchartsRoute = location.pathname.startsWith('/osint-flowcharts')
+  const shouldHideNavbar = isAcademyRoute || isFlowchartsRoute
 
   // Manejar búsqueda
   const handleSearch = (query) => {
@@ -115,8 +117,8 @@ function App() {
 
   return (
     <div className="app">
-      {/* Header principal - Solo mostrar si no estamos en Academy */}
-      {!isAcademyRoute && (
+      {/* Header principal - Solo mostrar si no estamos en Academy o Flowcharts */}
+      {!shouldHideNavbar && (
         <Header
           onSearch={handleSearch}
           searchQuery={searchQuery}
@@ -157,8 +159,8 @@ function App() {
         </Routes>
       </main>
 
-      {/* Botón flotante para volver al inicio - Solo mostrar en Academy */}
-      {isAcademyRoute && <FloatingHomeButton />}
+      {/* Botón flotante para volver al inicio - Solo mostrar en Academy y Flowcharts */}
+      {shouldHideNavbar && <FloatingHomeButton />}
 
       {/* Notificaciones toast */}
       <Toaster

@@ -176,3 +176,7 @@
 {"level":"info","message":"Servidor corriendo en puerto 3001","service":"osintargy-backend","timestamp":"2025-07-02T17:50:12.093Z"}
 {"level":"info","message":"Entorno: development","service":"osintargy-backend","timestamp":"2025-07-02T17:50:12.093Z"}
 {"level":"info","message":"MongoDB conectado: localhost","service":"osintargy-backend","timestamp":"2025-07-02T18:05:27.091Z"}
+{"level":"info","message":"GET /api/osint/email-sites - ::1","service":"osintargy-backend","timestamp":"2025-07-02T18:09:11.020Z"}
+{"level":"info","message":"GET /api/osint/email-sites - ::1","service":"osintargy-backend","timestamp":"2025-07-02T18:09:11.026Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-07-02T18:09:19.845Z"}
+{"level":"info","message":"GET /api/osint/username-sites - ::1","service":"osintargy-backend","timestamp":"2025-07-02T18:09:19.849Z"}
